@@ -1,0 +1,65 @@
+GorillaGrab - Inicio 03/07/2023
+
+TODO:
+
+Fase 1:
+
+-   Arquitectura: carpetas, screens, OK
+-   Setear nombre app + config yaml, OK
+-   Screens, OK
+-   Gestor de estado: GetX, OK
+-   Agregar librerías, OK
+
+Fase 2:
+-   Widgets: Buttons OK
+-   Navegación entre screens OK
+-   Theme: font + colores OK
+-   Modelos:
+    
+    -   TrainingModel OK
+    -   ExerciseModel OK
+
+Fase 3:
+-   Icono final de las repeticiones
+-   Add Training OK
+-   Add Exercise OK
+-   Remove Training OK
+-   Remove Exercise OK
+-   Exercise listiles OK
+-   SessionTimerScreen OK
+
+Fase 4:
+
+-   Stopwatchcreen OK
+-   Stopwatch logica OK
+
+Fase 5: 
+-   Delete laps OK
+-   New session: create key for the session OK
+-   New sessionTimerScreen: pasar session key como parámetro OK
+
+-   Total time: minutos OK
+-   Guardar laps en ejercicio OK
+-   SessionRepScreen OK
+-   RepetitionScreen P
+-   Update Training OK
+-   Update Exercise P
+
+28/08/2023
+
+-   Solucionar bug que confunde las sesiones entre entrenamientos OK
+-   Dejar andando bien el cronometro OK
+-   Guardar provisionalTimerRecord en finalTimerRecord OK
+
+30/08/2023
+
+-   UI y UX exercises screen  ok
+-   Suma records bonito ok
+
+15/09/2023
+-   Records: last y current - finished y provisional
+-   GAP: finished y provisional
+    -Color e Icono ok
+    -Negativo ok
+-Tamaño pantalla
+-Pantalla vertical fija
