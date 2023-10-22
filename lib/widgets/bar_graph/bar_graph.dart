@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:gorilla_grab/constants/colors.dart';
 import 'package:gorilla_grab/constants/text_styles.dart';
+import 'package:gorilla_grab/controllers/performance_controller.dart';
 import 'package:gorilla_grab/controllers/stats_controller.dart';
 import 'package:gorilla_grab/widgets/bar_graph/individual_bar.dart';
 
@@ -15,7 +16,10 @@ class PerformancesBarGraph extends StatelessWidget {
   Widget build(BuildContext context) {
     //Initialize BarData
     final StatsController statsController = Get.find<StatsController>();
+    final PerformanceController performanceController =
+        Get.find<PerformanceController>();
     Map<String, int> myBarData2 = statsController.performanceRecordsToMap();
+    var performancesList = performanceController.getPerformancesForChart();
     List<IndividualBar> bardata2 = [];
 
     void initializerBarData2({required Map barMap}) {
@@ -35,9 +39,12 @@ class PerformancesBarGraph extends StatelessWidget {
 
     initializerBarData2(barMap: myBarData2);
 
+    bool negativePerformanceFound =
+        performancesList.any((model) => model.gapPercentagePerformance < 0);
+
     return BarChart(BarChartData(
       // maxY: 100,
-      minY: -100,
+      minY: negativePerformanceFound ? -100 : 0,
 
       gridData: const FlGridData(
           //show: false,
@@ -93,7 +100,12 @@ Widget getBottomTitles(
   TitleMeta meta,
 ) {
   final StatsController statsController = Get.find<StatsController>();
+  final PerformanceController performanceController =
+      Get.find<PerformanceController>();
 
+  var performancesList = performanceController.getPerformancesForChart();
+  bool negativePerformanceFound =
+      performancesList.any((model) => model.gapPercentagePerformance < 0);
   List indexValueList = [];
   int index = 0;
   statsController.performanceRecordsToMap().forEach((key, value) {
@@ -105,8 +117,8 @@ Widget getBottomTitles(
   int valueInt = value.toInt();
   //print(indexValueList);
   return SideTitleWidget(
-      space: 1.2,
-      angle: 1.2,
+      space: negativePerformanceFound ? 0 : 10,
+      angle: 0,
       axisSide: meta.axisSide,
       child: getBottomTitlesList(
           indexValueList: indexValueList, valueKey: valueInt));

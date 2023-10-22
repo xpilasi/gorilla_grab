@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:gorilla_grab/Screens/models/exercise_model.dart';
+import 'package:gorilla_grab/constants/colors.dart';
+import 'package:gorilla_grab/models/exercise_model.dart';
 import 'package:gorilla_grab/constants/sizes.dart';
 import 'package:gorilla_grab/controllers/sessions_controller.dart';
 
-import '../Screens/models/training_model.dart';
+import '../models/training_model.dart';
 import '../constants/text_styles.dart';
 import 'buttons.dart';
 
@@ -169,7 +170,8 @@ class TitleLeft extends StatelessWidget {
     return Positioned(
       child: Container(
         height: 80,
-        //color: tColorGreeny,
+        width: 200,
+        color: tColorGreeny,
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,

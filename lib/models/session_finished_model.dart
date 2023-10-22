@@ -1,4 +1,4 @@
-import 'package:gorilla_grab/Screens/models/exercise_model.dart';
+import 'package:gorilla_grab/models/exercise_model.dart';
 
 class SessionFinished {
   final String sessionId;

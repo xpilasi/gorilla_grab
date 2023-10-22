@@ -1,9 +1,7 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:get/get.dart';
-import 'package:gorilla_grab/Screens/models/gap_performance_model.dart';
-import 'package:gorilla_grab/constants/colors.dart';
+import 'package:gorilla_grab/models/gap_performance_model.dart';
 import 'package:gorilla_grab/controllers/performance_controller.dart';
-import 'package:intl/intl.dart';
 
 class StatsController extends GetxController {
   final PerformanceController performanceController =

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:gorilla_grab/Screens/models/exercise_model.dart';
-import 'package:gorilla_grab/Screens/models/session_provisional_model.dart';
+import 'package:gorilla_grab/models/exercise_model.dart';
+import 'package:gorilla_grab/models/session_provisional_model.dart';
 import 'package:gorilla_grab/Screens/my_trainings/exercises/session_rep_screen.dart';
 import 'package:gorilla_grab/Screens/my_trainings/exercises/session_timer_screen.dart';
 import 'package:gorilla_grab/constants/variables.dart';
@@ -13,7 +13,7 @@ import '../../../constants/sizes.dart';
 import '../../../constants/text_styles.dart';
 import '../../../controllers/exercises_controller.dart';
 import '../../../controllers/trainings_controller.dart';
-import '../../models/training_model.dart';
+import '../../../models/training_model.dart';
 
 class TrainingSessionScreen extends StatelessWidget {
   final TrainingModel trainingModel;

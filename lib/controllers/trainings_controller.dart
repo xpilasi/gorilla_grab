@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:gorilla_grab/Screens/home/dashboard_home_screen.dart';
-import 'package:gorilla_grab/Screens/models/exercise_model.dart';
+import 'package:gorilla_grab/models/exercise_model.dart';
 import 'package:gorilla_grab/Screens/my_trainings/trainings/edit_training_screen%20copy.dart';
 import 'package:gorilla_grab/constants/colors.dart';
 import 'package:gorilla_grab/constants/text_styles.dart';
 import 'package:gorilla_grab/controllers/exercises_controller.dart';
-import '../Screens/models/training_model.dart';
+import '../models/training_model.dart';
 import '../widgets/buttons.dart';
 
 class TrainingController extends GetxController {

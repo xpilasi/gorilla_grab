@@ -1,11 +1,14 @@
 import 'dart:async';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:gorilla_grab/Screens/models/exercise_model.dart';
-import 'package:gorilla_grab/Screens/models/rep_provisional_records_model.dart';
-import 'package:gorilla_grab/Screens/models/rep_records_model.dart';
-import 'package:gorilla_grab/Screens/models/timer_provisional_records_model.dart';
-import 'package:gorilla_grab/Screens/models/timer_records_model.dart';
+import 'package:gorilla_grab/constants/colors.dart';
+import 'package:gorilla_grab/constants/text_styles.dart';
+import 'package:gorilla_grab/models/exercise_model.dart';
+import 'package:gorilla_grab/models/rep_provisional_records_model.dart';
+import 'package:gorilla_grab/models/rep_records_model.dart';
+import 'package:gorilla_grab/models/timer_provisional_records_model.dart';
+import 'package:gorilla_grab/models/timer_records_model.dart';
 import 'package:gorilla_grab/controllers/performance_controller.dart';
 import 'package:gorilla_grab/controllers/sessions_controller.dart';
 
@@ -587,5 +590,56 @@ class RecordsController extends GetxController {
     }
 
     return gapInt;
+  }
+
+//To get the EU format date
+  String getEuFormatDate({required DateTime dateTime}) {
+    String year = dateTime.toString().substring(0, 4);
+    String month = dateTime.toString().substring(5, 7);
+    String day = dateTime.toString().substring(8, 10);
+    String dateEu = '$day/$month/$year';
+
+    return dateEu;
+  }
+
+  //To get the performancesformatted with arrow icon
+
+  Widget getFullPerformance({required String performance}) {
+    Widget row;
+    performance[0] != '-'
+        ? row = Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const Icon(
+                Icons.arrow_drop_up_rounded,
+                color: tColorGreeny,
+              ),
+              Text(
+                '$performance%',
+                style: tStyleDashBoardSmallRecordTextM,
+              )
+            ],
+          )
+        : row = Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const Icon(
+                Icons.arrow_drop_down_rounded,
+                color: tColorPrimary_8,
+              ),
+              Text(
+                '${performance.substring(1)}%',
+                style: tStyleDashBoardSmallRecordTextM,
+              )
+            ],
+          );
+
+    row = Container(
+      height: 70,
+      width: 50,
+      //decoration: const BoxDecoration(color: tColorPink),
+      child: row,
+    );
+    return row;
   }
 }

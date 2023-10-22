@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:gorilla_grab/Screens/models/exercise_model.dart';
-import 'package:gorilla_grab/Screens/models/session_provisional_model.dart';
-import 'package:gorilla_grab/Screens/models/timer_provisional_records_model.dart';
+import 'package:gorilla_grab/models/exercise_model.dart';
+import 'package:gorilla_grab/models/session_provisional_model.dart';
+import 'package:gorilla_grab/models/timer_provisional_records_model.dart';
 import 'package:gorilla_grab/constants/colors.dart';
 import 'package:gorilla_grab/constants/text_styles.dart';
 import 'package:gorilla_grab/controllers/records_controller.dart';

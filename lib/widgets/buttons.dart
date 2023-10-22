@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:gorilla_grab/Screens/my_trainings/session/training_session_provisional_screen.dart';
 import 'package:gorilla_grab/controllers/sessions_controller.dart';
 
-import '../Screens/models/training_model.dart';
+import '../models/training_model.dart';
 import '../constants/colors.dart';
 import '../constants/text_styles.dart';
 import '../controllers/exercises_controller.dart';

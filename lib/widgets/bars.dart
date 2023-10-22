@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:gorilla_grab/Screens/models/exercise_model.dart';
-import 'package:gorilla_grab/Screens/models/rep_provisional_records_model.dart';
-import 'package:gorilla_grab/Screens/models/session_provisional_model.dart';
-import 'package:gorilla_grab/Screens/models/timer_provisional_records_model.dart';
+import 'package:gorilla_grab/models/exercise_model.dart';
+import 'package:gorilla_grab/models/rep_provisional_records_model.dart';
+import 'package:gorilla_grab/models/session_provisional_model.dart';
+import 'package:gorilla_grab/models/timer_provisional_records_model.dart';
 import 'package:gorilla_grab/Screens/my_trainings/session/training_session_provisional_screen.dart';
 import 'package:gorilla_grab/constants/sizes.dart';
 import 'package:gorilla_grab/constants/text_styles.dart';
@@ -246,7 +246,7 @@ class CustomAppBarBigTitle extends StatelessWidget {
         ),
       );
     } else {
-      return Text('');
+      return const Text('');
     }
   }
 }
@@ -327,6 +327,7 @@ class CustomAppBarBackExerciseTimer extends StatelessWidget {
   }
 }
 
+// ignore: must_be_immutable
 class CustomAppBarBackExerciseRep extends StatelessWidget {
   final String appBarTitle;
   final ExerciseModel exerciseModel;

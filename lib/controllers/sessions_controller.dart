@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
-import 'package:gorilla_grab/Screens/models/session_provisional_model.dart';
-import 'package:gorilla_grab/Screens/models/session_finished_model.dart';
-import 'package:gorilla_grab/Screens/models/training_model.dart';
+import 'package:gorilla_grab/models/session_provisional_model.dart';
+import 'package:gorilla_grab/models/session_finished_model.dart';
+import 'package:gorilla_grab/models/training_model.dart';
 
 class SessionsController extends GetxController {
 //Sessions Backlog:

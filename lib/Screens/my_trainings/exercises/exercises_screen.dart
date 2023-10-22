@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:gorilla_grab/Screens/home/dashboard_home_screen.dart';
-import 'package:gorilla_grab/Screens/models/exercise_model.dart';
+import 'package:gorilla_grab/models/exercise_model.dart';
 import 'package:gorilla_grab/Screens/my_trainings/exercises/new_exercise_screen.dart';
 import 'package:gorilla_grab/constants/colors.dart';
 import 'package:gorilla_grab/constants/images.dart';
@@ -18,7 +18,7 @@ import '../../../constants/texts.dart';
 import '../../../constants/variables.dart';
 import '../../../widgets/headers.dart';
 import '../../../widgets/titles.dart';
-import '../../models/training_model.dart';
+import '../../../models/training_model.dart';
 
 class ExercisesScreen extends StatelessWidget {
   final ExercisesController exercisesController =

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:gorilla_grab/Screens/models/exercise_model.dart';
-import 'package:gorilla_grab/Screens/models/rep_records_model.dart';
-import 'package:gorilla_grab/Screens/models/session_finished_model.dart';
-import 'package:gorilla_grab/Screens/models/timer_records_model.dart';
+import 'package:gorilla_grab/models/exercise_model.dart';
+import 'package:gorilla_grab/models/rep_records_model.dart';
+import 'package:gorilla_grab/models/session_finished_model.dart';
+import 'package:gorilla_grab/models/timer_records_model.dart';
 import 'package:gorilla_grab/controllers/records_controller.dart';
 import 'package:gorilla_grab/widgets/headers.dart';
 
@@ -13,7 +13,7 @@ import '../../../constants/text_styles.dart';
 import '../../../controllers/exercises_controller.dart';
 import '../../../controllers/trainings_controller.dart';
 
-import '../../models/training_model.dart';
+import '../../../models/training_model.dart';
 
 class TrainingSessionFinishedScreen extends StatelessWidget {
   final TrainingModel trainingModel;

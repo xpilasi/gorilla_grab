@@ -1,14 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:gorilla_grab/Screens/models/session_provisional_model.dart';
-import 'package:gorilla_grab/Screens/models/session_finished_model.dart';
+import 'package:gorilla_grab/models/session_provisional_model.dart';
+import 'package:gorilla_grab/models/session_finished_model.dart';
 import 'package:gorilla_grab/Screens/my_trainings/exercises/exercises_screen.dart';
 import 'package:gorilla_grab/controllers/exercises_controller.dart';
 import 'package:gorilla_grab/controllers/records_controller.dart';
 import 'package:gorilla_grab/controllers/sessions_controller.dart';
 
-import '../Screens/models/training_model.dart';
+import '../models/training_model.dart';
 import '../constants/colors.dart';
 import '../constants/sizes.dart';
 import '../constants/text_styles.dart';

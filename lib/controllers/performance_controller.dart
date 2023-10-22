@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:gorilla_grab/Screens/models/gap_performance_model.dart';
-import 'package:collection/collection.dart';
+import 'package:gorilla_grab/models/gap_performance_model.dart';
 
 class PerformanceController extends GetxController {
 //General performance list
