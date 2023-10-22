@@ -83,8 +83,8 @@ var boxShadow = BoxDecoration(
       spreadRadius:
           2, // Cuánto se extiende la sombra desde el círculo (ajusta según tus preferencias)
       blurRadius: 9, // Desenfoque de la sombra (ajusta según tus preferencias)
-      offset:
-          Offset(0, 0), // Desplazamiento de la sombra en (horizontal, vertical)
+      offset: const Offset(
+          0, 0), // Desplazamiento de la sombra en (horizontal, vertical)
     ),
   ],
 );
@@ -94,7 +94,7 @@ var sessionDecorationShadow = BoxDecoration(
       BoxShadow(
         color: tColorBlackyLight.withOpacity(0.5),
         blurRadius: 16,
-        offset: Offset(0, 0),
+        offset: const Offset(0, 0),
         spreadRadius: 3, // Desplazamiento de la sombra (horizontal, vertical)
       )
     ],
@@ -108,7 +108,7 @@ BoxShadow boxShadowContainers = BoxShadow(
     //blurStyle: BlurStyle.inner,
     color: tColorBlackyLight.withOpacity(0.5),
     blurRadius: 12,
-    offset: Offset(0, 3),
+    offset: const Offset(0, 3),
     spreadRadius: 3 // Desplazamiento de la sombra (horizontal, vertical)
     );
 
@@ -116,6 +116,6 @@ BoxShadow boxShadowContainersLight = BoxShadow(
     //blurStyle: BlurStyle.inner,
     color: tColorBlackyLight.withOpacity(0.2),
     blurRadius: 12,
-    offset: Offset(0, 0),
+    offset: const Offset(0, 0),
     spreadRadius: 3 // Desplazamiento de la sombra (horizontal, vertical)
     );

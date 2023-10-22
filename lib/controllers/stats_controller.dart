@@ -34,7 +34,7 @@ class StatsController extends GetxController {
       index += 1;
       performancesMap[keyDate] = valuePerformance;
     }
-    //print('Map: $performancesMap');
+
     return performancesMap;
   }
 

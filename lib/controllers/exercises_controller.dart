@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:gorilla_grab/models/exercise_model.dart';
 import 'package:gorilla_grab/models/gap_performance_model.dart';
@@ -238,7 +237,6 @@ class ExercisesController extends GetxController {
     List<RepRecordsModel> repRecordsList =
         recordsController.finalRepRecordsList;
 
-    List<int> timerIndexList = [];
 //Remove the records corresponding to that session:
 
     timerRecordsList.removeWhere(
@@ -269,7 +267,10 @@ class ExercisesController extends GetxController {
 
     try {
       sessionsController.provisionalSessions.removeAt(provisionalSessionIndex);
-    } catch (e) {}
+    } catch (e) {
+      // ignore: avoid_print
+      print(e);
+    }
 
     //Remove the provisionalRepRecordList:
 
