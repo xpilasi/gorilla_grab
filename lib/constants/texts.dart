@@ -36,8 +36,17 @@ const String tTextCloseConfirmationSessionAd =
     "**You won't be able to edit this session anymore.";
 
 //Titles:
+//Exercises
 const String tTextTitleExercises = 'Exercises';
 const String tTextSubTitleExercises = 'Total';
+
+//Sessions
 const String tTextTitleSessions = 'Sessions';
 const String tTextSubTitleSessions = 'Total';
+
+//Dashboard
 const String tTextSubTitleDB = 'Check out some of your last records.';
+
+//Stats
+const String tTextTitleStatsAllSessions = 'All sessions';
+const String tTextTitleStatsLastPerformances = 'Last performances';

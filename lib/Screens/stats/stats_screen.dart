@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:gorilla_grab/constants/colors.dart';
 import 'package:gorilla_grab/constants/sizes.dart';
 import 'package:gorilla_grab/constants/text_styles.dart';
+import 'package:gorilla_grab/constants/texts.dart';
 import 'package:gorilla_grab/constants/variables.dart';
 import 'package:gorilla_grab/controllers/performance_controller.dart';
 import 'package:gorilla_grab/controllers/records_controller.dart';
@@ -61,44 +62,22 @@ class StatsScreen extends StatelessWidget {
                             child: PerformancesBarGraph(),
                           ))),
                   //Chart title
-                  // Positioned(
-                  //   top: 80,
-                  //   //right: 20,
-                  //   left: 20,
-                  //   child: Container(
-                  //       //color: tColorGreen,
-                  //       height: 100,
-                  //       child: TitleLeft(
-                  //         title: 'Last Performances',
-                  //       )),
-                  // ),
-                  // Positioned(
-                  //   top: 110,
-                  //   right: 20,
-                  //   //left: 20,
-                  //   child: Container(
-                  //       decoration: BoxDecoration(
-                  //           color: tColorBottomSheet,
-                  //           borderRadius: BorderRadius.circular(30)),
-                  //       height: 40,
-                  //       width: 40,
-                  //       child: const Center(
-                  //         child: Row(
-                  //           children: [
-                  //             TitleLeft(
-                  //               title: 'Sharma',
-                  //             ),
-                  //             Icon(
-                  //               Icons.arrow_drop_down_rounded,
-                  //               color: tColorWhite,
-                  //             ),
-                  //             SizedBox(
-                  //               width: 10,
-                  //             )
-                  //           ],
-                  //         ),
-                  //       )),
-                  // ),
+                  const Positioned(
+                    top: 110,
+                    left: 20,
+                    child: TitleLeft(
+                      title: tTextTitleStatsLastPerformances,
+                    ),
+                  ),
+
+                  //Training selector
+                  const Positioned(
+                    top: 110,
+                    right: 20,
+                    child: TrainingSelector(
+                      title: 'Sharma',
+                    ),
+                  ),
 
                   //All sessions list
                   Positioned(
@@ -207,17 +186,13 @@ class StatsScreen extends StatelessWidget {
                               )))),
 
                   //All sessions title
-                  // Positioned(
-                  //   top: 390,
-                  //   //right: 20,
-                  //   left: 20,
-                  //   child: Container(
-                  //       //color: tColorGreen,
-                  //       //height: 100,
-                  //       child: TitleLeft(
-                  //     title: 'All sessions',
-                  //   )),
-                  // ),
+                  const Positioned(
+                    top: 420,
+                    left: 20,
+                    child: TitleLeft(
+                      title: tTextTitleStatsAllSessions,
+                    ),
+                  ),
                 ],
               ),
             );

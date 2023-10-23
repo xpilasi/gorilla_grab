@@ -167,31 +167,59 @@ class TitleLeft extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Positioned(
-      child: Container(
-        height: 80,
-        width: 200,
-        color: tColorGreeny,
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: tSizesMargin),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    title,
-                    style: tStyleTitles,
-                  ),
-                ],
-              ),
+    return Container(
+      height: 40,
+      //color: tColorGreeny,
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: tSizesMargin),
+            child: Text(
+              title,
+              style: tStyleTitles,
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
+  }
+}
+
+class TrainingSelector extends StatelessWidget {
+  final String title;
+  const TrainingSelector({
+    super.key,
+    required this.title,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        decoration: BoxDecoration(
+            color: tColorBottomSheet, borderRadius: BorderRadius.circular(30)),
+        height: 40,
+        //width: 100,
+        child: Center(
+          child: Row(
+            children: [
+              const SizedBox(
+                width: 20,
+              ),
+              Text(
+                title,
+                style: tStyleTitles,
+              ),
+              const Icon(
+                Icons.arrow_drop_down_rounded,
+                color: tColorWhite,
+              ),
+              const SizedBox(
+                width: 10,
+              )
+            ],
+          ),
+        ));
   }
 }
