@@ -10,6 +10,7 @@ class SessionsController extends GetxController {
 
   List<ProvisionalExercisesSession> provisionalSessions = [];
 
+//Get the provisional session
   ProvisionalExercisesSession getProvisionalSession(
       {required String trainingId}) {
     int provSessionIndex = provisionalSessions.indexWhere(
@@ -28,6 +29,7 @@ class SessionsController extends GetxController {
     return provSession;
   }
 
+// To check if the session is active
   bool trainingSessionActive({required String trainingId}) {
     bool isActive = false;
     int provSessionIndex = provisionalSessions.indexWhere(
@@ -131,6 +133,7 @@ class SessionsController extends GetxController {
     return pendingSession;
   }
 
+//Get all the complete training list
   List<SessionFinished> getTrainingSessionsList({required String trainingId}) {
     List<SessionFinished> filteredSessionsByTrainingId = [];
 
