@@ -32,9 +32,6 @@ class PerformancesBarGraph extends StatelessWidget {
         ));
         xAxis += 1;
       });
-      for (var el in bardata2) {
-        print('${el.x} - ${el.y}');
-      }
     }
 
     initializerBarData2(barMap: myBarData2);
@@ -75,20 +72,20 @@ class PerformancesBarGraph extends StatelessWidget {
 
 Widget getBottomTitlesList(
     {required List indexValueList, required int valueKey}) {
-  final StatsController statsController = Get.find<StatsController>();
   String textForText = 'M1';
   Widget text = Text(textForText, style: tStyleStatsBarChart);
 
   Map indexValueMap = {};
 
   for (var el in indexValueList) {
+    // ignore: unused_local_variable
     for (var x in el) {
       indexValueMap[el[0]] = el[1];
     }
   }
 
   textForText = indexValueMap[valueKey];
-  int texForTextLength = textForText.length;
+
   text =
       Text('      ${textForText.substring(9, 14)}', style: tStyleStatsBarChart);
 
@@ -115,7 +112,7 @@ Widget getBottomTitles(
   });
 
   int valueInt = value.toInt();
-  //print(indexValueList);
+
   return SideTitleWidget(
       space: negativePerformanceFound ? 0 : 10,
       angle: 0,
