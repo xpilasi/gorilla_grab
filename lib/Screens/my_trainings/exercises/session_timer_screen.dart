@@ -119,7 +119,8 @@ class SessionTimerScreen extends StatelessWidget {
                                       alignment: Alignment.center,
                                       //color: tColorGreen,
                                       child: IconButton(
-                                          padding: EdgeInsets.only(right: 0),
+                                          padding:
+                                              const EdgeInsets.only(right: 0),
                                           icon: const Icon(
                                             CupertinoIcons.clear_circled_solid,
                                             color: tColorPink,

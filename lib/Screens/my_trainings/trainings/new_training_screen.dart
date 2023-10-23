@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:gorilla_grab/Screens/home/dashboard_home_screen.dart';
-import 'package:gorilla_grab/Screens/my_trainings/trainings/training_screen.dart';
 import 'package:gorilla_grab/constants/sizes.dart';
 import 'package:gorilla_grab/constants/texts.dart';
 import 'package:gorilla_grab/constants/variables.dart';
