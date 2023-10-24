@@ -38,10 +38,10 @@ class SessionRepScreen extends StatelessWidget {
 
     exerciseModel.sessionId = provisionalExercisesSession.exercisesSessionId;
 
-    List<String> timerRecordsExercise =
-        recordsController.getFilteredTimerRecordsList(
-            exerciseId: exerciseModel.exerciseId,
-            sessionId: provisionalExercisesSession.exercisesSessionId);
+    // List<String> timerRecordsExercise =
+    //     recordsController.getFilteredTimerRecordsList(
+    //         exerciseId: exerciseModel.exerciseId,
+    //         sessionId: provisionalExercisesSession.exercisesSessionId);
     return Scaffold(
       backgroundColor: tColorBottomSheet,
       appBar: PreferredSize(
