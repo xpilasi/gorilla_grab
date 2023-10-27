@@ -23,7 +23,7 @@ class DashBoardScreen extends StatelessWidget {
       Get.put(PerformanceController());
   @override
   Widget build(BuildContext context) {
-    Size screenSize = MediaQuery.of(context).size;
+    //Size screenSize = MediaQuery.of(context).size;
 
     double heighLastTrainingContainer = 80;
 
