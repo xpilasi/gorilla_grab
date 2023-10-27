@@ -23,7 +23,6 @@ class TrainingsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<TrainingModel> myTrainingList = trainingController.myTrainingsList;
     return Scaffold(
       backgroundColor: allAppBackground,
       body: GetBuilder<TrainingController>(builder: (controller) {
@@ -197,7 +196,7 @@ class TrainingsScreen extends StatelessWidget {
                                         },
                                         itemBuilder: (BuildContext context) =>
                                             <PopupMenuEntry<String>>[
-                                          PopupMenuItem<String>(
+                                          const PopupMenuItem<String>(
                                             value: 'Edit',
                                             child: Row(
                                               children: [
@@ -206,14 +205,14 @@ class TrainingsScreen extends StatelessWidget {
                                                   size: 20,
                                                   color: Colors.white,
                                                 ),
-                                                const SizedBox(
+                                                SizedBox(
                                                   width: 10,
                                                 ),
                                                 Text('Edit'),
                                               ],
                                             ),
                                           ),
-                                          PopupMenuItem<String>(
+                                          const PopupMenuItem<String>(
                                             value: 'Delete',
                                             child: Row(
                                               children: [
@@ -222,7 +221,7 @@ class TrainingsScreen extends StatelessWidget {
                                                   size: 20,
                                                   color: Colors.white,
                                                 ),
-                                                const SizedBox(
+                                                SizedBox(
                                                   width: 10,
                                                 ),
                                                 Text('Delete'),
@@ -265,7 +264,7 @@ class TrainingsScreen extends StatelessWidget {
                                                   trainingModel.name,
                                                   style: tStyleCardTraining,
                                                 ),
-                                                sessionsFinished.length != 0
+                                                sessionsFinished.isNotEmpty
                                                     ? Text(
                                                         'Sessions: ${sessionsFinished.length.toString()}',
                                                         style: tStyleSubTitles,
