@@ -40,10 +40,6 @@ class SessionTimerScreen extends StatelessWidget {
     List<String> provisionalTimerRecords =
         provisionalTimerRecordsModel.timerRecordsList;
 
-    List<String> timerRecordsExercise =
-        recordsController.getFilteredTimerRecordsList(
-            exerciseId: exerciseModel.exerciseId,
-            sessionId: provisionalExercisesSession.exercisesSessionId);
     return Scaffold(
       backgroundColor: tColorBottomSheet,
       appBar: PreferredSize(
