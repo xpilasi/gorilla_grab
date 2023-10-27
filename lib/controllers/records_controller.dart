@@ -633,6 +633,7 @@ class RecordsController extends GetxController {
             ],
           );
 
+    // ignore: sized_box_for_whitespace
     row = Container(
       height: 70,
       width: 50,
