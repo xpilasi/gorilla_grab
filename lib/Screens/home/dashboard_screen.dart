@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:gorilla_grab/Screens/my_trainings/session/training_session_independent.dart';
+import 'package:gorilla_grab/constants/colors.dart';
 import 'package:gorilla_grab/constants/images.dart';
+import 'package:gorilla_grab/constants/sizes.dart';
 import 'package:gorilla_grab/constants/text_styles.dart';
 import 'package:gorilla_grab/constants/texts.dart';
+import 'package:gorilla_grab/constants/variables.dart';
 import 'package:gorilla_grab/controllers/performance_controller.dart';
 import 'package:gorilla_grab/controllers/sessions_controller.dart';
 import 'package:gorilla_grab/controllers/trainings_controller.dart';
 import 'package:gorilla_grab/widgets/bars.dart';
 import 'package:line_icons/line_icons.dart';
-
-import '../../constants/colors.dart';
-import '../../constants/sizes.dart';
-import '../../constants/variables.dart';
 
 class DashBoardScreen extends StatelessWidget {
   DashBoardScreen({Key? key}) : super(key: key);
@@ -67,6 +66,7 @@ class DashBoardScreen extends StatelessWidget {
             top: 0,
             right: 20,
             left: 20,
+            // ignore: sized_box_for_whitespace
             child: Container(
               height: 40,
               //color: tColorGreeny,
@@ -151,8 +151,8 @@ class DashBoardScreen extends StatelessWidget {
                           Positioned(
                             bottom: 35,
                             right: 20,
+                            // ignore: avoid_unnecessary_containers
                             child: Container(
-                              //color: tColorGreen,
                               child: Text(
                                 sessionsController.allSessions.isNotEmpty
                                     ? sessionsController
@@ -178,8 +178,8 @@ class DashBoardScreen extends StatelessWidget {
                           Positioned(
                             bottom: 20,
                             left: 20,
+                            // ignore: sized_box_for_whitespace
                             child: Container(
-                              //color: tColorBottomSheet,
                               width: 80,
                               child: const Text(
                                 'TOTAL',
@@ -225,6 +225,7 @@ class DashBoardScreen extends StatelessWidget {
                                   Radius.circular(allBoxRadius))),
                           height: heighLastTrainingContainer,
                           child: sessionsController.allSessions.isEmpty
+                              // ignore: avoid_unnecessary_containers
                               ? Container(
                                   child: Center(
                                     child: Text(
@@ -258,13 +259,13 @@ class DashBoardScreen extends StatelessWidget {
                                             sessionsList[index].trainingName;
                                         String trainingId =
                                             sessionsList[index].trainingId;
-                                        Color trainingColor = trainingController
-                                            .getColor(trainingId: trainingId);
-                                        String trainingYear =
-                                            sessionsList[index]
-                                                .createdAt
-                                                .toString()
-                                                .substring(0, 4);
+                                        // Color trainingColor = trainingController
+                                        //     .getColor(trainingId: trainingId);
+                                        // String trainingYear =
+                                        //     sessionsList[index]
+                                        //         .createdAt
+                                        //         .toString()
+                                        //         .substring(0, 4);
                                         String trainingMonth =
                                             sessionsList[index]
                                                 .createdAt
@@ -332,6 +333,7 @@ class DashBoardScreen extends StatelessWidget {
                                                   Positioned(
                                                     top: 15,
                                                     left: 15,
+                                                    // ignore: sized_box_for_whitespace
                                                     child: Container(
                                                       width: 85,
                                                       //color: tColorBlue,
@@ -448,30 +450,30 @@ class DashBoardScreen extends StatelessWidget {
                                       var top3 = performanceController
                                           .getTopGapPerformanceModel(
                                               lastDaysFilter: filter);
-                                      String trainingName =
-                                          trainingController.getTrainingName(
-                                              trainingId:
-                                                  top3[index].gapTrainingId);
+                                      // String trainingName =
+                                      //     trainingController.getTrainingName(
+                                      //         trainingId:
+                                      //             top3[index].gapTrainingId);
                                       int performance =
                                           top3[index].gapPercentagePerformance;
 
-                                      String year = top3[index]
-                                          .gapCreationDate
-                                          .toString()
-                                          .substring(0, 4);
-                                      String day = top3[index]
-                                          .gapCreationDate
-                                          .toString()
-                                          .substring(8, 10);
-                                      String month = top3[index]
-                                          .gapCreationDate
-                                          .toString()
-                                          .substring(5, 7);
+                                      // String year = top3[index]
+                                      //     .gapCreationDate
+                                      //     .toString()
+                                      //     .substring(0, 4);
+                                      // String day = top3[index]
+                                      //     .gapCreationDate
+                                      //     .toString()
+                                      //     .substring(8, 10);
+                                      // String month = top3[index]
+                                      //     .gapCreationDate
+                                      //     .toString()
+                                      //     .substring(5, 7);
 
                                       String record =
                                           top3[index].gapPerformance;
 
-                                      String date = '$day/$month/$year';
+                                      // String date = '$day/$month/$year';
                                       return Column(
                                         children: [
                                           Container(
@@ -628,8 +630,8 @@ class TotalTrainingHours extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // ignore: avoid_unnecessary_containers
     return Container(
-      //color: tColorGreen,
       child: Text(
         sessionsController.allSessions.isNotEmpty
             ? sessionsController.getTotalTrainingHours(lastDaysFilter: filter)
@@ -652,8 +654,8 @@ class GapLastDays extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // ignore: sized_box_for_whitespace
     return Container(
-        //color: tColorBlue,
         width: 140,
         child: sessionsController.allSessions.isNotEmpty
             ? Row(
