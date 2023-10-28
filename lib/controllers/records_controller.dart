@@ -531,6 +531,7 @@ class RecordsController extends GetxController {
 //To calculate the %GAP of to timerRecords
   double calculateTimerRecordsGap(
       {required String lastRecord, required String currentRecord}) {
+    // ignore: unused_local_variable
     String timerGap = '';
     double gapInt = 0.0;
 
