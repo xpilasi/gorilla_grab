@@ -1,10 +1,9 @@
-// ignore_for_file: sized_box_for_whitespace
+// ignore_for_file: sized_box_for_whitespace, avoid_unnecessary_containers
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:gorilla_grab/models/session_finished_model.dart';
-import 'package:gorilla_grab/models/training_model.dart';
 import 'package:gorilla_grab/Screens/my_trainings/exercises/exercises_screen.dart';
 import 'package:gorilla_grab/Screens/my_trainings/trainings/new_training_screen.dart';
 import 'package:gorilla_grab/constants/colors.dart';
@@ -17,6 +16,7 @@ import 'package:gorilla_grab/controllers/trainings_controller.dart';
 import 'package:gorilla_grab/widgets/buttons.dart';
 import 'package:gorilla_grab/widgets/headers.dart';
 
+// ignore: must_be_immutable
 class TrainingsScreen extends StatelessWidget {
   final SessionsController sessionsController = Get.put(SessionsController());
 
@@ -80,7 +80,7 @@ class TrainingsScreen extends StatelessWidget {
                       child: Container(
                           //color: tColorGreen,
                           height: 100,
-                          child: HeaderForMenu(title: 'My trainings')),
+                          child: const HeaderForMenu(title: 'My trainings')),
                     ),
                     Positioned(
                       top: 80,
