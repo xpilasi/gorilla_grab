@@ -1,3 +1,5 @@
+// ignore_for_file: sized_box_for_whitespace
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -237,7 +239,6 @@ class TrainingsScreen extends StatelessWidget {
                                   Align(
                                     alignment: Alignment.centerLeft,
                                     child: Container(
-                                      //color: tColorBlue,
                                       width: 280,
                                       child: TextButton(
                                         style: TextButton.styleFrom(
