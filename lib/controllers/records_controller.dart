@@ -1,4 +1,4 @@
-// ignore_for_file: avoid_init_to_null
+// ignore_for_file: avoid_init_to_null, empty_catches
 
 import 'dart:async';
 import 'package:flutter/material.dart';
@@ -261,8 +261,8 @@ class RecordsController extends GetxController {
   void startCountdown() {
     if (countdownShouldRun) {
       showCountdownText = true;
-      print('showCountdownText: $showCountdownText');
-      countdownTimer = Timer.periodic(Duration(seconds: 1), (_) {
+      //print('showCountdownText: $showCountdownText');
+      countdownTimer = Timer.periodic(const Duration(seconds: 1), (_) {
         countdownSeconds--;
         countdownText = '$countdownSeconds';
         update();
