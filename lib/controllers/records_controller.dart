@@ -1,4 +1,4 @@
-// ignore_for_file: avoid_init_to_null, empty_catches
+// ignore_for_file: avoid_init_to_null, empty_catches, unused_local_variable
 
 import 'dart:async';
 import 'package:flutter/material.dart';
