@@ -1,4 +1,4 @@
-// ignore_for_file: avoid_init_to_null, empty_catches, unused_local_variable
+// ignore_for_file: avoid_init_to_null, empty_catches
 
 import 'dart:async';
 import 'package:flutter/material.dart';
@@ -346,6 +346,7 @@ class RecordsController extends GetxController {
       {required ProvisionalTimerRecordsModel provisionalTimerRecordsModel}) {
     provisionalTimerRecordsModel.timerRecordsList.add(getFormattedTime());
 
+    // ignore: unused_local_variable
     int provisionalRecords =
         provisionalTimerRecordsModel.timerRecordsList.length;
     update();
