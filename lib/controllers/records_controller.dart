@@ -412,7 +412,7 @@ class RecordsController extends GetxController {
     int totalSegundos = totalCentecimas ~/ 100;
     int totalCentecimasRestantes = totalCentecimas % 100;
 
-    recordsList.length >= 1
+    recordsList.isNotEmpty
         ? recordsSum =
             '${totalMinutos.toString().padLeft(2, '0')}:${totalSegundos.toString().padLeft(2, '0')}.${totalCentecimasRestantes.toString().padLeft(2, '0')}'
         : recordsSum = '00:00.00';
