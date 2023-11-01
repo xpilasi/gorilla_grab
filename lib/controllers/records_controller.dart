@@ -469,7 +469,7 @@ class RecordsController extends GetxController {
     rep < 99 ? rep += 1 : rep += 0;
     provisionalRepRecordsModel.repRecord = rep;
 
-    int largoRecords = provisionalRepRecordsList.length;
+    //int largoRecords = provisionalRepRecordsList.length;
 
     update();
 
