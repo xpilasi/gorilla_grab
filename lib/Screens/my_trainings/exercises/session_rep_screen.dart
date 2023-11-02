@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_unnecessary_containers
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:gorilla_grab/models/exercise_model.dart';
@@ -78,7 +80,6 @@ class SessionRepScreen extends StatelessWidget {
                 right: 0,
                 bottom: 200,
                 child: Container(
-                  //color: tColorGreen,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.center,
