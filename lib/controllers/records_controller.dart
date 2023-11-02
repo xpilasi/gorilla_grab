@@ -88,7 +88,7 @@ class RecordsController extends GetxController {
       );
     }
 
-    return timerRecordsModel!;
+    return timerRecordsModel;
   }
 
 //To get the Last TimerRecordsModel before the current model
@@ -180,7 +180,7 @@ class RecordsController extends GetxController {
       );
     }
 
-    return repRecordsModel!;
+    return repRecordsModel;
   }
 
 //To get the formatted '00:00' sum of the last record before the current record
@@ -346,7 +346,6 @@ class RecordsController extends GetxController {
       {required ProvisionalTimerRecordsModel provisionalTimerRecordsModel}) {
     provisionalTimerRecordsModel.timerRecordsList.add(getFormattedTime());
 
-    // ignore: unused_local_variable
     int provisionalRecords =
         provisionalTimerRecordsModel.timerRecordsList.length;
     update();
@@ -534,7 +533,6 @@ class RecordsController extends GetxController {
 //To calculate the %GAP of to timerRecords
   double calculateTimerRecordsGap(
       {required String lastRecord, required String currentRecord}) {
-    // ignore: unused_local_variable
     String timerGap = '';
     double gapInt = 0.0;
 
@@ -641,7 +639,6 @@ class RecordsController extends GetxController {
     row = Container(
       height: 70,
       width: 50,
-      //decoration: const BoxDecoration(color: tColorPink),
       child: row,
     );
     return row;
