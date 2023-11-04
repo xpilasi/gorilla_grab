@@ -450,25 +450,9 @@ class DashBoardScreen extends StatelessWidget {
                                       var top3 = performanceController
                                           .getTopGapPerformanceModel(
                                               lastDaysFilter: filter);
-                                      // String trainingName =
-                                      //     trainingController.getTrainingName(
-                                      //         trainingId:
-                                      //             top3[index].gapTrainingId);
+
                                       int performance =
                                           top3[index].gapPercentagePerformance;
-
-                                      // String year = top3[index]
-                                      //     .gapCreationDate
-                                      //     .toString()
-                                      //     .substring(0, 4);
-                                      // String day = top3[index]
-                                      //     .gapCreationDate
-                                      //     .toString()
-                                      //     .substring(8, 10);
-                                      // String month = top3[index]
-                                      //     .gapCreationDate
-                                      //     .toString()
-                                      //     .substring(5, 7);
 
                                       String record =
                                           top3[index].gapPerformance;
