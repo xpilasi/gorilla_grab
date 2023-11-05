@@ -435,11 +435,12 @@ class GoButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(30),
         ),
         child: TextButton(
-            child: const Text(
-              'Go!',
-              style: tStyleConfirmButton,
-            ),
-            onPressed: onPressed));
+          onPressed: onPressed,
+          child: const Text(
+            'Go!',
+            style: tStyleConfirmButton,
+          ),
+        ));
   }
 }
 
