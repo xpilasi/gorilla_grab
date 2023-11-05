@@ -20,7 +20,7 @@ class CardTraining extends StatelessWidget {
           width: double.infinity,
           height: 250,
           fit: BoxFit.cover,
-          fadeInDuration: Duration(milliseconds: 100),
+          fadeInDuration: const Duration(milliseconds: 100),
         ),
         if (titleImage != null)
           Container(
