@@ -164,8 +164,6 @@ class CustomAppBarBack extends StatelessWidget {
 
 //APPBAR
 class CustomAppBarBackTraining extends StatelessWidget {
-  //final String appBarTitle;
-
   const CustomAppBarBackTraining({super.key});
 
   @override
