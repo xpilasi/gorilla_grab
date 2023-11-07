@@ -2,12 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gorilla_grab/constants/colors.dart';
 import 'package:gorilla_grab/constants/images.dart';
+import 'package:gorilla_grab/constants/sizes.dart';
 import 'package:gorilla_grab/constants/text_styles.dart';
-
-import '../../constants/sizes.dart';
-import '../../constants/texts.dart';
-import '../../constants/variables.dart';
-import '../../widgets/list_tile_profile.dart';
+import 'package:gorilla_grab/constants/texts.dart';
+import 'package:gorilla_grab/constants/variables.dart';
+import 'package:gorilla_grab/widgets/list_tile_profile.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({Key? key}) : super(key: key);
