@@ -7,7 +7,7 @@ class EditProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Scaffold(
       body: Center(
-        child: Text('EditProfileScreen'),
+        child: Text('EditProfileScreen OK'),
       ),
     );
   }
