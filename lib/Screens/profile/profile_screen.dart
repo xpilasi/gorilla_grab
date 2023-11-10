@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:gorilla_grab/Screens/profile/edit_profile_screen.dart';
 import 'package:gorilla_grab/constants/colors.dart';
 import 'package:gorilla_grab/constants/images.dart';
 import 'package:gorilla_grab/constants/sizes.dart';
@@ -71,9 +73,11 @@ class ProfileScreen extends StatelessWidget {
                           style: tStyleBigTitle,
                         ),
                       ),
-                      const ProfileListTile(
+                      ProfileListTile(
                           icon: Icons.location_on_rounded,
-                          title: tProfileLocation),
+                          title: tProfileLocation,
+                          editInfo: () =>
+                              Get.to(() => const EditProfileScreen())),
                       const ProfileListTile(
                           icon: CupertinoIcons.bolt_fill,
                           title: tProfileClimber),

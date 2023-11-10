@@ -25,6 +25,7 @@ class StatsController extends GetxController {
     performancesForChart2 = performanceController.getPerformancesForChart();
 
     Map<String, int> performancesMap = {};
+    // ignore: unused_local_variable
     int index = 0;
     for (var el in performancesForChart2) {
       String keyDate =
