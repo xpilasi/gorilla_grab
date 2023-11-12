@@ -109,6 +109,19 @@ class ProfileScreen extends StatelessWidget {
                       ),
                     ),
                   ))),
+
+          //Edit button
+          Positioned(
+            top: 250,
+            right: 20,
+            child: CircleAvatar(
+              backgroundColor: tColorWhite.withAlpha(70),
+              child: IconButton(
+                icon: Icon(Icons.edit, color: tColorWhite),
+                onPressed: () => Get.to(() => EditProfileScreen()),
+              ),
+            ),
+          )
         ]),
       ),
     );
