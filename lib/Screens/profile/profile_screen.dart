@@ -117,7 +117,7 @@ class ProfileScreen extends StatelessWidget {
             child: CircleAvatar(
               backgroundColor: tColorWhite.withAlpha(70),
               child: IconButton(
-                icon: Icon(Icons.edit, color: tColorWhite),
+                icon: const Icon(Icons.edit, color: tColorWhite),
                 onPressed: () => Get.to(() => EditProfileScreen()),
               ),
             ),
