@@ -18,6 +18,7 @@ class EditProfileScreen extends StatelessWidget {
     final nameProfile = TextEditingController(text: tProfileName);
     final lastNameProfile = TextEditingController(text: tProfileLastName);
     final emailProfile = TextEditingController(text: tProfileMail);
+    final passwordlProfile = TextEditingController(text: tProfileMail);
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -37,6 +38,7 @@ class EditProfileScreen extends StatelessWidget {
           children: [
             //Name
             CustomTextFieldEditProfile(
+              isPassword: false,
               inputTitle: 'Name',
               prefixIcon: const Icon(
                 CupertinoIcons.person_fill,
@@ -50,6 +52,7 @@ class EditProfileScreen extends StatelessWidget {
 
             //Last Name
             CustomTextFieldEditProfile(
+              isPassword: false,
               inputTitle: 'Last Name',
               prefixIcon: const Icon(
                 CupertinoIcons.profile_circled,
@@ -63,6 +66,7 @@ class EditProfileScreen extends StatelessWidget {
 
             //Email
             CustomTextFieldEditProfile(
+              isPassword: false,
               inputTitle: 'Email',
               prefixIcon: const Icon(
                 CupertinoIcons.mail,
@@ -71,6 +75,20 @@ class EditProfileScreen extends StatelessWidget {
               newData: emailProfile,
               trainingController: trainingController,
               labelText: 'Name',
+              hintText: tProfileName,
+            ),
+
+            //Password
+            CustomTextFieldEditProfile(
+              isPassword: true,
+              inputTitle: 'Password',
+              prefixIcon: const Icon(
+                CupertinoIcons.lock,
+                color: tColorPinky,
+              ),
+              newData: passwordlProfile,
+              trainingController: trainingController,
+              labelText: 'new password',
               hintText: tProfileName,
             ),
 

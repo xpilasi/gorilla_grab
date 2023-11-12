@@ -507,6 +507,7 @@ class CustomTextFieldEditProfile extends StatelessWidget {
     required this.labelText,
     required this.hintText,
     required this.inputTitle,
+    required this.isPassword,
   });
 
   final TextEditingController newData;
@@ -516,6 +517,7 @@ class CustomTextFieldEditProfile extends StatelessWidget {
   final String labelText;
   final String hintText;
   final String inputTitle;
+  final bool isPassword;
 
   @override
   Widget build(BuildContext context) {
@@ -526,7 +528,7 @@ class CustomTextFieldEditProfile extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: const EdgeInsets.only(left: 22.0, bottom: 5),
+            padding: const EdgeInsets.only(left: 22.0, bottom: 10),
             child: Text(
               inputTitle,
               style: tStyleTitles,
@@ -534,7 +536,7 @@ class CustomTextFieldEditProfile extends StatelessWidget {
             ),
           ),
           Container(
-            margin: EdgeInsets.symmetric(horizontal: tSizesMargin),
+            margin: const EdgeInsets.symmetric(horizontal: tSizesMargin),
             height: 50,
             width: double.infinity,
             decoration: BoxDecoration(
@@ -549,6 +551,7 @@ class CustomTextFieldEditProfile extends StatelessWidget {
                 children: [
                   Expanded(
                     child: TextFormField(
+                      obscureText: isPassword,
                       style: tStyleInput,
                       maxLength: 15,
                       textCapitalization: TextCapitalization.words,
