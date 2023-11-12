@@ -67,7 +67,7 @@ class EditProfileScreen extends StatelessWidget {
                 CupertinoIcons.mail,
                 color: tColorPinky,
               ),
-              newData: nameProfile,
+              newData: emailProfile,
               trainingController: trainingController,
               labelText: 'Name',
               hintText: tProfileName,
