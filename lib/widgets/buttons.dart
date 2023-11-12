@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:gorilla_grab/Screens/my_trainings/session/training_session_provisional_screen.dart';
+import 'package:gorilla_grab/constants/sizes.dart';
 import 'package:gorilla_grab/controllers/sessions_controller.dart';
 
 import '../models/training_model.dart';
@@ -518,69 +519,96 @@ class CustomTextFieldEditProfile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Padding(
-          padding: const EdgeInsets.only(left: 22.0, bottom: 10),
-          child: Text(
-            inputTitle,
-            style: tStyleInputLabel,
-            textAlign: TextAlign.left,
-          ),
-        ),
-        Container(
-          height: 50,
-          width: double.infinity,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(30),
-            //color: tColorGreen,
-            color: tColorBottomSheetG,
-          ),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 0),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Expanded(
-                  child: TextFormField(
-                    style: tStyleInput,
-                    maxLength: 15,
-                    textCapitalization: TextCapitalization.words,
-                    controller: newData,
-                    decoration: InputDecoration(
-                      floatingLabelStyle: tStyleInputButton,
-                      counterText: '',
-                      floatingLabelBehavior: FloatingLabelBehavior.never,
-                      border: InputBorder.none,
-                      labelText: labelText,
-                      labelStyle: tStyleInputLabel,
-                      hintText: hintText,
-                      hintStyle: tStyleInputHint,
-                      prefixIcon: prefixIcon,
-                    ),
-                    onChanged: (value) {
-                      trainingController.showClearIcon(isFilled: value);
-                    },
-                  ),
-                ),
-                GestureDetector(
-                  onTap: (() {
-                    newData.clear();
-                  }),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                    child: Icon(Icons.clear,
-                        color: trainingController.isVisible
-                            ? tColorPinky
-                            : Colors.transparent),
-                  ),
-                )
-              ],
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 10.0),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(left: 22.0, bottom: 5),
+            child: Text(
+              inputTitle,
+              style: tStyleTitles,
+              textAlign: TextAlign.left,
             ),
           ),
+          Container(
+            margin: EdgeInsets.symmetric(horizontal: tSizesMargin),
+            height: 50,
+            width: double.infinity,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(30),
+              //color: tColorGreen,
+              color: tColorBottomSheetG,
+            ),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 0),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: TextFormField(
+                      style: tStyleInput,
+                      maxLength: 15,
+                      textCapitalization: TextCapitalization.words,
+                      controller: newData,
+                      decoration: InputDecoration(
+                        floatingLabelStyle: tStyleInputButton,
+                        counterText: '',
+                        floatingLabelBehavior: FloatingLabelBehavior.never,
+                        border: InputBorder.none,
+                        labelText: labelText,
+                        labelStyle: tStyleInputLabel,
+                        hintText: hintText,
+                        hintStyle: tStyleInputHint,
+                        prefixIcon: prefixIcon,
+                      ),
+                      onChanged: (value) {
+                        trainingController.showClearIcon(isFilled: value);
+                      },
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: (() {
+                      newData.clear();
+                    }),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                      child: Icon(Icons.clear,
+                          color: trainingController.isVisible
+                              ? tColorPinky
+                              : Colors.transparent),
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class ProfileSubmitButton extends StatelessWidget {
+  ProfileSubmitButton({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      margin:
+          const EdgeInsets.symmetric(vertical: 30, horizontal: tSizesMargin),
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(30), color: tColorPrimary_4),
+      child: TextButton(
+        child: const Text(
+          'Update',
+          style: tStyleDashBoardExercise,
         ),
-      ],
+        onPressed: () => (),
+      ),
     );
   }
 }

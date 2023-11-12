@@ -33,6 +33,7 @@ class EditProfileScreen extends StatelessWidget {
             horizontal: tSizesMargin, vertical: tSizesMargin),
         child: Center(
             child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             //Name
             CustomTextFieldEditProfile(
@@ -72,6 +73,12 @@ class EditProfileScreen extends StatelessWidget {
               labelText: 'Name',
               hintText: tProfileName,
             ),
+
+            //Update button
+            ProfileSubmitButton(),
+            const SizedBox(
+              height: 100,
+            )
           ],
         )),
       ),
