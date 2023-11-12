@@ -496,3 +496,91 @@ class DecreaseButton extends StatelessWidget {
         ));
   }
 }
+
+class CustomTextFieldEditProfile extends StatelessWidget {
+  const CustomTextFieldEditProfile({
+    super.key,
+    required this.newData,
+    required this.trainingController,
+    required this.prefixIcon,
+    required this.labelText,
+    required this.hintText,
+    required this.inputTitle,
+  });
+
+  final TextEditingController newData;
+  final TrainingController trainingController;
+
+  final Icon prefixIcon;
+  final String labelText;
+  final String hintText;
+  final String inputTitle;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(left: 22.0, bottom: 10),
+          child: Text(
+            inputTitle,
+            style: tStyleInputLabel,
+            textAlign: TextAlign.left,
+          ),
+        ),
+        Container(
+          height: 50,
+          width: double.infinity,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(30),
+            //color: tColorGreen,
+            color: tColorBottomSheetG,
+          ),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 0),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Expanded(
+                  child: TextFormField(
+                    style: tStyleInput,
+                    maxLength: 15,
+                    textCapitalization: TextCapitalization.words,
+                    controller: newData,
+                    decoration: InputDecoration(
+                      floatingLabelStyle: tStyleInputButton,
+                      counterText: '',
+                      floatingLabelBehavior: FloatingLabelBehavior.never,
+                      border: InputBorder.none,
+                      labelText: labelText,
+                      labelStyle: tStyleInputLabel,
+                      hintText: hintText,
+                      hintStyle: tStyleInputHint,
+                      prefixIcon: prefixIcon,
+                    ),
+                    onChanged: (value) {
+                      trainingController.showClearIcon(isFilled: value);
+                    },
+                  ),
+                ),
+                GestureDetector(
+                  onTap: (() {
+                    newData.clear();
+                  }),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                    child: Icon(Icons.clear,
+                        color: trainingController.isVisible
+                            ? tColorPinky
+                            : Colors.transparent),
+                  ),
+                )
+              ],
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}

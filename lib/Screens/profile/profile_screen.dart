@@ -76,8 +76,7 @@ class ProfileScreen extends StatelessWidget {
                       ProfileListTile(
                           icon: Icons.location_on_rounded,
                           title: tProfileLocation,
-                          editInfo: () =>
-                              Get.to(() => const EditProfileScreen())),
+                          editInfo: () => Get.to(() => EditProfileScreen())),
                       const ProfileListTile(
                           icon: CupertinoIcons.bolt_fill,
                           title: tProfileClimber),
