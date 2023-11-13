@@ -46,7 +46,7 @@ class EditProfileScreen extends StatelessWidget {
               ),
               newData: nameProfile,
               trainingController: trainingController,
-              labelText: 'Name',
+              labelText: 'yourName',
               hintText: tProfileName,
             ),
 
@@ -60,7 +60,7 @@ class EditProfileScreen extends StatelessWidget {
               ),
               newData: lastNameProfile,
               trainingController: trainingController,
-              labelText: 'Name',
+              labelText: 'yourLastName',
               hintText: tProfileLastName,
             ),
 
@@ -74,7 +74,7 @@ class EditProfileScreen extends StatelessWidget {
               ),
               newData: emailProfile,
               trainingController: trainingController,
-              labelText: 'Name',
+              labelText: 'your@email.com',
               hintText: tProfileName,
             ),
 
@@ -93,7 +93,12 @@ class EditProfileScreen extends StatelessWidget {
             ),
 
             //Update button
-            ProfileSubmitButton(),
+            ProfileSubmitButton(
+              name: nameProfile.text,
+              lastName: lastNameProfile.text,
+              email: emailProfile.text,
+              password: passwordlProfile.text,
+            ),
             const SizedBox(
               height: 100,
             )

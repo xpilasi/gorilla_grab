@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:gorilla_grab/Screens/my_trainings/session/training_session_provisional_screen.dart';
 import 'package:gorilla_grab/constants/sizes.dart';
+import 'package:gorilla_grab/constants/texts.dart';
+import 'package:gorilla_grab/controllers/profile_controller.dart';
 import 'package:gorilla_grab/controllers/sessions_controller.dart';
 
 import '../models/training_model.dart';
@@ -595,10 +597,22 @@ class CustomTextFieldEditProfile extends StatelessWidget {
 }
 
 class ProfileSubmitButton extends StatelessWidget {
-  ProfileSubmitButton({super.key});
+  ProfileSubmitButton(
+      {super.key,
+      required this.name,
+      required this.lastName,
+      required this.email,
+      required this.password});
+
+  final String name;
+  final String lastName;
+  final String email;
+  final String password;
 
   @override
   Widget build(BuildContext context) {
+    final ProfileController profileController = Get.put(ProfileController());
+
     return Container(
       width: double.infinity,
       margin:
@@ -607,10 +621,17 @@ class ProfileSubmitButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(30), color: tColorPrimary_4),
       child: TextButton(
         child: const Text(
-          'Update',
+          'UPDATE',
           style: tStyleDashBoardExercise,
         ),
-        onPressed: () => (),
+        onPressed: () {
+          profileController.updateProfileBasicData(
+            email: email,
+            name: name,
+            lastName: lastName,
+            password: password,
+          );
+        },
       ),
     );
   }

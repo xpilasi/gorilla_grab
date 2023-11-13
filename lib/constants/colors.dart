@@ -13,6 +13,7 @@ const Color tColorPrimaryLighter = Color(0xFFE9E9F4);
 const Color tColorGreen = Color(0xFF0FC16C);
 const Color tColorGreeny = Color(0xFF4AD96D);
 const Color tColorPink = Color(0xFFEE5F8A);
+//const Color tColorPinky = Color(0xFFEE5F8A);
 const Color tColorPinky = Color(0xFFF7AFC5);
 const Color tColorShadow = Color.fromARGB(255, 203, 202, 202);
 const Color tColorShadowy = Color(0xFF808086);

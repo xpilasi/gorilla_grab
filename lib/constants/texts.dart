@@ -4,12 +4,13 @@
 
 const String tProfileLocation = "Barcelona, ES";
 const String tProfileClimber = "2 years climber";
-const String tProfileMail = "pilasiha@gmail.com";
+String tProfileMail = "pilasiha@gmail.com";
 const String tProfileLogOut = "Log Out";
 const String tProfileLabel = "Name";
-const String tProfileHint = "Xavier";
-const String tProfileLastName = "Pilasi";
-const String tProfileName = "Xavier";
+const String tProfileHint = "YourName";
+String tProfileLastName = "Pilasi";
+String tProfileName = "Xavier";
+String tProfilePassword = "Nina2019";
 
 //Buttons
 

@@ -80,8 +80,7 @@ class ProfileScreen extends StatelessWidget {
                       const ProfileListTile(
                           icon: CupertinoIcons.bolt_fill,
                           title: tProfileClimber),
-                      const ProfileListTile(
-                          icon: Icons.mail, title: tProfileMail),
+                      ProfileListTile(icon: Icons.mail, title: tProfileMail),
                       const ProfileListTile(
                           icon: CupertinoIcons.square_arrow_right_fill,
                           title: tProfileLogOut),
