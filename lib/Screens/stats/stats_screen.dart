@@ -51,7 +51,7 @@ class StatsScreen extends StatelessWidget {
                       right: 0,
                       child: Container(
                           decoration: BoxDecoration(
-                            color: tColorBottomSheetG2,
+                            color: tColorBottomSheetG,
                             borderRadius: BorderRadius.circular(20),
                           ),
                           //color: tColorBottomSheetG),
@@ -86,7 +86,7 @@ class StatsScreen extends StatelessWidget {
                       right: 0,
                       child: Container(
                           decoration: BoxDecoration(
-                            color: tColorBottomSheetG2,
+                            color: tColorBottomSheetG,
                             borderRadius: BorderRadius.circular(20),
                           ),
                           //color: tColorBottomSheetG),
@@ -132,20 +132,19 @@ class StatsScreen extends StatelessWidget {
                                               allBoxRadius - 10)),
                                       child: ListTile(
                                         visualDensity:
-                                            VisualDensity(vertical: 0),
+                                            const VisualDensity(vertical: 0),
                                         contentPadding: EdgeInsets.zero,
                                         leading: Container(
                                           padding: EdgeInsets.zero,
                                           width: 50,
                                           height: 56,
                                           margin: EdgeInsets.zero,
-                                          decoration: BoxDecoration(
-                                            borderRadius:
-                                                const BorderRadius.only(
-                                                    topLeft: Radius.circular(
-                                                        allBoxRadius - 10),
-                                                    bottomLeft: Radius.circular(
-                                                        allBoxRadius - 10)),
+                                          decoration: const BoxDecoration(
+                                            borderRadius: BorderRadius.only(
+                                                topLeft: Radius.circular(
+                                                    allBoxRadius - 10),
+                                                bottomLeft: Radius.circular(
+                                                    allBoxRadius - 10)),
                                           ),
                                           child: CircleAvatar(
                                             backgroundColor: trainingColor,
@@ -173,6 +172,7 @@ class StatsScreen extends StatelessWidget {
                                           style: tStyleListTileExerciseName,
                                         ),
                                         trailing: Container(
+                                          margin: EdgeInsets.only(right: 10),
                                           width: 70,
                                           child: recordsController
                                               .getFullPerformance(
