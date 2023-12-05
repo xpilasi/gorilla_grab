@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:gorilla_grab/Screens/profile/edit_profile_screen.dart';
+import 'package:gorilla_grab/Screens/sign_in/signin_screen.dart';
 import 'package:gorilla_grab/constants/colors.dart';
 import 'package:gorilla_grab/constants/images.dart';
 import 'package:gorilla_grab/constants/sizes.dart';
@@ -56,27 +57,16 @@ class ProfileScreen extends StatelessWidget {
             child: EditProfileButton(),
           ),
 
-          //Logo GorillaGrab
-
-          Positioned(
-            top: 100,
-            right: 0,
-            left: 0,
-            child: Container(
-              decoration: const BoxDecoration(
-                  image: DecorationImage(image: AssetImage(tImgLogoGorilla))),
-            ),
-          ),
-
           //LOGO GORILLA
-          Positioned(
-            bottom: 150,
-            right: 150,
-            left: 150,
-            child: Container(
-              child: const Image(
+          const Positioned(
+            bottom: 100,
+            right: 10,
+            left: 250,
+            child: Opacity(
+              opacity: 0.1,
+              child: Image(
                 image: AssetImage(
-                  tImgLogoGorilla,
+                  tImgIsoGorilla,
                 ),
               ),
             ),
@@ -173,7 +163,7 @@ class ProfileLabel extends StatelessWidget {
             padding: const EdgeInsets.only(bottom: tSizesMargin),
             child: Text(
               tProfileName.toUpperCase(),
-              style: tStyleBigTitle,
+              style: tStyleBottomSheet,
             ),
           ),
           ProfileListTile(
@@ -183,9 +173,11 @@ class ProfileLabel extends StatelessWidget {
           const ProfileListTile(
               icon: CupertinoIcons.bolt_fill, title: tProfileClimber),
           ProfileListTile(icon: Icons.mail, title: tProfileMail),
-          const ProfileListTile(
-              icon: CupertinoIcons.square_arrow_right_fill,
-              title: tProfileLogOut),
+          ProfileListTile(
+            icon: CupertinoIcons.square_arrow_right_fill,
+            title: tProfileLogOut,
+            editInfo: () => (Get.to(() => SignInScreen())),
+          )
         ]),
       ),
     );

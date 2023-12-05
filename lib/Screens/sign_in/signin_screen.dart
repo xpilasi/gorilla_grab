@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:gorilla_grab/Screens/home/dashboard_home_screen.dart';
 import 'package:gorilla_grab/Screens/home/dashboard_screen.dart';
@@ -18,7 +17,7 @@ class SignInScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final nameProfile = TextEditingController(text: 'tProfileName');
+    final nameProfile = TextEditingController(text: 'your@email.com');
     final lastNameProfile = TextEditingController(text: 'tProfileLastName');
     final emailProfile = TextEditingController(text: 'tProfileMail');
     final passwordlProfile = TextEditingController(text: 'tProfileMail');
@@ -43,26 +42,22 @@ class SignInScreen extends StatelessWidget {
                 CustomTextFieldSign(
                   profileController: profileController,
                   isPassword: false,
-                  inputTitle: 'Email',
                   prefixIcon: const Icon(
                     CupertinoIcons.at,
                     color: tColorPink,
                   ),
-                  newData: nameProfile,
-                  labelText: 'yourName',
+                  labelText: 'your@email.com',
                   hintText: '',
                 ),
                 //Inpunt Password
                 CustomTextFieldSign(
                   profileController: profileController,
-                  isPassword: false,
-                  inputTitle: 'Email',
+                  isPassword: true,
                   prefixIcon: const Icon(
                     CupertinoIcons.lock,
                     color: tColorPink,
                   ),
-                  newData: nameProfile,
-                  labelText: 'yourName',
+                  labelText: 'yourPassword',
                   hintText: '',
                 ),
 

@@ -188,8 +188,14 @@ const TextStyle tStyleInputLabel = TextStyle(
     fontFamily: fontInputs,
     fontWeight: FontWeight.w700,
     letterSpacing: 0);
+const TextStyle tStyleInputLabelDark = TextStyle(
+    color: tColorShadow,
+    fontSize: 20,
+    fontFamily: fontInputs,
+    fontWeight: FontWeight.w500,
+    letterSpacing: 0);
 const TextStyle tStyleInput = TextStyle(
-    color: tColorPinky,
+    color: tColorPink,
     fontSize: 20,
     fontFamily: fontInputs,
     fontWeight: FontWeight.w600,
@@ -306,6 +312,12 @@ const TextStyle tStyleConfirmButton = TextStyle(
 //BOTTOM SHEET
 const TextStyle tStyleBottomSheet = TextStyle(
     color: tColorWhite,
+    fontSize: 20,
+    fontFamily: fontButtons,
+    fontWeight: FontWeight.w400,
+    letterSpacing: 0);
+const TextStyle tStyleBottomSheetDark = TextStyle(
+    color: tColorBottomSheetG,
     fontSize: 20,
     fontFamily: fontButtons,
     fontWeight: FontWeight.w400,

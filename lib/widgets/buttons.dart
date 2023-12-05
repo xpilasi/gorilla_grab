@@ -36,7 +36,7 @@ class CustomTextFieldTraining extends StatelessWidget {
       width: double.infinity,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(30),
-        color: tColorBottomSheetG,
+        color: tColorWhite,
       ),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 0),
@@ -73,7 +73,7 @@ class CustomTextFieldTraining extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 8.0),
                 child: Icon(Icons.clear,
                     color: trainingController.isVisible
-                        ? tColorPinky
+                        ? tColorPink
                         : Colors.transparent),
               ),
             )
@@ -182,7 +182,7 @@ class CustomTextFieldExercise extends StatelessWidget {
       width: double.infinity,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(30),
-        color: tColorBottomSheetG,
+        color: tColorWhite,
       ),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 0),
@@ -219,7 +219,7 @@ class CustomTextFieldExercise extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 8.0),
                 child: Icon(Icons.clear,
                     color: exerciseController.isVisible
-                        ? tColorPinky
+                        ? tColorPink
                         : Colors.transparent),
               ),
             )
@@ -242,17 +242,14 @@ class CustomButtonForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return Container(
+      decoration: BoxDecoration(
+          gradient: gradient1, borderRadius: BorderRadius.circular(30)),
       height: 50,
       width: double.infinity,
       child: TextButton(
-        style: TextButton.styleFrom(
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
-            foregroundColor: tColorWhite,
-            backgroundColor: tColorTurk),
         onPressed: onPressed,
-        child: Text(text, style: tStyleInputButton),
+        child: Text(text, style: tStyleBottomSheet),
       ),
     );
   }
@@ -284,7 +281,7 @@ class CustomButton extends StatelessWidget {
             foregroundColor: tColorWhite,
             backgroundColor: tColorTurk),
         onPressed: onPressed,
-        child: Text(text, style: tStyleNewSessionButton),
+        child: Text(text, style: tStyleBottomSheet),
       ),
     );
   }
@@ -316,7 +313,7 @@ class CustomButtonBottomSheet extends StatelessWidget {
             foregroundColor: tColorWhite,
             backgroundColor: tColorPinky),
         onPressed: onPressed,
-        child: Text(text, style: tStyleConfirmButton),
+        child: Text(text, style: tStyleBottomSheet),
       ),
     );
   }
@@ -348,7 +345,7 @@ class CustomButtonBottomCancel extends StatelessWidget {
             //foregroundColor: tColorTurk,
             backgroundColor: tColorPink),
         onPressed: onPressed,
-        child: Text(text, style: tStyleCancelButton),
+        child: Text(text, style: tStyleBottomSheet),
       ),
     );
   }
@@ -371,14 +368,14 @@ class AddButton extends StatelessWidget {
     return Container(
       height: 45,
       decoration: BoxDecoration(
-        color: tColorTurk,
+        gradient: gradient1,
         borderRadius: BorderRadius.circular(30),
       ),
       child: TextButton(
         onPressed: onPressed,
         child: const Text(
           '+ new',
-          style: tStyleNewSmallButton,
+          style: tStyleBottomSheet,
         ),
       ),
     );
@@ -416,7 +413,7 @@ class PendingSessionButton extends StatelessWidget {
         },
         child: const Text(
           ' Continue session ',
-          style: tStyleNewSmallButton,
+          style: tStyleBottomSheet,
         ),
       ),
     );
@@ -434,14 +431,14 @@ class GoButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         decoration: BoxDecoration(
-          color: tColorTurk,
+          gradient: gradient1,
           borderRadius: BorderRadius.circular(30),
         ),
         child: TextButton(
           onPressed: onPressed,
           child: const Text(
             'Go!',
-            style: tStyleConfirmButton,
+            style: tStyleBottomSheet,
           ),
         ));
   }
@@ -618,11 +615,13 @@ class ProfileSubmitButton extends StatelessWidget {
       margin:
           const EdgeInsets.symmetric(vertical: 30, horizontal: tSizesMargin),
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(30), color: tColorPrimary_4),
+        borderRadius: BorderRadius.circular(30),
+        gradient: gradient1,
+      ),
       child: TextButton(
         child: const Text(
           'UPDATE',
-          style: tStyleDashBoardExercise,
+          style: tStyleBottomSheet,
         ),
         onPressed: () {
           profileController.updateProfileBasicData(
@@ -640,22 +639,19 @@ class ProfileSubmitButton extends StatelessWidget {
 class CustomTextFieldSign extends StatelessWidget {
   const CustomTextFieldSign({
     super.key,
-    required this.newData,
     required this.profileController,
     required this.prefixIcon,
     required this.labelText,
     required this.hintText,
-    required this.inputTitle,
     required this.isPassword,
   });
 
-  final TextEditingController newData;
   final ProfileController profileController;
 
   final Icon prefixIcon;
   final String labelText;
   final String hintText;
-  final String inputTitle;
+
   final bool isPassword;
 
   @override
@@ -664,7 +660,7 @@ class CustomTextFieldSign extends StatelessWidget {
       padding: const EdgeInsets.only(bottom: 10.0),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Container(
             height: 50,
@@ -674,24 +670,22 @@ class CustomTextFieldSign extends StatelessWidget {
               color: tColorWhite,
             ),
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 0),
+              padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 5),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Expanded(
                     child: TextFormField(
                       obscureText: isPassword,
-                      style: tStyleInput,
-                      maxLength: 15,
+                      style: tStyleBottomSheetDark,
+                      maxLength: 20,
                       textCapitalization: TextCapitalization.words,
-                      controller: newData,
                       decoration: InputDecoration(
-                        floatingLabelStyle: tStyleInputButton,
                         counterText: '',
                         floatingLabelBehavior: FloatingLabelBehavior.never,
                         border: InputBorder.none,
-                        //labelText: labelText,
-                        //labelStyle: tStyleInputLabel,
+                        labelText: labelText,
+                        labelStyle: tStyleInputLabelDark,
                         //hintText: hintText,
                         //hintStyle: tStyleInputHint,
                         prefixIcon: prefixIcon,
@@ -701,18 +695,6 @@ class CustomTextFieldSign extends StatelessWidget {
                       },
                     ),
                   ),
-                  GestureDetector(
-                    onTap: (() {
-                      newData.clear();
-                    }),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                      child: Icon(Icons.clear,
-                          color: profileController.isVisible
-                              ? tColorPink
-                              : Colors.transparent),
-                    ),
-                  )
                 ],
               ),
             ),
