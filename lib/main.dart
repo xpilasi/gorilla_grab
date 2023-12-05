@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:gorilla_grab/Screens/sign_in/signin_screen.dart';
 import 'package:gorilla_grab/themes/main_theme.dart';
 import 'Screens/home/dashboard_home_screen.dart';
 
@@ -27,7 +28,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'GorillaGrab',
       theme: GorillaTheme.lightGorillaTheme,
-      home: DashBoardHomeScreen(),
+      home: SignInScreen(),
     );
   }
 }

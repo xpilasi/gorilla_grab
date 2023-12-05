@@ -128,9 +128,9 @@ class ExercisesScreen extends StatelessWidget {
                                                 mainAxisAlignment:
                                                     MainAxisAlignment.center,
                                                 children: [
-                                                  Text(
+                                                  const Text(
                                                     'Add your first Exercise',
-                                                    style: tStyleEmptyTitle,
+                                                    style: tStyleBottomSheet,
                                                     softWrap: true,
                                                     textAlign: TextAlign.center,
                                                   ),
@@ -315,7 +315,7 @@ class ExercisesScreen extends StatelessWidget {
                                         children: [
                                           Text(
                                             'No saved sessions yet',
-                                            style: tStyleEmptyTitle,
+                                            style: tStyleBottomSheet,
                                             softWrap: true,
                                             textAlign: TextAlign.center,
                                           ),

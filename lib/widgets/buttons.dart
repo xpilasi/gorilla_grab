@@ -636,3 +636,89 @@ class ProfileSubmitButton extends StatelessWidget {
     );
   }
 }
+
+class CustomTextFieldSign extends StatelessWidget {
+  const CustomTextFieldSign({
+    super.key,
+    required this.newData,
+    required this.profileController,
+    required this.prefixIcon,
+    required this.labelText,
+    required this.hintText,
+    required this.inputTitle,
+    required this.isPassword,
+  });
+
+  final TextEditingController newData;
+  final ProfileController profileController;
+
+  final Icon prefixIcon;
+  final String labelText;
+  final String hintText;
+  final String inputTitle;
+  final bool isPassword;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 10.0),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(
+            height: 50,
+            width: double.infinity,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(30),
+              color: tColorWhite,
+            ),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 0),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: TextFormField(
+                      obscureText: isPassword,
+                      style: tStyleInput,
+                      maxLength: 15,
+                      textCapitalization: TextCapitalization.words,
+                      controller: newData,
+                      decoration: InputDecoration(
+                        floatingLabelStyle: tStyleInputButton,
+                        counterText: '',
+                        floatingLabelBehavior: FloatingLabelBehavior.never,
+                        border: InputBorder.none,
+                        //labelText: labelText,
+                        //labelStyle: tStyleInputLabel,
+                        //hintText: hintText,
+                        //hintStyle: tStyleInputHint,
+                        prefixIcon: prefixIcon,
+                      ),
+                      onChanged: (value) {
+                        profileController.showClearIcon(isFilled: value);
+                      },
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: (() {
+                      newData.clear();
+                    }),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                      child: Icon(Icons.clear,
+                          color: profileController.isVisible
+                              ? tColorPink
+                              : Colors.transparent),
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}

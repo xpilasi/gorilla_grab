@@ -630,7 +630,9 @@ class ExercisesController extends GetxController {
         context: context,
         builder: (BuildContext context) {
           return SingleChildScrollView(
-            child: SizedBox(
+            child: Container(
+              padding: EdgeInsets.only(
+                  bottom: MediaQuery.of(context).viewInsets.bottom),
               width: 340,
               child: Padding(
                 padding: const EdgeInsets.only(bottom: 50.0),

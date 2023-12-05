@@ -53,3 +53,10 @@ const Color tColorBottomSheetG = Color.fromARGB(255, 60, 63, 84);
 //const Color tColorBottomSheetG1 = Color.fromARGB(255, 46, 50, 66);
 const Color tColorBottomSheetG1 = Color.fromARGB(255, 60, 63, 84);
 const Color tColorBottomSheetG2 = Color.fromARGB(255, 43, 46, 61);
+
+//Gradients:
+
+const LinearGradient gradient1 = LinearGradient(
+    begin: Alignment.topLeft,
+    end: Alignment.bottomRight,
+    colors: [tColorPrimary, tColorPrimary_4]);

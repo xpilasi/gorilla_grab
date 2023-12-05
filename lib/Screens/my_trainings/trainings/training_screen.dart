@@ -48,14 +48,14 @@ class TrainingsScreen extends StatelessWidget {
                             children: [
                               const Image(
                                 image: AssetImage(tImgIsoGorilla),
-                                width: 150,
+                                width: 100,
                               ),
                               const SizedBox(
                                 height: 20,
                               ),
-                              Text(
+                              const Text(
                                 'Add your 1st training!',
-                                style: tStyleEmptyTitle,
+                                style: tStyleBottomSheet,
                               ),
                               const SizedBox(
                                 height: 20,
