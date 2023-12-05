@@ -18,3 +18,10 @@ const String tImgEmptyExercisesList =
 const String tImgEmptySessionsList =
     'assets/images/img/empty_sessions_list.png';
 const String tImgMonstera = 'assets/images/img/monstera.png';
+
+//Logos:
+
+const String tImgLogoGorillaWhite = 'assets/images/logos/logoGorillaWhite.svg';
+const String tImgLogoGorillaPink = 'assets/images/logos/logoGorillaPink.svg';
+const String tImgLogoGorilla = 'assets/images/logos/logoGorilla2.png';
+const String tImgIsoGorilla = 'assets/images/logos/isoGorilla.png';

@@ -504,7 +504,7 @@ class CustomTextFieldEditProfile extends StatelessWidget {
   const CustomTextFieldEditProfile({
     super.key,
     required this.newData,
-    required this.trainingController,
+    required this.profileController,
     required this.prefixIcon,
     required this.labelText,
     required this.hintText,
@@ -513,7 +513,7 @@ class CustomTextFieldEditProfile extends StatelessWidget {
   });
 
   final TextEditingController newData;
-  final TrainingController trainingController;
+  final ProfileController profileController;
 
   final Icon prefixIcon;
   final String labelText;
@@ -570,7 +570,7 @@ class CustomTextFieldEditProfile extends StatelessWidget {
                         prefixIcon: prefixIcon,
                       ),
                       onChanged: (value) {
-                        trainingController.showClearIcon(isFilled: value);
+                        profileController.showClearIcon(isFilled: value);
                       },
                     ),
                   ),
@@ -581,7 +581,7 @@ class CustomTextFieldEditProfile extends StatelessWidget {
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 8.0),
                       child: Icon(Icons.clear,
-                          color: trainingController.isVisible
+                          color: profileController.isVisible
                               ? tColorPinky
                               : Colors.transparent),
                     ),

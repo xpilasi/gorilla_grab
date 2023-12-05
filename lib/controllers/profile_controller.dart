@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:gorilla_grab/Screens/profile/profile_screen.dart';
 import 'package:gorilla_grab/constants/texts.dart';
@@ -16,5 +17,20 @@ class ProfileController extends GetxController {
     update();
     //Get.to(() => ProfileScreen());
     Get.back();
+  }
+
+  //To show or not the clear icon
+  bool isVisible = false;
+  void showClearIcon({required String isFilled}) {
+    isVisible = isFilled.isNotEmpty;
+    update();
+  }
+
+  Widget tryWidget({required Widget widget}) {
+    try {
+      return widget;
+    } catch (e) {
+      return Text('$e');
+    }
   }
 }

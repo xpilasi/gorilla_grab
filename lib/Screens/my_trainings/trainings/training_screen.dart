@@ -44,13 +44,14 @@ class TrainingsScreen extends StatelessWidget {
                         child: Container(
                           //color: tColorBlue,
                           child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              const SizedBox(
-                                height: 150,
-                              ),
                               const Image(
-                                image: AssetImage(tImgMonstera),
-                                width: 250,
+                                image: AssetImage(tImgIsoGorilla),
+                                width: 150,
+                              ),
+                              const SizedBox(
+                                height: 20,
                               ),
                               Text(
                                 'Add your 1st training!',
@@ -63,7 +64,10 @@ class TrainingsScreen extends StatelessWidget {
                                 onPressed: () {
                                   Get.to(() => NewTrainingScreen());
                                 },
-                              )
+                              ),
+                              const SizedBox(
+                                height: 100,
+                              ),
                             ],
                           ),
                         ),

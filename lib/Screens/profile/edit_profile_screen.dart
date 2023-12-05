@@ -6,12 +6,13 @@ import 'package:gorilla_grab/constants/sizes.dart';
 import 'package:gorilla_grab/constants/text_styles.dart';
 import 'package:gorilla_grab/constants/texts.dart';
 import 'package:gorilla_grab/constants/variables.dart';
+import 'package:gorilla_grab/controllers/profile_controller.dart';
 import 'package:gorilla_grab/controllers/trainings_controller.dart';
 import 'package:gorilla_grab/widgets/buttons.dart';
 
 class EditProfileScreen extends StatelessWidget {
   EditProfileScreen({Key? key}) : super(key: key);
-  final TrainingController trainingController = Get.put(TrainingController());
+  final ProfileController profileController = Get.put(ProfileController());
 
   @override
   Widget build(BuildContext context) {
@@ -38,6 +39,7 @@ class EditProfileScreen extends StatelessWidget {
           children: [
             //Name
             CustomTextFieldEditProfile(
+              profileController: profileController,
               isPassword: false,
               inputTitle: 'Name',
               prefixIcon: const Icon(
@@ -45,7 +47,6 @@ class EditProfileScreen extends StatelessWidget {
                 color: tColorPinky,
               ),
               newData: nameProfile,
-              trainingController: trainingController,
               labelText: 'yourName',
               hintText: tProfileName,
             ),
@@ -59,7 +60,7 @@ class EditProfileScreen extends StatelessWidget {
                 color: tColorPinky,
               ),
               newData: lastNameProfile,
-              trainingController: trainingController,
+              profileController: profileController,
               labelText: 'yourLastName',
               hintText: tProfileLastName,
             ),
@@ -73,7 +74,7 @@ class EditProfileScreen extends StatelessWidget {
                 color: tColorPinky,
               ),
               newData: emailProfile,
-              trainingController: trainingController,
+              profileController: profileController,
               labelText: 'your@email.com',
               hintText: tProfileName,
             ),
@@ -87,7 +88,7 @@ class EditProfileScreen extends StatelessWidget {
                 color: tColorPinky,
               ),
               newData: passwordlProfile,
-              trainingController: trainingController,
+              profileController: profileController,
               labelText: 'new password',
               hintText: tProfileName,
             ),
