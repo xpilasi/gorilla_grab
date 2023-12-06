@@ -467,3 +467,26 @@ const TextStyle tStyleStatsBarChart = TextStyle(
     fontFamily: fontCards,
     fontWeight: FontWeight.w500,
     letterSpacing: 0);
+
+//Onboarding
+
+const TextStyle tStyleOnboardingTitle = TextStyle(
+    color: tColorWhite,
+    fontSize: 16,
+    fontFamily: fontCards,
+    fontWeight: FontWeight.w900,
+    letterSpacing: 0);
+
+const TextStyle tStyleOnboardingSubtitle = TextStyle(
+    color: tColorWhite,
+    fontSize: 15,
+    fontFamily: fontCards,
+    fontWeight: FontWeight.w300,
+    letterSpacing: 0);
+
+const TextStyle tStyleOnboardingSignUp = TextStyle(
+    color: tColorTurk,
+    fontSize: 15,
+    fontFamily: fontCards,
+    fontWeight: FontWeight.w300,
+    letterSpacing: 0);

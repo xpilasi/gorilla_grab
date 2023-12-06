@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:gorilla_grab/Screens/sign_in/signin_screen.dart';
+import 'package:gorilla_grab/Screens/starting_screens/log_in_screen.dart';
+import 'package:gorilla_grab/Screens/starting_screens/signin_screen.dart';
+import 'package:gorilla_grab/Screens/starting_screens/welcome_screen.dart';
 import 'package:gorilla_grab/themes/main_theme.dart';
 import 'Screens/home/dashboard_home_screen.dart';
 
@@ -28,7 +30,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'GorillaGrab',
       theme: GorillaTheme.lightGorillaTheme,
-      home: SignInScreen(),
+      home: WelcomeScreen(),
     );
   }
 }
