@@ -2,7 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:gorilla_grab/Screens/profile/edit_profile_screen.dart';
-import 'package:gorilla_grab/Screens/starting_screens/signin_screen.dart';
+import 'package:gorilla_grab/Screens/starting_screens/signup_screen.dart';
+import 'package:gorilla_grab/Screens/starting_screens/welcome_screen.dart';
 import 'package:gorilla_grab/constants/colors.dart';
 import 'package:gorilla_grab/constants/images.dart';
 import 'package:gorilla_grab/constants/sizes.dart';
@@ -176,7 +177,7 @@ class ProfileLabel extends StatelessWidget {
           ProfileListTile(
             icon: CupertinoIcons.square_arrow_right_fill,
             title: tProfileLogOut,
-            editInfo: () => (Get.to(() => SignInScreen())),
+            editInfo: () => (Get.to(() => const WelcomeScreen())),
           )
         ]),
       ),

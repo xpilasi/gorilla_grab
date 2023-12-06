@@ -11,8 +11,8 @@ import 'package:gorilla_grab/constants/variables.dart';
 import 'package:gorilla_grab/controllers/profile_controller.dart';
 import 'package:gorilla_grab/widgets/buttons.dart';
 
-class SignInScreen extends StatelessWidget {
-  SignInScreen({Key? key}) : super(key: key);
+class SignUpScreen extends StatelessWidget {
+  SignUpScreen({Key? key}) : super(key: key);
   final ProfileController profileController = Get.put(ProfileController());
 
   @override
@@ -36,7 +36,7 @@ class SignInScreen extends StatelessWidget {
                   width: 200,
                 ),
                 const SizedBox(
-                  height: 20,
+                  height: 60,
                 ),
                 //Inpunt Email User
                 CustomTextFieldSign(
@@ -57,7 +57,17 @@ class SignInScreen extends StatelessWidget {
                     CupertinoIcons.lock,
                     color: tColorPink,
                   ),
-                  labelText: 'yourPassword',
+                  labelText: 'password',
+                  hintText: '',
+                ),
+                CustomTextFieldSign(
+                  profileController: profileController,
+                  isPassword: true,
+                  prefixIcon: const Icon(
+                    CupertinoIcons.lock,
+                    color: tColorPink,
+                  ),
+                  labelText: 'confirm password',
                   hintText: '',
                 ),
 
@@ -68,7 +78,7 @@ class SignInScreen extends StatelessWidget {
                       borderRadius: BorderRadius.circular(30)),
                   child: TextButton(
                     child: const Text(
-                      'Sign In',
+                      'Sign Up',
                       style: tStyleBottomSheet,
                     ),
                     onPressed: () => (Get.to(() => DashBoardHomeScreen())),

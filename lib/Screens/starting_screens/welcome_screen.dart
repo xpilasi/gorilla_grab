@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:gorilla_grab/Screens/starting_screens/log_in_screen.dart';
+import 'package:gorilla_grab/Screens/starting_screens/signup_screen.dart';
 import 'package:gorilla_grab/constants/colors.dart';
 import 'package:gorilla_grab/constants/images.dart';
 import 'package:gorilla_grab/constants/sizes.dart';
@@ -66,7 +67,7 @@ class WelcomeScreen extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(30)),
                             child: TextButton(
                               child: const Text(
-                                'Sign up',
+                                'Log in',
                                 style: tStyleBottomSheet,
                               ),
                               onPressed: () => (Get.to(() => LogInScreen())),
@@ -84,10 +85,10 @@ class WelcomeScreen extends StatelessWidget {
                               borderRadius: BorderRadius.circular(30)),
                           child: TextButton(
                             child: const Text(
-                              'Sign In',
+                              'Sign Up',
                               style: tStyleBottomSheet,
                             ),
-                            onPressed: () => (Get.to(() => LogInScreen())),
+                            onPressed: () => (Get.to(() => SignUpScreen())),
                           ),
                         ),
                       ),

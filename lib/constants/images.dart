@@ -26,3 +26,4 @@ const String tImgLogoGorillaPink = 'assets/images/logos/logoGorillaPink.svg';
 const String tImgLogoGorilla = 'assets/images/logos/logoGorilla2.png';
 const String tImgIsoGorilla = 'assets/images/logos/isoGorilla.png';
 const String tImgLogoGorillaMoon = 'assets/images/logos/logoGorilla2Start.png';
+const String tImgLogoGoogle = 'assets/images/logos/logoGoogle.png';
