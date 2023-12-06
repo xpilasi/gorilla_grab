@@ -76,7 +76,10 @@ class ForgotPswd extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           TextButton(
-            child: const Text('Password forgotten?'),
+            child: const Text(
+              'Password forgotten?',
+              style: tStyleOnboardingForgotPswd,
+            ),
             onPressed: () => {},
           ),
           const SizedBox(
@@ -101,15 +104,19 @@ class NewAtGorillaGrab extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text(
+          const Text(
             'New at Gorilla Grab?',
             textAlign: TextAlign.right,
+            style: tStyleOnboardingText,
           ),
-          SizedBox(
-            width: 10,
+          const SizedBox(
+            width: 2,
           ),
           TextButton(
-            child: Text('Sign up'),
+            child: const Text(
+              'Sign up',
+              style: tStyleOnboardingTextLink,
+            ),
             onPressed: () => {},
           )
         ],

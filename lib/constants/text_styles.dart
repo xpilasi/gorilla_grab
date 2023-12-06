@@ -490,3 +490,25 @@ const TextStyle tStyleOnboardingSignUp = TextStyle(
     fontFamily: fontCards,
     fontWeight: FontWeight.w300,
     letterSpacing: 0);
+
+const TextStyle tStyleOnboardingText = TextStyle(
+    color: tColorWhite,
+    fontSize: 15,
+    fontFamily: fontCards,
+    fontWeight: FontWeight.w300,
+    letterSpacing: 0);
+
+const TextStyle tStyleOnboardingTextLink = TextStyle(
+    color: tColorPinky,
+    decoration: TextDecoration.underline,
+    fontSize: 15,
+    fontFamily: fontCards,
+    fontWeight: FontWeight.w600,
+    letterSpacing: 0);
+
+const TextStyle tStyleOnboardingForgotPswd = TextStyle(
+    color: tColorPinky,
+    fontSize: 15,
+    fontFamily: fontCards,
+    fontWeight: FontWeight.w500,
+    letterSpacing: 0);
