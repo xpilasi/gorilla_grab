@@ -9,10 +9,12 @@ import 'package:gorilla_grab/constants/images.dart';
 import 'package:gorilla_grab/constants/sizes.dart';
 import 'package:gorilla_grab/constants/text_styles.dart';
 import 'package:gorilla_grab/constants/variables.dart';
+import 'package:gorilla_grab/controllers/auth_controller.dart';
 import 'package:gorilla_grab/widgets/buttons.dart';
 
 class LogInScreen extends StatelessWidget {
   LogInScreen({Key? key}) : super(key: key);
+  final AuthController authController = Get.put(AuthController());
 
   final TextEditingController emailController = TextEditingController();
   final TextEditingController pswdController = TextEditingController();
@@ -20,6 +22,8 @@ class LogInScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     void signUserIn() async {
+      authController.showingDialog(context: context);
+
       await FirebaseAuth.instance.signInWithEmailAndPassword(
           email: emailController.text, password: pswdController.text);
       print('User signed in');

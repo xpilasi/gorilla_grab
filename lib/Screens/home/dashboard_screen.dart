@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:gorilla_grab/Screens/my_trainings/session/training_session_independent.dart';
@@ -20,6 +21,8 @@ class DashBoardScreen extends StatelessWidget {
   final TrainingController trainingController = Get.put(TrainingController());
   final PerformanceController performanceController =
       Get.put(PerformanceController());
+
+  final user = FirebaseAuth.instance.currentUser!;
   @override
   Widget build(BuildContext context) {
     //Size screenSize = MediaQuery.of(context).size;
@@ -31,7 +34,7 @@ class DashBoardScreen extends StatelessWidget {
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(tSizesHeighBigTitle),
         child: CustomAppBarBigTitleDash(
-          appBarTitle: "Hi $tProfileName,",
+          appBarTitle: "Hi ${user.email},",
           avatar: Padding(
             padding: const EdgeInsets.only(right: 26),
             child: CircleAvatar(
