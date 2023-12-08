@@ -1,25 +1,30 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:gorilla_grab/Screens/home/dashboard_home_screen.dart';
+import 'package:gorilla_grab/Screens/starting_screens/signup_screen.dart';
 import 'package:gorilla_grab/constants/colors.dart';
 import 'package:gorilla_grab/constants/images.dart';
 import 'package:gorilla_grab/constants/sizes.dart';
 import 'package:gorilla_grab/constants/text_styles.dart';
 import 'package:gorilla_grab/constants/variables.dart';
-import 'package:gorilla_grab/controllers/profile_controller.dart';
 import 'package:gorilla_grab/widgets/buttons.dart';
 
 class LogInScreen extends StatelessWidget {
   LogInScreen({Key? key}) : super(key: key);
-  final ProfileController profileController = Get.put(ProfileController());
+
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController pswdController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    final nameProfile = TextEditingController(text: 'your@email.com');
-    final lastNameProfile = TextEditingController(text: 'tProfileLastName');
-    final emailProfile = TextEditingController(text: 'tProfileMail');
-    final passwordlProfile = TextEditingController(text: 'tProfileMail');
+    void signUserIn() async {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+          email: emailController.text, password: pswdController.text);
+      print('User signed in');
+    }
+
     return Scaffold(
       backgroundColor: allAppBackground,
       body: Padding(
@@ -37,22 +42,35 @@ class LogInScreen extends StatelessWidget {
                   height: 60,
                 ),
                 //Inputs
-                InputEmailAndPswd(profileController: profileController),
+                InputEmailAndPswd(
+                  emailController: emailController,
+                  pswdController: pswdController,
+                ),
 
                 //LogIn Button
-                LogInButton(),
+                LogInButton(
+                  onTap: signUserIn,
+                  onPressed: signUserIn,
+                ),
 
                 //Forgot Password
-                ForgotPswd(),
+                const ForgotPswd(),
 
                 const SizedBox(
                   height: 30,
                 ),
                 //LogIn with Google
-                LogInButtonGoogle(),
+                ButtonGoogle(
+                  buttonText: 'Log In with Google',
+                  onPressed: () => (Get.to(() => DashBoardHomeScreen())),
+                ),
 
                 //New at Gorilla Grab
-                NewAtGorillaGrab()
+                NewAndAlreadyAtGorillaGrab(
+                  text: 'New at Gorilla Grab?',
+                  action: 'Sign up',
+                  onPressed: () => (Get.to(() => SignUpScreen())),
+                )
               ],
             ),
           ),
@@ -77,7 +95,7 @@ class ForgotPswd extends StatelessWidget {
         children: [
           TextButton(
             child: const Text(
-              'Password forgotten?',
+              'Forgot Password?',
               style: tStyleOnboardingForgotPswd,
             ),
             onPressed: () => {},
@@ -91,10 +109,17 @@ class ForgotPswd extends StatelessWidget {
   }
 }
 
-class NewAtGorillaGrab extends StatelessWidget {
-  const NewAtGorillaGrab({
+class NewAndAlreadyAtGorillaGrab extends StatelessWidget {
+  const NewAndAlreadyAtGorillaGrab({
     super.key,
+    required this.text,
+    required this.onPressed,
+    required this.action,
   });
+
+  final String text;
+  final String action;
+  final void Function() onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -104,8 +129,8 @@ class NewAtGorillaGrab extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Text(
-            'New at Gorilla Grab?',
+          Text(
+            text,
             textAlign: TextAlign.right,
             style: tStyleOnboardingText,
           ),
@@ -113,12 +138,12 @@ class NewAtGorillaGrab extends StatelessWidget {
             width: 2,
           ),
           TextButton(
-            child: const Text(
-              'Sign up',
+            onPressed: onPressed,
+            child: Text(
+              action,
               style: tStyleOnboardingTextLink,
             ),
-            onPressed: () => {},
-          )
+          ),
         ],
       ),
     );
@@ -126,31 +151,39 @@ class NewAtGorillaGrab extends StatelessWidget {
 }
 
 class LogInButton extends StatelessWidget {
-  const LogInButton({
-    super.key,
-  });
+  void Function()? onTap;
+  void Function()? onPressed;
+
+  LogInButton({super.key, required this.onTap, required this.onPressed});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      decoration: BoxDecoration(
-          gradient: gradient1, borderRadius: BorderRadius.circular(30)),
-      child: TextButton(
-        child: const Text(
-          'Log In',
-          style: tStyleBottomSheet,
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        width: double.infinity,
+        decoration: BoxDecoration(
+            gradient: gradient1, borderRadius: BorderRadius.circular(30)),
+        child: TextButton(
+          child: const Text(
+            'Log In',
+            style: tStyleBottomSheet,
+          ),
+          onPressed: onPressed,
         ),
-        onPressed: () => (Get.to(() => DashBoardHomeScreen())),
       ),
     );
   }
 }
 
-class LogInButtonGoogle extends StatelessWidget {
-  const LogInButtonGoogle({
+class ButtonGoogle extends StatelessWidget {
+  const ButtonGoogle({
     super.key,
+    required this.buttonText,
+    this.onPressed,
   });
+  final String buttonText;
+  final void Function()? onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -175,11 +208,11 @@ class LogInButtonGoogle extends StatelessWidget {
               width: 10,
             ),
             TextButton(
-              child: const Text(
-                'Log In with Google',
+              onPressed: onPressed,
+              child: Text(
+                buttonText,
                 style: tStyleBottomSheet,
               ),
-              onPressed: () => (Get.to(() => DashBoardHomeScreen())),
             ),
           ],
         ),
@@ -189,19 +222,18 @@ class LogInButtonGoogle extends StatelessWidget {
 }
 
 class InputEmailAndPswd extends StatelessWidget {
-  const InputEmailAndPswd({
-    super.key,
-    required this.profileController,
-  });
+  InputEmailAndPswd(
+      {super.key, required this.emailController, required this.pswdController});
 
-  final ProfileController profileController;
+  final TextEditingController emailController;
+  final TextEditingController pswdController;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         CustomTextFieldSign(
-          profileController: profileController,
+          controller: emailController,
           isPassword: false,
           prefixIcon: const Icon(
             CupertinoIcons.at,
@@ -211,7 +243,7 @@ class InputEmailAndPswd extends StatelessWidget {
           hintText: '',
         ),
         CustomTextFieldSign(
-          profileController: profileController,
+          controller: pswdController,
           isPassword: true,
           prefixIcon: const Icon(
             CupertinoIcons.lock,

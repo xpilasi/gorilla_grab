@@ -4,11 +4,19 @@ import 'package:get/get.dart';
 import 'package:gorilla_grab/Screens/starting_screens/log_in_screen.dart';
 import 'package:gorilla_grab/Screens/starting_screens/signup_screen.dart';
 import 'package:gorilla_grab/Screens/starting_screens/welcome_screen.dart';
+import 'package:gorilla_grab/firebase/auth_page.dart';
 import 'package:gorilla_grab/themes/main_theme.dart';
 import 'Screens/home/dashboard_home_screen.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
   // Restringe la orientación a retrato
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
       .then((_) {
@@ -30,7 +38,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'GorillaGrab',
       theme: GorillaTheme.lightGorillaTheme,
-      home: WelcomeScreen(),
+      home: AuthPage(),
     );
   }
 }

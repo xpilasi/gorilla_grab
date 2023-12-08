@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "350856242261",
+    "project_id": "gorillagrab-731a2",
+    "storage_bucket": "gorillagrab-731a2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:350856242261:android:e71e0647104aea320060dc",
+        "android_client_info": {
+          "package_name": "com.example.gorilla_grab"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDx1UD6CbFQs2cbfwHR9S9gmbK6CL2b1IA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

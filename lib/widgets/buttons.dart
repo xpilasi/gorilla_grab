@@ -639,19 +639,17 @@ class ProfileSubmitButton extends StatelessWidget {
 class CustomTextFieldSign extends StatelessWidget {
   const CustomTextFieldSign({
     super.key,
-    required this.profileController,
     required this.prefixIcon,
     required this.labelText,
     required this.hintText,
     required this.isPassword,
+    required this.controller,
   });
 
-  final ProfileController profileController;
-
+  final controller;
   final Icon prefixIcon;
   final String labelText;
   final String hintText;
-
   final bool isPassword;
 
   @override
@@ -676,10 +674,11 @@ class CustomTextFieldSign extends StatelessWidget {
                 children: [
                   Expanded(
                     child: TextFormField(
+                      controller: controller,
                       obscureText: isPassword,
                       style: tStyleBottomSheetDark,
                       maxLength: 20,
-                      textCapitalization: TextCapitalization.words,
+                      //textCapitalization: TextCapitalization.words,
                       decoration: InputDecoration(
                         counterText: '',
                         floatingLabelBehavior: FloatingLabelBehavior.never,
@@ -690,9 +689,6 @@ class CustomTextFieldSign extends StatelessWidget {
                         //hintStyle: tStyleInputHint,
                         prefixIcon: prefixIcon,
                       ),
-                      onChanged: (value) {
-                        profileController.showClearIcon(isFilled: value);
-                      },
                     ),
                   ),
                 ],

@@ -1,3 +1,5 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -143,6 +145,9 @@ class ProfileLabel extends StatelessWidget {
   const ProfileLabel({
     super.key,
   });
+  void signUserOut() {
+    FirebaseAuth.instance.signOut();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -177,7 +182,7 @@ class ProfileLabel extends StatelessWidget {
           ProfileListTile(
             icon: CupertinoIcons.square_arrow_right_fill,
             title: tProfileLogOut,
-            editInfo: () => (Get.to(() => const WelcomeScreen())),
+            editInfo: signUserOut,
           )
         ]),
       ),
