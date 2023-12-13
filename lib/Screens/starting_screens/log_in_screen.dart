@@ -22,11 +22,24 @@ class LogInScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     void signUserIn() async {
-      authController.showingDialog(context: context);
+      authController.showingDialogProgress(context: context);
 
-      await FirebaseAuth.instance.signInWithEmailAndPassword(
-          email: emailController.text, password: pswdController.text);
-      print('User signed in');
+      try {
+        await FirebaseAuth.instance.signInWithEmailAndPassword(
+            email: emailController.text, password: pswdController.text);
+        print('User signed in');
+      } on FirebaseAuthException catch (e) {
+        //Wrong email
+        if (e.code == 'user-not-found') {
+          //show error to user
+          authController.wrongEmailMessage(context: context);
+        }
+        //Wrong password
+        else if (e.code == 'wrong-password') {
+          //show error to user
+          authController.wrongEmailPassword(context: context);
+        }
+      }
     }
 
     return Scaffold(
