@@ -6,7 +6,6 @@ import 'package:gorilla_grab/constants/colors.dart';
 import 'package:gorilla_grab/constants/images.dart';
 import 'package:gorilla_grab/constants/sizes.dart';
 import 'package:gorilla_grab/constants/text_styles.dart';
-import 'package:gorilla_grab/constants/texts.dart';
 import 'package:gorilla_grab/constants/variables.dart';
 import 'package:gorilla_grab/controllers/performance_controller.dart';
 import 'package:gorilla_grab/controllers/sessions_controller.dart';
