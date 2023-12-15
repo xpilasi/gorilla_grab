@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:gorilla_grab/Screens/starting_screens/log_in_screen.dart';
-import 'package:gorilla_grab/Screens/starting_screens/signup_screen.dart';
-import 'package:gorilla_grab/Screens/starting_screens/welcome_screen.dart';
 import 'package:gorilla_grab/firebase/auth_page.dart';
 import 'package:gorilla_grab/themes/main_theme.dart';
-import 'Screens/home/dashboard_home_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:gorilla_grab/Screens/profile/profile_screen.dart';
 import 'package:gorilla_grab/constants/texts.dart';
 
 class ProfileController extends GetxController {
@@ -12,10 +11,8 @@ class ProfileController extends GetxController {
     tProfileLastName = lastName;
     tProfileMail = email;
     tProfilePassword = password;
-    print(name);
 
     update();
-    //Get.to(() => ProfileScreen());
     Get.back();
   }
 
