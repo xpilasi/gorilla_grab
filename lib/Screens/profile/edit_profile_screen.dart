@@ -7,7 +7,6 @@ import 'package:gorilla_grab/constants/text_styles.dart';
 import 'package:gorilla_grab/constants/texts.dart';
 import 'package:gorilla_grab/constants/variables.dart';
 import 'package:gorilla_grab/controllers/profile_controller.dart';
-import 'package:gorilla_grab/controllers/trainings_controller.dart';
 import 'package:gorilla_grab/widgets/buttons.dart';
 
 class EditProfileScreen extends StatelessWidget {

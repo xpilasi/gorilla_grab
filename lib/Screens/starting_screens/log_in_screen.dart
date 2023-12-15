@@ -27,7 +27,7 @@ class LogInScreen extends StatelessWidget {
       try {
         await FirebaseAuth.instance.signInWithEmailAndPassword(
             email: emailController.text, password: pswdController.text);
-        print('User signed in');
+        //print('User signed in');
       } on FirebaseAuthException catch (e) {
         //Wrong email
         if (e.code == 'user-not-found') {
