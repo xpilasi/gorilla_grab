@@ -32,11 +32,13 @@ class LogInScreen extends StatelessWidget {
         //Wrong email
         if (e.code == 'user-not-found') {
           //show error to user
+          // ignore: use_build_context_synchronously
           authController.wrongEmailMessage(context: context);
         }
         //Wrong password
         else if (e.code == 'wrong-password') {
           //show error to user
+          // ignore: use_build_context_synchronously
           authController.wrongEmailPassword(context: context);
         }
       }
@@ -182,11 +184,11 @@ class LogInButton extends StatelessWidget {
         decoration: BoxDecoration(
             gradient: gradient1, borderRadius: BorderRadius.circular(30)),
         child: TextButton(
+          onPressed: onPressed,
           child: const Text(
             'Log In',
             style: tStyleBottomSheet,
           ),
-          onPressed: onPressed,
         ),
       ),
     );
