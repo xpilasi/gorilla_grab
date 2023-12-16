@@ -11,18 +11,23 @@ class AuthController extends GetxController {
             child: CircularProgressIndicator(),
           );
         });
-
     update();
+
     return Container();
   }
 
 //To show a message dialog when the Email is wrong
   Widget showingDialogWrongEmail({required context}) {
-    showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return const AlertDialog(title: Text('Incorrect Mail'));
-        });
+    print('WRONG EMAIL');
+
+    Future.delayed(const Duration(seconds: 2), () {
+      Navigator.pop(context);
+      showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return const AlertDialog(title: Text('Incorrect Email'));
+          });
+    });
 
     update();
     return Container();
@@ -30,11 +35,16 @@ class AuthController extends GetxController {
 
 //To show a message dialog when the Password is wrong
   Widget showingDialogWrongPassword({required context}) {
-    showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return const AlertDialog(title: Text('Incorrect Password'));
-        });
+    print('WRONG PSWD');
+
+    Future.delayed(const Duration(seconds: 2), () {
+      Navigator.pop(context);
+      showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return const AlertDialog(title: Text('Incorrect Password'));
+          });
+    });
 
     update();
     return Container();
@@ -43,10 +53,13 @@ class AuthController extends GetxController {
 //Email wrong: message to call
   void wrongEmailMessage({required context}) {
     showingDialogWrongEmail(context: context);
+    update();
   }
 
 //Password wrong: message to call
   void wrongEmailPassword({required context}) {
     showingDialogWrongPassword(context: context);
+
+    update();
   }
 }
