@@ -169,6 +169,7 @@ class NewAndAlreadyAtGorillaGrab extends StatelessWidget {
   }
 }
 
+// ignore: must_be_immutable
 class LogInButton extends StatelessWidget {
   void Function()? onTap;
   void Function()? onPressed;
@@ -241,7 +242,7 @@ class ButtonGoogle extends StatelessWidget {
 }
 
 class InputEmailAndPswd extends StatelessWidget {
-  InputEmailAndPswd(
+  const InputEmailAndPswd(
       {super.key, required this.emailController, required this.pswdController});
 
   final TextEditingController emailController;
