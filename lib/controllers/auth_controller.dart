@@ -25,7 +25,7 @@ class AuthController extends GetxController {
       showDialog(
           context: context,
           builder: (BuildContext context) {
-            return const AlertDialog(title: Text('Incorrect Email'));
+            return const AlertDialog(title: Text('Invalid credentials'));
           });
     });
 

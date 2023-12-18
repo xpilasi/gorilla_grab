@@ -59,9 +59,12 @@ class LogInScreen extends StatelessWidget {
         );
         print(FirebaseAuth.instance.currentUser!.email);
       } on FirebaseAuthException catch (e) {
-        if (e.code == 'user-not-found') {
+        print(e);
+        print(e.code);
+        if (e.code == 'INVALID_LOGIN_CREDENTIALS') {
           authController.wrongEmailMessage(context: context);
         } else if (e.code == 'wrong-password') {
+          print('PSWD WROONG - CHECK');
           authController.wrongEmailPassword(context: context);
         }
       }
