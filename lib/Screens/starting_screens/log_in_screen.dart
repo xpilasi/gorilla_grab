@@ -21,36 +21,8 @@ class LogInScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //Signing in with Firebase:
-    // void signUserIn() async {
-    //   authController.showingDialogProgress(context: context);
-
-    //   try {
-    //     await FirebaseAuth.instance.signInWithEmailAndPassword(
-    //         email: emailController.text, password: pswdController.text);
-    //     print(FirebaseAuth.instance.currentUser!.email);
-    //   } on FirebaseAuthException catch (e) {
-    //     //Wrong email
-    //     if (e.code == 'user-not-found') {
-    //       //show error to user
-    //       // ignore: use_build_context_synchronously
-    //       print('Incorrect Mail Dude');
-    //       Navigator.pop(context); // Close the dialog
-    //       authController.wrongEmailMessage(context: context);
-    //     }
-    //     //Wrong password
-    //     else if (e.code == 'wrong-password') {
-    //       print('incorrect password');
-    //       Navigator.pop(context);
-    //       //show error to user
-    //       // ignore: use_build_context_synchronously
-    //       authController.wrongEmailPassword(context: context);
-    //     }
-    //   }
-    // }
-
     void signUserIn() async {
-      await authController.showingDialogProgress(context: context);
+      authController.showingDialogProgress(context: context);
 
       try {
         await FirebaseAuth.instance.signInWithEmailAndPassword(
@@ -59,7 +31,7 @@ class LogInScreen extends StatelessWidget {
         );
         print(FirebaseAuth.instance.currentUser!.email);
       } on FirebaseAuthException catch (e) {
-        print(e);
+        //Checking what error is being thrown
         print(e.code);
         if (e.code == 'INVALID_LOGIN_CREDENTIALS') {
           authController.wrongEmailMessage(context: context);
