@@ -38,7 +38,7 @@ class LogInScreen extends StatelessWidget {
         } else if (e.code == 'wrong-password') {
           print('PSWD WROONG - CHECK');
           authController.wrongEmailPassword(context: context);
-        } else if (e.code == 'wrong-password') {
+        } else if (e.code == 'network-request-failed') {
           print('NO cCCCONNECTION - CHECK');
           authController.noConnection(context: context);
         }
