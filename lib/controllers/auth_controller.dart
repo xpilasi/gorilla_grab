@@ -50,6 +50,23 @@ class AuthController extends GetxController {
     return Container();
   }
 
+//To show a message dialog when there is no connection
+  Widget showingDialogNoConnection({required context}) {
+    print('NO CONNECTION');
+
+    Future.delayed(const Duration(seconds: 2), () {
+      Navigator.pop(context);
+      showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return const AlertDialog(title: Text('No Internet connection'));
+          });
+    });
+
+    update();
+    return Container();
+  }
+
 //Email wrong: message to call
   void wrongEmailMessage({required context}) {
     showingDialogWrongEmail(context: context);
@@ -59,6 +76,13 @@ class AuthController extends GetxController {
 //Password wrong: message to call
   void wrongEmailPassword({required context}) {
     showingDialogWrongPassword(context: context);
+
+    update();
+  }
+
+//Password wrong: message to call
+  void noConnection({required context}) {
+    showingDialogNoConnection(context: context);
 
     update();
   }
