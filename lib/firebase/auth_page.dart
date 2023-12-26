@@ -11,7 +11,6 @@ class AuthPage extends StatelessWidget {
   Widget build(BuildContext context) {
     FirebaseAuth.instance.authStateChanges().listen((User? user) {
       if (user == null) {
-        //print('NO USER LOGGED IN');
         Get.offAll(() => const WelcomeScreen());
       } else {
         //print('USER EXISTS');
