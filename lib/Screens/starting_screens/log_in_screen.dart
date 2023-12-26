@@ -33,6 +33,7 @@ class LogInScreen extends StatelessWidget {
       } on FirebaseAuthException catch (e) {
         //Checking what error is being thrown
         print(e.code);
+        print('test');
         if (e.code == 'INVALID_LOGIN_CREDENTIALS') {
           authController.wrongEmailMessage(context: context);
         } else if (e.code == 'wrong-password') {
