@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:gorilla_grab/Screens/my_trainings/session/training_session_provisional_screen.dart';
 import 'package:gorilla_grab/constants/sizes.dart';
-import 'package:gorilla_grab/constants/texts.dart';
 import 'package:gorilla_grab/controllers/profile_controller.dart';
 import 'package:gorilla_grab/controllers/sessions_controller.dart';
 
