@@ -13,7 +13,6 @@ class AuthPage extends StatelessWidget {
       if (user == null) {
         Get.offAll(() => const WelcomeScreen());
       } else {
-        //print('USER EXISTS');
         Get.offAll(() => DashBoardHomeScreen());
       }
     });
