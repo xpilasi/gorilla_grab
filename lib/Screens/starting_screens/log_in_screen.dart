@@ -38,6 +38,7 @@ class LogInScreen extends StatelessWidget {
           // ignore: use_build_context_synchronously
           authController.wrongEmailMessage(context: context);
         } else if (e.code == 'wrong-password') {
+          //verification
           print('PSWD WROONG - CHECK');
           // ignore: use_build_context_synchronously
           authController.wrongEmailPassword(context: context);
