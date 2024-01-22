@@ -35,6 +35,7 @@ class LogInScreen extends StatelessWidget {
         print(e.code);
         print('test');
         if (e.code == 'INVALID_LOGIN_CREDENTIALS') {
+          // ignore: use_build_context_synchronously
           authController.wrongEmailMessage(context: context);
         } else if (e.code == 'wrong-password') {
           print('PSWD WROONG - CHECK');
