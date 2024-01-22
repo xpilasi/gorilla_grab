@@ -43,6 +43,7 @@ class LogInScreen extends StatelessWidget {
           authController.wrongEmailPassword(context: context);
         } else if (e.code == 'network-request-failed') {
           print('NO cCCCONNECTION - CHECK');
+          // ignore: use_build_context_synchronously
           authController.noConnection(context: context);
         }
       }
