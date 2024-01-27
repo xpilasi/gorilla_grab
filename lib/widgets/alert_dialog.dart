@@ -13,7 +13,7 @@ class CustomAlertDialog extends StatelessWidget {
     return Container(
         color: tColorBottomSheet.withOpacity(0.5),
         child: Container(
-          margin: EdgeInsets.symmetric(horizontal: 50, vertical: 300),
+          margin: const EdgeInsets.symmetric(horizontal: 50, vertical: 300),
           decoration: BoxDecoration(
               gradient: gradient1, borderRadius: BorderRadius.circular(30)),
           child: Container(
