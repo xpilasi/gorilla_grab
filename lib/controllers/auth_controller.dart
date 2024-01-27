@@ -48,16 +48,8 @@ class AuthController extends GetxController {
       showDialog(
           context: context,
           builder: (BuildContext context) {
-            return AlertDialog(
-              title: Text('Incorrect Password'),
-              actions: [
-                TextButton(
-                  child: Text('Cancel'),
-                  onPressed: () {
-                    Get.back();
-                  },
-                )
-              ],
+            return CustomAlertDialog(
+              titleError: 'Incorrect Password',
             );
           });
     });
@@ -101,35 +93,5 @@ class AuthController extends GetxController {
     showingDialogNoConnection(context: context);
 
     update();
-  }
-}
-
-class AlertNotToUse extends StatelessWidget {
-  const AlertNotToUse({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return AlertDialog(
-      iconColor: tColorGreen,
-      title: Container(
-        color: tColorBottomSheet,
-        child: Text(
-          'Invalid credentials',
-        ),
-      ),
-      actions: [
-        Container(
-          color: tColorBlue,
-          child: TextButton(
-            child: Text('Back'),
-            onPressed: () {
-              Get.back();
-            },
-          ),
-        )
-      ],
-    );
   }
 }
