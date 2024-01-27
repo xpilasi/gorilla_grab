@@ -17,7 +17,7 @@ class CustomAlertDialog extends StatelessWidget {
           decoration: BoxDecoration(
               gradient: gradient1, borderRadius: BorderRadius.circular(30)),
           child: Container(
-            margin: EdgeInsets.all(1),
+            margin: const EdgeInsets.all(1),
             decoration: BoxDecoration(
                 color: tColorBottomSheet,
                 borderRadius: BorderRadius.circular(30)),
