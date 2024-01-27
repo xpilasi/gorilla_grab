@@ -33,7 +33,7 @@ class AuthController extends GetxController {
               ),
               actions: [
                 TextButton(
-                  child: Text('Cancel'),
+                  child: Text('Back'),
                   onPressed: () {
                     Get.back();
                   },
