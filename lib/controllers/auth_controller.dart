@@ -1,5 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import 'package:gorilla_grab/constants/colors.dart';
 
 class AuthController extends GetxController {
   //To show the circular progress while authenticating
@@ -25,7 +27,19 @@ class AuthController extends GetxController {
       showDialog(
           context: context,
           builder: (BuildContext context) {
-            return const AlertDialog(title: Text('Invalid credentials'));
+            return CupertinoAlertDialog(
+              title: Text(
+                'Invalid credentials',
+              ),
+              actions: [
+                TextButton(
+                  child: Text('Cancel'),
+                  onPressed: () {
+                    Get.back();
+                  },
+                )
+              ],
+            );
           });
     });
 
@@ -39,10 +53,21 @@ class AuthController extends GetxController {
 
     Future.delayed(const Duration(seconds: 2), () {
       Navigator.pop(context);
+      print('Checking info');
       showDialog(
           context: context,
           builder: (BuildContext context) {
-            return const AlertDialog(title: Text('Incorrect Password'));
+            return AlertDialog(
+              title: Text('Incorrect Password'),
+              actions: [
+                TextButton(
+                  child: Text('Cancel'),
+                  onPressed: () {
+                    Get.back();
+                  },
+                )
+              ],
+            );
           });
     });
 
