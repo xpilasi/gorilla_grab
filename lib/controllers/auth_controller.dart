@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:gorilla_grab/constants/colors.dart';
+import 'package:gorilla_grab/widgets/alert_dialog.dart';
 
 class AuthController extends GetxController {
   //To show the circular progress while authenticating
@@ -27,18 +28,8 @@ class AuthController extends GetxController {
       showDialog(
           context: context,
           builder: (BuildContext context) {
-            return CupertinoAlertDialog(
-              title: Text(
-                'Invalid credentials',
-              ),
-              actions: [
-                TextButton(
-                  child: Text('Back'),
-                  onPressed: () {
-                    Get.back();
-                  },
-                )
-              ],
+            return CustomAlertDialog(
+              titleError: 'Invalid credentials',
             );
           });
     });
@@ -110,5 +101,35 @@ class AuthController extends GetxController {
     showingDialogNoConnection(context: context);
 
     update();
+  }
+}
+
+class AlertNotToUse extends StatelessWidget {
+  const AlertNotToUse({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return AlertDialog(
+      iconColor: tColorGreen,
+      title: Container(
+        color: tColorBottomSheet,
+        child: Text(
+          'Invalid credentials',
+        ),
+      ),
+      actions: [
+        Container(
+          color: tColorBlue,
+          child: TextButton(
+            child: Text('Back'),
+            onPressed: () {
+              Get.back();
+            },
+          ),
+        )
+      ],
+    );
   }
 }
