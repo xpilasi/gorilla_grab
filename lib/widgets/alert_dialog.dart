@@ -17,7 +17,7 @@ class CustomAlertDialog extends StatelessWidget {
           decoration: BoxDecoration(
               gradient: gradient1, borderRadius: BorderRadius.circular(30)),
           child: Container(
-            margin: const EdgeInsets.all(1),
+            margin: const EdgeInsets.all(0),
             decoration: BoxDecoration(
                 color: tColorBottomSheet,
                 borderRadius: BorderRadius.circular(30)),
@@ -26,13 +26,6 @@ class CustomAlertDialog extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    // Text(
-                    //   titleError,
-                    //   style: tStyleBigTitle,
-                    // ),
-                    // Divider(
-                    //   color: tColorBlacky.withOpacity(0.3),
-                    // ),
                     Padding(
                       padding: const EdgeInsets.only(bottom: 8.0),
                       child: Row(
@@ -53,7 +46,6 @@ class CustomAlertDialog extends StatelessWidget {
                         ],
                       ),
                     ),
-
                     Padding(
                       padding: const EdgeInsets.only(top: 8),
                       child: Container(
