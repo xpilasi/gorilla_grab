@@ -13,7 +13,7 @@ class CustomAlertDialog extends StatelessWidget {
     return Container(
         color: tColorBottomSheet.withOpacity(0.5),
         child: Container(
-          margin: const EdgeInsets.symmetric(horizontal: 50, vertical: 300),
+          margin: const EdgeInsets.symmetric(horizontal: 80, vertical: 310),
           decoration: BoxDecoration(
               gradient: gradient1, borderRadius: BorderRadius.circular(30)),
           child: Container(
@@ -29,6 +29,9 @@ class CustomAlertDialog extends StatelessWidget {
                     // Text(
                     //   titleError,
                     //   style: tStyleBigTitle,
+                    // ),
+                    // Divider(
+                    //   color: tColorBlacky.withOpacity(0.3),
                     // ),
                     Padding(
                       padding: const EdgeInsets.only(bottom: 8.0),
@@ -50,17 +53,23 @@ class CustomAlertDialog extends StatelessWidget {
                         ],
                       ),
                     ),
-                    Divider(
-                      color: tColorBlacky.withOpacity(0.3),
-                    ),
+
                     Padding(
                       padding: const EdgeInsets.only(top: 8),
-                      child: TextButton(
-                        child: const Text(
-                          'Try again',
-                          style: tStyleBottomSheet,
+                      child: Container(
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(30),
+                            gradient: gradient1),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                          child: TextButton(
+                            child: const Text(
+                              'Try again',
+                              style: tStyleBottomSheet,
+                            ),
+                            onPressed: () => Get.back(),
+                          ),
                         ),
-                        onPressed: () => Get.back(),
                       ),
                     )
                   ]),

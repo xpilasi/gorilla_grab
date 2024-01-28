@@ -34,6 +34,8 @@ class LogInScreen extends StatelessWidget {
         //Checking what error is being thrown
         print(e.code);
         print('test');
+
+        //for IOS:
         if (e.code == 'INVALID_LOGIN_CREDENTIALS') {
           // ignore: use_build_context_synchronously
           authController.wrongEmailMessage(context: context);
@@ -42,6 +44,11 @@ class LogInScreen extends StatelessWidget {
           print('PSWD WROONG - CHECK');
           // ignore: use_build_context_synchronously
           authController.wrongEmailPassword(context: context);
+        } else if (e.code == 'network-request-failed') {
+          //for android:
+        } else if (e.code == 'invalid-credential') {
+          //verification
+          authController.wrongEmailMessage(context: context);
         } else if (e.code == 'network-request-failed') {
           //verification
           print('NO cCCCONNECTION - CHECK');

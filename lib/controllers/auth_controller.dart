@@ -64,10 +64,13 @@ class AuthController extends GetxController {
 
     Future.delayed(const Duration(seconds: 2), () {
       Navigator.pop(context);
+      print('Checking info');
       showDialog(
           context: context,
           builder: (BuildContext context) {
-            return const AlertDialog(title: Text('No Internet connection'));
+            return CustomAlertDialog(
+              titleError: 'No connection',
+            );
           });
     });
 
@@ -88,7 +91,7 @@ class AuthController extends GetxController {
     update();
   }
 
-//Password wrong: message to call
+//No connection
   void noConnection({required context}) {
     showingDialogNoConnection(context: context);
 
