@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -8,18 +9,46 @@ import 'package:gorilla_grab/constants/images.dart';
 import 'package:gorilla_grab/constants/sizes.dart';
 import 'package:gorilla_grab/constants/text_styles.dart';
 import 'package:gorilla_grab/constants/variables.dart';
+import 'package:gorilla_grab/controllers/auth_controller.dart';
 import 'package:gorilla_grab/controllers/profile_controller.dart';
+import 'package:gorilla_grab/widgets/alert_dialog.dart';
 import 'package:gorilla_grab/widgets/buttons.dart';
 
 class SignUpScreen extends StatelessWidget {
   SignUpScreen({Key? key}) : super(key: key);
   final ProfileController profileController = Get.put(ProfileController());
+  final AuthController authController = Get.put(AuthController());
+
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController pswdController = TextEditingController();
+  final TextEditingController pswdConfirmController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    final TextEditingController emailController = TextEditingController();
-    final TextEditingController pswdController = TextEditingController();
-    final TextEditingController pswdConfirmController = TextEditingController();
+    Future<User?> signUserUp() async {
+      if (pswdController.text == pswdConfirmController.text) {
+        print('STARTING SIGN UP');
+        authController.showingDialogProgress(context: context);
+
+        try {
+          UserCredential credential =
+              await FirebaseAuth.instance.createUserWithEmailAndPassword(
+            email: emailController.text,
+            password: pswdController.text,
+          );
+          print('SUCCESS BABY');
+          print(FirebaseAuth.instance.currentUser!.email);
+          return credential.user;
+        } catch (e) {
+          print('Some error -->$e');
+        }
+      } else {
+        print('${pswdConfirmController.text} - ${pswdController.text}');
+        authController.showingDialogPswNotMatching(context: context);
+      }
+
+      return null;
+    }
 
     return Scaffold(
       backgroundColor: allAppBackground,
@@ -45,7 +74,10 @@ class SignUpScreen extends StatelessWidget {
                     pswdConfirmController: pswdConfirmController),
 
                 //Sing up Button
-                const SignUpButton(),
+                SignUpButton(
+                  onPressed: signUserUp,
+                  onTap: signUserUp,
+                ),
 
                 const SizedBox(
                   height: 50,
@@ -73,22 +105,25 @@ class SignUpScreen extends StatelessWidget {
 }
 
 class SignUpButton extends StatelessWidget {
-  const SignUpButton({
-    super.key,
-  });
+  void Function()? onTap;
+  void Function()? onPressed;
+  SignUpButton({super.key, required this.onTap, required this.onPressed});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      decoration: BoxDecoration(
-          gradient: gradient1, borderRadius: BorderRadius.circular(30)),
-      child: TextButton(
-        child: const Text(
-          'Sign Up',
-          style: tStyleBottomSheet,
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        width: double.infinity,
+        decoration: BoxDecoration(
+            gradient: gradient1, borderRadius: BorderRadius.circular(30)),
+        child: TextButton(
+          onPressed: onPressed,
+          child: const Text(
+            'Sign Up',
+            style: tStyleBottomSheet,
+          ),
         ),
-        onPressed: () => (Get.to(() => DashBoardHomeScreen())),
       ),
     );
   }

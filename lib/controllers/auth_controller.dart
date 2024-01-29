@@ -38,6 +38,22 @@ class AuthController extends GetxController {
     return Container();
   }
 
+  Widget showingDialogPswNotMatching({required context}) {
+    Future.delayed(const Duration(seconds: 2), () {
+      Navigator.pop(context);
+      showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return CustomAlertDialog(
+              titleError: 'Not matching',
+            );
+          });
+    });
+
+    update();
+    return Container();
+  }
+
 //To show a message dialog when the Password is wrong
   Widget showingDialogWrongPassword({required context}) {
     print('WRONG PSWD');
