@@ -1,7 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
-import 'package:gorilla_grab/constants/colors.dart';
 import 'package:gorilla_grab/widgets/alert_dialog.dart';
 
 class AuthController extends GetxController {

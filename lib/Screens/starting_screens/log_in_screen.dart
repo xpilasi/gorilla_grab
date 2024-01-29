@@ -29,29 +29,23 @@ class LogInScreen extends StatelessWidget {
           email: emailController.text,
           password: pswdController.text,
         );
-        print(FirebaseAuth.instance.currentUser!.email);
       } on FirebaseAuthException catch (e) {
         //Checking what error is being thrown
         print(e.code);
-        print('test');
 
         //for IOS:
         if (e.code == 'INVALID_LOGIN_CREDENTIALS') {
           // ignore: use_build_context_synchronously
           authController.wrongEmailMessage(context: context);
         } else if (e.code == 'wrong-password') {
-          //verification
-          print('PSWD WROONG - CHECK');
           // ignore: use_build_context_synchronously
           authController.wrongEmailPassword(context: context);
         } else if (e.code == 'network-request-failed') {
           //for android:
         } else if (e.code == 'invalid-credential') {
-          //verification
+          /// ignore: use_build_context_synchronously
           authController.wrongEmailMessage(context: context);
         } else if (e.code == 'network-request-failed') {
-          //verification
-          print('NO cCCCONNECTION - CHECK');
           // ignore: use_build_context_synchronously
           authController.noConnection(context: context);
         }
