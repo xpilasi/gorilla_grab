@@ -44,7 +44,7 @@ class AuthController extends GetxController {
       showDialog(
           context: context,
           builder: (BuildContext context) {
-            return CustomAlertDialog(
+            return const CustomAlertDialog(
               titleError: 'Not matching',
             );
           });

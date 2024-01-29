@@ -27,7 +27,6 @@ class SignUpScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     Future<User?> signUserUp() async {
       if (pswdController.text == pswdConfirmController.text) {
-        print('STARTING SIGN UP');
         authController.showingDialogProgress(context: context);
 
         try {
@@ -43,7 +42,6 @@ class SignUpScreen extends StatelessWidget {
           print('Some error -->$e');
         }
       } else {
-        print('${pswdConfirmController.text} - ${pswdController.text}');
         authController.showingDialogPswNotMatching(context: context);
       }
 
