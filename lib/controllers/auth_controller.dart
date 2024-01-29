@@ -28,7 +28,7 @@ class AuthController extends GetxController {
       showDialog(
           context: context,
           builder: (BuildContext context) {
-            return CustomAlertDialog(
+            return const CustomAlertDialog(
               titleError: 'Invalid credentials',
             );
           });
@@ -60,11 +60,11 @@ class AuthController extends GetxController {
 
     Future.delayed(const Duration(seconds: 2), () {
       Navigator.pop(context);
-      print('Checking info');
+
       showDialog(
           context: context,
           builder: (BuildContext context) {
-            return CustomAlertDialog(
+            return const CustomAlertDialog(
               titleError: 'Incorrect Password',
             );
           });
