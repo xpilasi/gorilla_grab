@@ -35,8 +35,7 @@ class SignUpScreen extends StatelessWidget {
             email: emailController.text,
             password: pswdController.text,
           );
-          print('SUCCESS BABY');
-          print(FirebaseAuth.instance.currentUser!.email);
+
           return credential.user;
         } catch (e) {
           print('Some error -->$e');
