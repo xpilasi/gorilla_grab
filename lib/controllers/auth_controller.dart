@@ -19,7 +19,7 @@ class AuthController extends GetxController {
 
 //To show a message dialog when the Email is wrong
   Widget showingDialogWrongEmail({required context}) {
-    print('WRONG EMAIL');
+    //print('WRONG EMAIL');
 
     Future.delayed(const Duration(seconds: 2), () {
       Navigator.pop(context);
