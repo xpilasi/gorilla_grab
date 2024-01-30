@@ -99,6 +99,7 @@ class SignUpScreen extends StatelessWidget {
   }
 }
 
+// ignore: must_be_immutable
 class SignUpButton extends StatelessWidget {
   void Function()? onTap;
   void Function()? onPressed;
