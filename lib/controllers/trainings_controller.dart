@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:gorilla_grab/Screens/home/dashboard_home_screen.dart';
@@ -12,6 +13,10 @@ import '../widgets/buttons.dart';
 class TrainingController extends GetxController {
   final ExercisesController exercisesController =
       Get.put(ExercisesController());
+
+  late final db = FirebaseFirestore.instance;
+  late final usersMap = db.collection('users');
+
   List<TrainingModel> myTrainingsList = [];
 
   //To create new training:
@@ -26,6 +31,7 @@ class TrainingController extends GetxController {
         creationDate: DateTime.now(),
         color: trainingColor);
     myTrainingsList.add(newTraining);
+    print(usersMap);
 
     update();
   }
