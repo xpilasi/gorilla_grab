@@ -336,7 +336,7 @@ class TitleExercisePerformances extends StatelessWidget {
 }
 
 class DbLastTrainingsPanel extends StatelessWidget {
-  const DbLastTrainingsPanel({
+  DbLastTrainingsPanel({
     super.key,
     required this.sessionsController,
     required this.heighLastTrainingContainer,
@@ -350,6 +350,7 @@ class DbLastTrainingsPanel extends StatelessWidget {
   final int filter;
   final PerformanceController performanceController;
   final TrainingController trainingController;
+  final String userApp = FirebaseAuth.instance.currentUser!.email!;
 
   @override
   Widget build(BuildContext context) {
@@ -424,6 +425,7 @@ class DbLastTrainingsPanel extends StatelessWidget {
                                       exercisesSession: sessionsList[index],
                                       trainingModel:
                                           trainingController.getTrainingModel(
+                                              user: userApp,
                                               trainingId: trainingId),
                                     ))),
                             child: Container(

@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:gorilla_grab/models/training_model.dart';
@@ -24,6 +25,8 @@ class NewExerciseScreen extends StatelessWidget {
       Get.put(ColorPickerController());
   final newExerciseName = TextEditingController();
   bool switchTimer = true;
+
+  final userEmail = FirebaseAuth.instance.currentUser!.email;
 
   @override
   Widget build(BuildContext context) {
@@ -84,6 +87,7 @@ class NewExerciseScreen extends StatelessWidget {
                     text: tButtonSaveExercise,
                     onPressed: () {
                       exerciseController.addNewExercise(
+                          user: userEmail!,
                           exerciseName: newExerciseName.text,
                           isTimer: switchTimer,
                           exerciseColor: colorPickerController.getColorValue(),

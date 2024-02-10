@@ -95,9 +95,11 @@ class ExercisesController extends GetxController {
       {required String exerciseName,
       required bool isTimer,
       required TrainingModel trainingModel,
-      required int exerciseColor}) {
+      required int exerciseColor,
+      required String user}) {
     if (isTimer) {
       ExerciseModel newExercise = ExerciseModel(
+        user: user,
         trainingId: trainingModel.trainingId,
         exerciseId: UniqueKey().toString(),
         name: exerciseName,
@@ -109,6 +111,7 @@ class ExercisesController extends GetxController {
       allExercises.add(newExercise);
     } else {
       ExerciseModel newExercise = ExerciseModel(
+        user: user,
         trainingId: trainingModel.trainingId,
         exerciseId: UniqueKey().toString(),
         name: exerciseName,

@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:gorilla_grab/Screens/home/dashboard_home_screen.dart';
@@ -17,6 +18,7 @@ class NewTrainingScreen extends StatelessWidget {
   final ColorPickerController colorPickerController =
       Get.put(ColorPickerController());
   final newTrainingName = TextEditingController();
+  final userApp = FirebaseAuth.instance.currentUser!.email;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,6 +57,7 @@ class NewTrainingScreen extends StatelessWidget {
                     text: tButtonSaveTraining,
                     onPressed: () {
                       trainingController.addNewTraining(
+                          user: userApp!,
                           trainingName: newTrainingName.text,
                           trainingColor: colorPickerController.getColorValue());
 

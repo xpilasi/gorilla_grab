@@ -1,4 +1,5 @@
 class ExerciseModel {
+  final String user;
   final String trainingId;
   final String exerciseId;
   String sessionId = ' - ';
@@ -9,6 +10,7 @@ class ExerciseModel {
   final DateTime creationDate;
 
   ExerciseModel({
+    required this.user,
     required this.trainingId,
     required this.exerciseId,
     required this.name,

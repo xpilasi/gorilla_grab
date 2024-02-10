@@ -1,4 +1,5 @@
 class TrainingModel {
+  late String user;
   late String trainingId;
   late String name;
   late DateTime creationDate;
@@ -7,6 +8,7 @@ class TrainingModel {
   TrainingModel(
       {required this.trainingId,
       required this.name,
+      required this.user,
       required this.creationDate,
       required this.color});
 }

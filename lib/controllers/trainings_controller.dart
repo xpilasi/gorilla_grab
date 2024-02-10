@@ -15,8 +15,12 @@ class TrainingController extends GetxController {
   List<TrainingModel> myTrainingsList = [];
 
   //To create new training:
-  addNewTraining({required String trainingName, required int trainingColor}) {
+  addNewTraining(
+      {required String trainingName,
+      required int trainingColor,
+      required String user}) {
     TrainingModel newTraining = TrainingModel(
+        user: user,
         trainingId: UniqueKey().toString(),
         name: trainingName,
         creationDate: DateTime.now(),
@@ -167,8 +171,10 @@ class TrainingController extends GetxController {
     return exercisRep.toString();
   }
 
-  TrainingModel getTrainingModel({required String trainingId}) {
+  TrainingModel getTrainingModel(
+      {required String trainingId, required String user}) {
     TrainingModel trainingModel = TrainingModel(
+        user: user,
         color: 1,
         name: 'provisional',
         creationDate: DateTime.now(),
