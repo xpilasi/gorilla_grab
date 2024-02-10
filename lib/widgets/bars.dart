@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:gorilla_grab/constants/colors.dart';
@@ -285,6 +286,7 @@ class CustomAppBarBackExerciseTimer extends StatelessWidget {
 
   final TrainingController trainingController = Get.put(TrainingController());
   final RecordsController recordsController = Get.put(RecordsController());
+  final String userApp = FirebaseAuth.instance.currentUser!.email!;
 
   CustomAppBarBackExerciseTimer({
     super.key,
@@ -309,7 +311,7 @@ class CustomAppBarBackExerciseTimer extends StatelessWidget {
           Get.to(() => TrainingSessionScreen(
               exercisesSession: provisionalExercisesSession,
               trainingModel: trainingController.getTrainingModel(
-                  trainingId: exerciseModel.trainingId)));
+                  user: userApp, trainingId: exerciseModel.trainingId)));
         },
         color: tColorWhite,
       ),
@@ -337,6 +339,7 @@ class CustomAppBarBackExerciseRep extends StatelessWidget {
 
   final TrainingController trainingController = Get.put(TrainingController());
   final RecordsController recordsController = Get.put(RecordsController());
+  final String userApp = FirebaseAuth.instance.currentUser!.email!;
 
   CustomAppBarBackExerciseRep({
     super.key,
@@ -361,7 +364,7 @@ class CustomAppBarBackExerciseRep extends StatelessWidget {
           Get.to(() => TrainingSessionScreen(
               exercisesSession: provisionalExercisesSession,
               trainingModel: trainingController.getTrainingModel(
-                  trainingId: exerciseModel.trainingId)));
+                  user: userApp, trainingId: exerciseModel.trainingId)));
         },
         color: tColorWhite,
       ),

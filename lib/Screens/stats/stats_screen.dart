@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:gorilla_grab/constants/colors.dart';
@@ -22,6 +23,7 @@ class StatsScreen extends StatelessWidget {
   final PerformanceController performanceController =
       Get.put(PerformanceController());
   final TrainingController trainingController = Get.put(TrainingController());
+  final String userApp = FirebaseAuth.instance.currentUser!.email!;
 
   @override
   Widget build(BuildContext context) {
@@ -118,6 +120,7 @@ class StatsScreen extends StatelessWidget {
                                           trainingId: session.trainingId);
                                   Color trainingColor = Color(trainingController
                                       .getTrainingModel(
+                                          user: userApp,
                                           trainingId: session.trainingId)
                                       .color);
                                   return Padding(
