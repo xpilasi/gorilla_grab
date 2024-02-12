@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:gorilla_grab/Screens/home/dashboard_home_screen.dart';
@@ -16,8 +17,59 @@ class TrainingController extends GetxController {
 
   late final db = FirebaseFirestore.instance;
   late final usersMap = db.collection('users');
+  final userEmail = FirebaseAuth.instance.currentUser!.email;
+
+  late final userTrainingsData = FirebaseFirestore.instance
+      .collection('users')
+      .doc(userEmail)
+      .collection('trainings');
+
+//final documentSnapshot = await docRef.get();
 
   List<TrainingModel> myTrainingsList = [];
+
+  // Nuevo código para leer desde Firebase
+  bool _dataLoaded = false;
+
+  @override
+  void onInit() {
+    super.onInit();
+    _loadTrainings();
+  }
+
+  void _loadTrainings() async {
+    if (_dataLoaded) {
+      return;
+    }
+
+    final userTrainings = await userTrainingsData.get();
+
+    for (var doc in userTrainings.docs) {
+      // Extraer los datos del documento
+      String trainingId = doc['trainingId'];
+      String name = doc['name'];
+      String user = doc['user'];
+      DateTime creationDate = doc['creationDate'].toDate();
+      int color = doc['color'];
+
+      // Crear un modelo TrainingModel
+      TrainingModel trainingModel = TrainingModel(
+        trainingId: trainingId,
+        name: name,
+        user: user,
+        creationDate: creationDate,
+        color: color,
+      );
+
+      // Agregar el modelo a la lista
+      myTrainingsList.add(trainingModel);
+    }
+
+    _dataLoaded = true;
+
+    update();
+  }
+  // Fin nuevo código
 
   //To create new training:
   addNewTraining(
@@ -30,9 +82,20 @@ class TrainingController extends GetxController {
         name: trainingName,
         creationDate: DateTime.now(),
         color: trainingColor);
+    print(trainingColor);
     myTrainingsList.add(newTraining);
-    print(usersMap);
 
+    usersMap.get().then((querySnapshot) {
+      for (var doc in querySnapshot.docs) {
+        try {
+          userEmail == doc.data()['email']
+              ? print(doc.data()['email'])
+              : print('not visible');
+        } catch (e) {
+          print(e);
+        }
+      }
+    });
     update();
   }
 
