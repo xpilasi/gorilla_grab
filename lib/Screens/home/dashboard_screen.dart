@@ -8,6 +8,7 @@ import 'package:gorilla_grab/constants/sizes.dart';
 import 'package:gorilla_grab/constants/text_styles.dart';
 import 'package:gorilla_grab/constants/variables.dart';
 import 'package:gorilla_grab/controllers/performance_controller.dart';
+import 'package:gorilla_grab/controllers/profile_controller.dart';
 import 'package:gorilla_grab/controllers/sessions_controller.dart';
 import 'package:gorilla_grab/controllers/trainings_controller.dart';
 import 'package:gorilla_grab/widgets/bars.dart';
@@ -18,12 +19,13 @@ class DashBoardScreen extends StatelessWidget {
 
   final SessionsController sessionsController = Get.put(SessionsController());
   final TrainingController trainingController = Get.put(TrainingController());
+  final ProfileController profileController = Get.put(ProfileController());
   final PerformanceController performanceController =
       Get.put(PerformanceController());
 
-  final user = FirebaseAuth.instance.currentUser!;
   @override
   Widget build(BuildContext context) {
+    final user = profileController.profile['name'].toString();
     //Size screenSize = MediaQuery.of(context).size;
 
     double heighLastTrainingContainer = 80;
@@ -33,7 +35,7 @@ class DashBoardScreen extends StatelessWidget {
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(tSizesHeighBigTitle),
         child: CustomAppBarBigTitleDash(
-          appBarTitle: "Hi ${user.email},",
+          appBarTitle: "Hi $user,",
           avatar: Padding(
             padding: const EdgeInsets.only(right: 26),
             child: CircleAvatar(

@@ -44,30 +44,33 @@ class TrainingController extends GetxController {
 
     final userTrainings = await userTrainingsData.get();
 
-    for (var doc in userTrainings.docs) {
-      // Extraer los datos del documento
-      String trainingId = doc['trainingId'];
-      String name = doc['name'];
-      String user = doc['user'];
-      DateTime creationDate = doc['creationDate'].toDate();
-      int color = doc['color'];
+    if (userTrainings.docs.isEmpty) {
+      for (var doc in userTrainings.docs) {
+        // Extraer los datos del documento
 
-      // Crear un modelo TrainingModel
-      TrainingModel trainingModel = TrainingModel(
-        trainingId: trainingId,
-        name: name,
-        user: user,
-        creationDate: creationDate,
-        color: color,
-      );
+        String trainingId = doc['trainingId'];
+        String name = doc['name'];
+        String user = doc['user'];
+        DateTime creationDate = doc['creationDate'].toDate();
+        int color = doc['color'];
 
-      // Agregar el modelo a la lista
-      myTrainingsList.add(trainingModel);
+        // Crear un modelo TrainingModel
+        TrainingModel trainingModel = TrainingModel(
+          trainingId: trainingId,
+          name: name,
+          user: user,
+          creationDate: creationDate,
+          color: color,
+        );
+
+        // Agregar el modelo a la lista
+        myTrainingsList.add(trainingModel);
+      }
+
+      _dataLoaded = true;
+
+      update();
     }
-
-    _dataLoaded = true;
-
-    update();
   }
   // Fin nuevo código
 

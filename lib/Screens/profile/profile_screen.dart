@@ -141,6 +141,7 @@ class ProfileBgImg extends StatelessWidget {
 
 class ProfileLabel extends StatelessWidget {
   final ProfileController profileController = Get.put(ProfileController());
+
   ProfileLabel({
     super.key,
   });
@@ -150,6 +151,8 @@ class ProfileLabel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    int yearsClimbing =
+        int.parse(profileController.profile['climbingSince'].toString());
     return Container(
       decoration: const BoxDecoration(
           gradient: LinearGradient(
@@ -175,8 +178,11 @@ class ProfileLabel extends StatelessWidget {
               icon: Icons.location_on_rounded,
               title: profileController.profile['city'].toString(),
               editInfo: () => Get.to(() => EditProfileScreen())),
-          const ProfileListTile(
-              icon: CupertinoIcons.bolt_fill, title: tProfileClimber),
+          ProfileListTile(
+              icon: CupertinoIcons.bolt_fill,
+              title: yearsClimbing > 1
+                  ? '$yearsClimbing years climbing'
+                  : '$yearsClimbing year climbing'),
           ProfileListTile(
               icon: Icons.mail,
               title: profileController.profile['email'].toString()),

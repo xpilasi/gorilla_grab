@@ -26,6 +26,7 @@ class ProfileController extends GetxController {
     'climbingSince': 2000,
     'nationality': 'lostPerson',
   };
+
   @override
   void onInit() {
     super.onInit();
@@ -43,6 +44,11 @@ class ProfileController extends GetxController {
     profile['email'] = profileDocument['email'];
     profile['climbingSince'] = profileDocument['climbingSince'];
     profile['nationality'] = profileDocument['nationality'];
+
+    int now = DateTime.now().year;
+    int climbingSince = int.parse(profile['climbingSince'].toString());
+    int yearsClimbing = now - climbingSince;
+    profile['climbingSince'] = yearsClimbing;
   }
 
   //To update the profile basic data
