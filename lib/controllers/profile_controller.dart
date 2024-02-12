@@ -23,7 +23,7 @@ class ProfileController extends GetxController {
     'city': 'noMansLand',
     'country': 'noCountry',
     'email': 'noEmail',
-    'climbinSince': 2000,
+    'climbingSince': 2000,
     'nationality': 'lostPerson',
   };
   @override
@@ -41,11 +41,11 @@ class ProfileController extends GetxController {
     profile['city'] = profileDocument['city'];
     profile['country'] = profileDocument['country'];
     profile['email'] = profileDocument['email'];
-    profile['climbinSince'] = profileDocument['climbinSince'];
+    profile['climbingSince'] = profileDocument['climbingSince'];
     profile['nationality'] = profileDocument['nationality'];
   }
 
-//To update the profile basic data
+  //To update the profile basic data
 
   void updateProfileBasicData(
       {required name, required lastName, required email, required password}) {

@@ -9,6 +9,7 @@ import 'package:gorilla_grab/constants/sizes.dart';
 import 'package:gorilla_grab/constants/text_styles.dart';
 import 'package:gorilla_grab/constants/texts.dart';
 import 'package:gorilla_grab/constants/variables.dart';
+import 'package:gorilla_grab/controllers/profile_controller.dart';
 import 'package:gorilla_grab/widgets/list_tile_profile.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -38,7 +39,7 @@ class ProfileScreen extends StatelessWidget {
           const Positioned(child: ProfileBgImg()),
 
           //PROFILE LABEL
-          const Positioned(
+          Positioned(
             top: 225,
             bottom: 0,
             left: 0,
@@ -139,7 +140,8 @@ class ProfileBgImg extends StatelessWidget {
 }
 
 class ProfileLabel extends StatelessWidget {
-  const ProfileLabel({
+  final ProfileController profileController = Get.put(ProfileController());
+  ProfileLabel({
     super.key,
   });
   void signUserOut() {
@@ -165,17 +167,19 @@ class ProfileLabel extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(bottom: tSizesMargin),
             child: Text(
-              tProfileName.toUpperCase(),
+              profileController.profile['name'].toString(),
               style: tStyleBottomSheet,
             ),
           ),
           ProfileListTile(
               icon: Icons.location_on_rounded,
-              title: tProfileLocation,
+              title: profileController.profile['city'].toString(),
               editInfo: () => Get.to(() => EditProfileScreen())),
           const ProfileListTile(
               icon: CupertinoIcons.bolt_fill, title: tProfileClimber),
-          ProfileListTile(icon: Icons.mail, title: tProfileMail),
+          ProfileListTile(
+              icon: Icons.mail,
+              title: profileController.profile['email'].toString()),
           ProfileListTile(
             icon: CupertinoIcons.square_arrow_right_fill,
             title: tProfileLogOut,
