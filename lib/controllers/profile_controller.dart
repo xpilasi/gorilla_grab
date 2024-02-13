@@ -17,6 +17,13 @@ class ProfileController extends GetxController {
 
 //Recovering profile data:
 
+  @override
+  void onInit() {
+    super.onInit();
+    _loadProfile();
+    update();
+  }
+
   var profile = {
     'name': 'John',
     'lastName': 'Doe',
@@ -26,12 +33,6 @@ class ProfileController extends GetxController {
     'climbingSince': 2000,
     'nationality': 'lostPerson',
   };
-
-  @override
-  void onInit() {
-    super.onInit();
-    _loadProfile();
-  }
 
   void _loadProfile() async {
     final userProfile = await userProfileData.get();
@@ -49,6 +50,8 @@ class ProfileController extends GetxController {
     int climbingSince = int.parse(profile['climbingSince'].toString());
     int yearsClimbing = now - climbingSince;
     profile['climbingSince'] = yearsClimbing;
+
+    update();
   }
 
   //To update the profile basic data
