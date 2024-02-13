@@ -17,6 +17,11 @@ class ProfileController extends GetxController {
 
 //Recovering profile data:
 
+// prueba
+  late final userProfile = userProfileData.get();
+  late final profileDocument = userProfile.docs.first;
+// fin prueba
+
   @override
   void onInit() {
     super.onInit();
