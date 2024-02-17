@@ -555,7 +555,7 @@ class DbTrainingHoursPanel extends StatelessWidget {
       left: 20,
       child: Container(
         decoration: const BoxDecoration(
-            color: tColorBlue,
+            gradient: gradient1,
             borderRadius: BorderRadius.all(Radius.circular(allBoxRadius))),
         height: 140,
         child: Stack(children: [
