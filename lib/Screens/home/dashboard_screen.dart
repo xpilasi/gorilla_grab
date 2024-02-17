@@ -555,7 +555,7 @@ class DbTrainingHoursPanel extends StatelessWidget {
       left: 20,
       child: Container(
         decoration: const BoxDecoration(
-            color: tColorBottomSheetG1,
+            color: tColorBlue,
             borderRadius: BorderRadius.all(Radius.circular(allBoxRadius))),
         height: 140,
         child: Stack(children: [
@@ -573,6 +573,7 @@ class DbTrainingHoursPanel extends StatelessWidget {
             right: 20,
             // ignore: avoid_unnecessary_containers
             child: Container(
+              //color: tColorGreeny,
               child: Text(
                 sessionsController.allSessions.isNotEmpty
                     ? sessionsController.getAverageTrainingHours(
@@ -595,7 +596,7 @@ class DbTrainingHoursPanel extends StatelessWidget {
 
           //total training hours
           Positioned(
-            bottom: 20,
+            bottom: 10,
             left: 20,
             // ignore: sized_box_for_whitespace
             child: Container(

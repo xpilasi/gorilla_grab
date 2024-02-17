@@ -512,3 +512,12 @@ const TextStyle tStyleOnboardingForgotPswd = TextStyle(
     fontFamily: fontCards,
     fontWeight: FontWeight.w500,
     letterSpacing: 0);
+
+// Edit and delete Trainings
+
+const TextStyle tStyleEditAndDeleteTraining = TextStyle(
+    color: tColorWhite,
+    fontSize: 15,
+    fontFamily: fontCards,
+    fontWeight: FontWeight.w500,
+    letterSpacing: 0);

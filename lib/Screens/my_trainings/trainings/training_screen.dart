@@ -214,7 +214,11 @@ class TrainingsScreen extends StatelessWidget {
                                                 SizedBox(
                                                   width: 10,
                                                 ),
-                                                Text('Edit'),
+                                                Text(
+                                                  'Edit',
+                                                  style:
+                                                      tStyleEditAndDeleteTraining,
+                                                ),
                                               ],
                                             ),
                                           ),
@@ -230,7 +234,9 @@ class TrainingsScreen extends StatelessWidget {
                                                 SizedBox(
                                                   width: 10,
                                                 ),
-                                                Text('Delete'),
+                                                Text('Delete',
+                                                    style:
+                                                        tStyleEditAndDeleteTraining),
                                               ],
                                             ),
                                           ),
