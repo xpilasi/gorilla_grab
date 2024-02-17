@@ -34,6 +34,7 @@ class TrainingController extends GetxController {
   @override
   void onInit() {
     super.onInit();
+
     _loadTrainings();
   }
 
@@ -44,7 +45,7 @@ class TrainingController extends GetxController {
 
     final userTrainings = await userTrainingsData.get();
 
-    if (userTrainings.docs.isEmpty) {
+    if (userTrainings.docs.isNotEmpty) {
       for (var doc in userTrainings.docs) {
         // Extraer los datos del documento
 
@@ -93,7 +94,7 @@ class TrainingController extends GetxController {
         try {
           userEmail == doc.data()['email']
               ? print(doc.data()['email'])
-              : print('not visible');
+              : print('other mail is ${doc.data()['email']}');
         } catch (e) {
           print(e);
         }
