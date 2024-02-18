@@ -37,7 +37,7 @@ const String tTextRemoveConfirmationSession =
 const String tTextCloseConfirmationSession =
     "Do you want to end and save this session?";
 const String tTextCloseConfirmationSessionAd =
-    "**You won't be able to edit this session anymore.";
+    "You won't be able to edit this session anymore.";
 
 //Titles:
 //Exercises

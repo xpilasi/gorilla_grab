@@ -648,20 +648,33 @@ class ExercisesController extends GetxController {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       //Main text
-                      const SizedBox(
+                      SizedBox(
                         height: 70,
                         width: double.infinity,
                         child: Column(
                           children: [
-                            Text(
+                            const Text(
                               tTextCloseConfirmationSession,
                               softWrap: true,
                               style: tStyleBottomSheetSmaller,
                             ),
-                            Text(
-                              softWrap: true,
-                              tTextCloseConfirmationSessionAd,
-                              style: tStyleBottomSheetHighlighted,
+                            Container(
+                              color: tColorBlue,
+                              height: 50,
+                              child: Row(
+                                children: [
+                                  Icon(
+                                    Icons.warning_amber_rounded,
+                                    color: tColorPinky,
+                                  ),
+                                  Text(
+                                    softWrap: true,
+                                    overflow: TextOverflow.visible,
+                                    tTextCloseConfirmationSessionAd,
+                                    style: tStyleBottomSheetHighlighted,
+                                  ),
+                                ],
+                              ),
                             ),
                           ],
                         ),
