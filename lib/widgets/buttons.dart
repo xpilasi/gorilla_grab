@@ -365,7 +365,7 @@ class AddButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 45,
+      height: 50,
       decoration: BoxDecoration(
         gradient: gradient1,
         borderRadius: BorderRadius.circular(30),
@@ -395,7 +395,7 @@ class PendingSessionButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 45,
+      height: 50,
       decoration: BoxDecoration(
         color: tColorPrimary_6,
         borderRadius: BorderRadius.circular(30),

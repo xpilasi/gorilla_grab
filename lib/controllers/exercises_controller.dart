@@ -240,7 +240,7 @@ class ExercisesController extends GetxController {
     List<RepRecordsModel> repRecordsList =
         recordsController.finalRepRecordsList;
 
-//Remove the records corresponding to that session:
+    //Remove the records corresponding to that session:
 
     timerRecordsList.removeWhere(
       (element) => element.sessionId == sessionId,
@@ -250,7 +250,7 @@ class ExercisesController extends GetxController {
       (element) => element.sessionId == sessionId,
     );
 
-//Remove performance records
+    //Remove performance records
 
     performanceController.gapPerformanceList.removeWhere(
       (element) => element.gapSessionId == sessionId,
@@ -325,14 +325,16 @@ class ExercisesController extends GetxController {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         CustomButtonBottomCancel(
-                            heigh: 40,
+                            heigh: 50,
                             width: 160,
-                            text: tTextCancel,
+                            text:
+                                //tTextCancel,
+                                'TEEST',
                             onPressed: () {
                               Get.back();
                             }),
                         CustomButtonBottomSheet(
-                            heigh: 40,
+                            heigh: 50,
                             width: 160,
                             text: tTextRemove,
                             onPressed: () {
@@ -388,14 +390,14 @@ class ExercisesController extends GetxController {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         CustomButtonBottomCancel(
-                            heigh: 40,
+                            heigh: 50,
                             width: 160,
                             text: tTextCancel,
                             onPressed: () {
                               Get.back();
                             }),
                         CustomButtonBottomSheet(
-                            heigh: 40,
+                            heigh: 50,
                             width: 160,
                             text: tTextDelete,
                             onPressed: () {
@@ -430,9 +432,9 @@ class ExercisesController extends GetxController {
         context: context,
         builder: (BuildContext context) {
           return SizedBox(
-            width: 340,
+            //width: 340,
             child: Padding(
-              padding: const EdgeInsets.only(bottom: 50.0),
+              padding: const EdgeInsets.only(bottom: 50.0, right: 30, left: 30),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
@@ -453,14 +455,14 @@ class ExercisesController extends GetxController {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         CustomButtonBottomCancel(
-                            heigh: 40,
+                            heigh: 50,
                             width: 160,
                             text: tTextCancel,
                             onPressed: () {
                               Get.back();
                             }),
                         CustomButtonBottomSheet(
-                            heigh: 40,
+                            heigh: 50,
                             width: 160,
                             text: tTextDelete,
                             onPressed: () {
