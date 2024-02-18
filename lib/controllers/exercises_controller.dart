@@ -367,9 +367,9 @@ class ExercisesController extends GetxController {
         context: context,
         builder: (BuildContext context) {
           return SizedBox(
-            width: 340,
+            //width: 340,
             child: Padding(
-              padding: const EdgeInsets.only(bottom: 50.0),
+              padding: const EdgeInsets.only(bottom: 50.0, right: 30, left: 30),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
@@ -641,7 +641,7 @@ class ExercisesController extends GetxController {
                   bottom: MediaQuery.of(context).viewInsets.bottom),
               //width: 300,
               child: Container(
-                padding: EdgeInsets.symmetric(horizontal: 10),
+                padding: EdgeInsets.symmetric(horizontal: 30),
                 child: Padding(
                   padding: const EdgeInsets.only(bottom: 50.0),
                   child: Column(
@@ -702,14 +702,14 @@ class ExercisesController extends GetxController {
                           children: [
                             CustomButtonBottomCancel(
                                 heigh: 50,
-                                width: 170,
+                                width: 160,
                                 text: tTextCancel,
                                 onPressed: () {
                                   Get.back();
                                 }),
                             CustomButtonBottomSheet(
                                 heigh: 50,
-                                width: 170,
+                                width: 160,
                                 text: tButtonSaveSession,
                                 onPressed: () {
                                   String comment = commentController.text;

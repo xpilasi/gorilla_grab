@@ -21,7 +21,7 @@ const String tButtonSaveTraining = 'Save training';
 const String tButtonHintTextNewExercise = "Name your exercise";
 const String tButtonLabelTextNewExercise = "New exercise";
 const String tButtonSaveExercise = 'Save exercise';
-const String tButtonSaveSession = 'Save session';
+const String tButtonSaveSession = 'Save';
 
 //General actions:
 
