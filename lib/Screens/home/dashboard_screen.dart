@@ -149,7 +149,7 @@ class WelcomeToGorillaPanel extends StatelessWidget {
               SizedBox(
                 height: 10,
               ),
-              Text('Welcome to Gorilla Grab', style: tStyleBottomSheet),
+              Text('Welcome to Gorilla Grab - TEST', style: tStyleBottomSheet),
             ],
           ),
         ));
