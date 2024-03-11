@@ -24,6 +24,13 @@ class TrainingController extends GetxController {
       .doc(userEmail)
       .collection('trainings');
 
+  late final userTrainingsFirestoreId = FirebaseFirestore.instance
+      .collection('users')
+      .doc(userEmail)
+      .collection('trainings');
+
+
+
 //final documentSnapshot = await docRef.get();
 
   List<TrainingModel> myTrainingsList = [];
@@ -80,6 +87,7 @@ class TrainingController extends GetxController {
       {required String trainingName,
       required int trainingColor,
       required String user})  {
+
     TrainingModel newTraining = TrainingModel(
         user: user,
         trainingId: UniqueKey().toString(),
@@ -98,34 +106,76 @@ class TrainingController extends GetxController {
       "color": trainingColor,
       };
 
-   
-
     userTrainingsData.add(data).then((documentSnapshot) =>
     print("Added Data with ID: ${documentSnapshot.id}"));
 
-    // usersMap.get().then((querySnapshot) {
-    //   for (var doc in querySnapshot.docs) {
-    //     try {
-    //       userEmail == doc.data()['email']
-    //           ? print(doc.data()['email'])
-    //           : print('other mail is ${doc.data()['email']}');
-    //     } catch (e) {
-    //       print(e);
-    //     }
-    //   }
-    // });
+
     update();
   }
 
-  //To create new training:
+  //To update the training:
   updateTraining({
     required TrainingModel trainingModel,
     required String newName,
     required int newColor,
-  }) {
+  })async {
     trainingModel.name = newName;
     trainingModel.color = newColor;
 
+    String idTrainingCollection = trainingModel.trainingId;
+
+    CollectionReference trainingsRef = FirebaseFirestore.instance
+    .collection('users')
+    .doc(userEmail)
+    .collection('trainings');
+
+    QuerySnapshot querySnapshot = await trainingsRef.get();
+
+   for (DocumentSnapshot docSnapshot in querySnapshot.docs) {
+    String id = docSnapshot.id;
+    String path = docSnapshot.reference.path;
+    print('ID misterio: ${id.toString()}'); 
+   }
+
+  DocumentSnapshot? docSnapshotInside = null;
+  for (DocumentSnapshot docSnapshot in querySnapshot.docs) {
+    String idTrainingUnique = docSnapshot.id; // Assuming the ID is within the document
+    docSnapshotInside = await FirebaseFirestore.instance
+                              .collection('users')
+                              .doc(userEmail)
+                              .collection('trainings')
+                              .doc(idTrainingUnique)
+                              .get();
+
+    final docSnapshotForUpdate = await FirebaseFirestore.instance
+                              .collection('users')
+                              .doc(userEmail)
+                              .collection('trainings')
+                              .doc(idTrainingUnique);
+                              
+
+  // Check and access data only after fetching
+  if (docSnapshotInside!.exists) {
+    Object? data = docSnapshotInside.data();
+    String trainingIdData = (data as Map<String, dynamic>)['trainingId'];
+    print('$trainingIdData - $idTrainingCollection');
+    if (trainingIdData == idTrainingCollection) {
+
+      //Update de datos training
+      docSnapshotForUpdate.update({
+        'name':newName,
+        'color':newColor
+      }).then(
+              (value) => print("DocumentSnapshot successfully updated!"),
+              onError: (e) => print("Error updating document $e"));
+
+
+    }else{}
+  } else {
+    print('Document not found'); // Handle non-existent document
+  }
+  
+   }
     update();
   }
 
