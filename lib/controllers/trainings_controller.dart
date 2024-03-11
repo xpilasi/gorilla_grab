@@ -79,7 +79,7 @@ class TrainingController extends GetxController {
   addNewTraining(
       {required String trainingName,
       required int trainingColor,
-      required String user}) {
+      required String user})  {
     TrainingModel newTraining = TrainingModel(
         user: user,
         trainingId: UniqueKey().toString(),
@@ -89,17 +89,31 @@ class TrainingController extends GetxController {
     print(trainingColor);
     myTrainingsList.add(newTraining);
 
-    usersMap.get().then((querySnapshot) {
-      for (var doc in querySnapshot.docs) {
-        try {
-          userEmail == doc.data()['email']
-              ? print(doc.data()['email'])
-              : print('other mail is ${doc.data()['email']}');
-        } catch (e) {
-          print(e);
-        }
-      }
-    });
+    //add training doc Firestore:
+    final data = {
+      "user": user, 
+      "trainingId": UniqueKey().toString(),
+      "name": trainingName,
+      "creationDate": DateTime.now(),
+      "color": trainingColor,
+      };
+
+   
+
+    userTrainingsData.add(data).then((documentSnapshot) =>
+    print("Added Data with ID: ${documentSnapshot.id}"));
+
+    // usersMap.get().then((querySnapshot) {
+    //   for (var doc in querySnapshot.docs) {
+    //     try {
+    //       userEmail == doc.data()['email']
+    //           ? print(doc.data()['email'])
+    //           : print('other mail is ${doc.data()['email']}');
+    //     } catch (e) {
+    //       print(e);
+    //     }
+    //   }
+    // });
     update();
   }
 
