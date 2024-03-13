@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:gorilla_grab/models/exercise_model.dart';
@@ -23,9 +25,80 @@ class ExercisesController extends GetxController {
   final RecordsController recordsController = Get.put(RecordsController());
   final PerformanceController performanceController =
       Get.put(PerformanceController());
-  // final TrainingController trainingController = Get.put(TrainingController());
+
+  //Firebase data:
+  late final db = FirebaseFirestore.instance;
+  late final usersMap = db.collection('users');
+  final userEmail = FirebaseAuth.instance.currentUser!.email;
+
+  late final userExercisesData = FirebaseFirestore.instance
+      .collection('users')
+      .doc(userEmail)
+      .collection('exercises');
 
   List<ExerciseModel> allExercises = [];
+
+  // Reading data from Firebase:
+
+  bool _dataLoaded = false;
+
+  @override
+  void onInit() {
+    super.onInit();
+
+    _loadTrainings();
+  }
+
+  void _loadTrainings() async {
+    if (_dataLoaded) {
+      return;
+    }
+
+    final userTrainings = await userExercisesData.get();
+
+    if (userTrainings.docs.isNotEmpty) {
+      for (var doc in userTrainings.docs) {
+        // Extraer los datos del documento
+
+          String user = doc['user'];
+          String trainingId = doc['trainingId'];
+          String exerciseId = doc['exerciseId'];
+          String sessionId = doc['sessionId'];
+          String name = doc['name'];
+          bool timer = doc['timer'];
+          int color = doc['color'];
+          bool closed = doc['closed'];
+          DateTime creationDate = doc['creationDate'].toDate();
+         
+
+          // Crear un modelo ExerciseModel
+          ExerciseModel exerciseModel = ExerciseModel(
+            user:user,
+            trainingId: trainingId,
+            exerciseId: exerciseId,
+            sessionId: sessionId,
+            name:name,
+            timer: timer,
+            color: color,
+            closed: closed,
+            creationDate: creationDate
+            );
+
+          // Agregar el modelo a la lista
+          allExercises.add(exerciseModel);
+        
+
+        _dataLoaded = true;
+
+      }
+
+       
+      update();
+    }
+  }
+  // End readind data from Firebase
+
+
 
 //To show or not the clear icon
   bool isVisible = false;
@@ -97,30 +170,75 @@ class ExercisesController extends GetxController {
       required TrainingModel trainingModel,
       required int exerciseColor,
       required String user}) {
+
+    
     if (isTimer) {
+
+      String exerciseUniqueIdTimer = UniqueKey().toString();
       ExerciseModel newExercise = ExerciseModel(
         user: user,
         trainingId: trainingModel.trainingId,
-        exerciseId: UniqueKey().toString(),
+        exerciseId: exerciseUniqueIdTimer,
+        sessionId: '-',
         name: exerciseName,
         timer: isTimer,
         color: exerciseColor,
+        closed: false,
         creationDate: DateTime.now(),
       );
 
       allExercises.add(newExercise);
+      
+      //add training doc Firestore:
+
+        final data = {
+          "user": user, 
+          "trainingId": trainingModel.trainingId,
+          "exerciseId": exerciseUniqueIdTimer,
+          "sessionId": '-',
+          "name": exerciseName,
+          "timer": isTimer,
+          "color": exerciseColor,
+          "closed": false,
+          "creationDate": DateTime.now(),
+          
+          };
+
+        userExercisesData.add(data).then((documentSnapshot) =>
+        print("Added TIMER Data with ID: ${documentSnapshot.id}"));
+
     } else {
+      String exerciseUniqueIdRep = UniqueKey().toString();
       ExerciseModel newExercise = ExerciseModel(
         user: user,
         trainingId: trainingModel.trainingId,
-        exerciseId: UniqueKey().toString(),
+        exerciseId: exerciseUniqueIdRep,
+        sessionId: '-',
         name: exerciseName,
         timer: isTimer,
         color: exerciseColor,
+        closed: false,
         creationDate: DateTime.now(),
       );
 
       allExercises.add(newExercise);
+      //add training doc Firestore:
+
+        final data = {
+          "user": user, 
+          "trainingId": trainingModel.trainingId,
+          "exerciseId": exerciseUniqueIdRep,
+          "sessionId": '-',
+          "name": exerciseName,
+          "timer": isTimer,
+          "color": exerciseColor,
+          "closed": false,
+          "creationDate": DateTime.now(),
+          
+          };
+
+        userExercisesData.add(data).then((documentSnapshot) =>
+        print("Added REP Data with ID: ${documentSnapshot.id}"));
     }
 
     update();

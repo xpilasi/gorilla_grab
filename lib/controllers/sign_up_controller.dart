@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
-import 'package:gorilla_grab/widgets/snack_bars.dart';
+
 
 class SignUpController extends GetxController{
 
@@ -28,16 +28,9 @@ Future<void> createCollection() async {
       
     });
     userDocument.collection('trainings');
-    CollectionReference collectionExercises = userDocument.collection('exercises');
-    //userDocument.collection('exercises');
     userDocument.collection('sessions');
     userDocument.collection('records');
     
-    
-    
-    
-   
-
     print('All collections created successfully!');
   } catch (error) {
     print('Error creating collection: $error');

@@ -15,6 +15,7 @@ class TrainingController extends GetxController {
   final ExercisesController exercisesController =
       Get.put(ExercisesController());
 
+  //Firebase data:  
   late final db = FirebaseFirestore.instance;
   late final usersMap = db.collection('users');
   final userEmail = FirebaseAuth.instance.currentUser!.email;
@@ -24,18 +25,10 @@ class TrainingController extends GetxController {
       .doc(userEmail)
       .collection('trainings');
 
-  // late final userTrainingsFirestoreId = FirebaseFirestore.instance
-  //     .collection('users')
-  //     .doc(userEmail)
-  //     .collection('trainings');
-
-
-
-//final documentSnapshot = await docRef.get();
-
   List<TrainingModel> myTrainingsList = [];
 
-  // Nuevo código para leer desde Firebase
+  // Reading data from Firebase:
+
   bool _dataLoaded = false;
 
   @override
@@ -85,7 +78,7 @@ class TrainingController extends GetxController {
       update();
     }
   }
-  // Fin nuevo código
+  // End readind data from Firebase
 
   //To create new training:
   addNewTraining(
@@ -99,7 +92,7 @@ class TrainingController extends GetxController {
         name: trainingName,
         creationDate: DateTime.now(),
         color: trainingColor);
-    print(trainingColor);
+    
     myTrainingsList.add(newTraining);
 
     //add training doc Firestore:

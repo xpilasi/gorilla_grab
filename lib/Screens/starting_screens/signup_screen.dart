@@ -9,14 +9,13 @@ import 'package:gorilla_grab/constants/sizes.dart';
 import 'package:gorilla_grab/constants/text_styles.dart';
 import 'package:gorilla_grab/constants/variables.dart';
 import 'package:gorilla_grab/controllers/auth_controller.dart';
-import 'package:gorilla_grab/controllers/profile_controller.dart';
 import 'package:gorilla_grab/controllers/sign_up_controller.dart';
 import 'package:gorilla_grab/widgets/buttons.dart';
 import 'package:gorilla_grab/widgets/snack_bars.dart';
 
 class SignUpScreen extends StatelessWidget {
   SignUpScreen({Key? key}) : super(key: key);
-  //final ProfileController profileController = Get.put(ProfileController());
+  
   final AuthController authController = Get.put(AuthController());
   final SignUpController signUpController = Get.put(SignUpController());
   final TextEditingController emailController = TextEditingController();
@@ -38,7 +37,6 @@ class SignUpScreen extends StatelessWidget {
 
           //Create the user and collections
           signUpController.createCollection();
-
           
           //SnackBar confirmation:
           CustomSnackBarUserCreated()
