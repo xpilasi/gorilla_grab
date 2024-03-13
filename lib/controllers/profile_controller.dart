@@ -15,6 +15,8 @@ class ProfileController extends GetxController {
       .doc(userEmail)
       .collection('profile');
 
+  
+
 //Recovering profile data:
 
 // prueba
@@ -40,7 +42,10 @@ class ProfileController extends GetxController {
   };
 
   void _loadProfile() async {
+    print(userEmail.toString());
+
     final userProfile = await userProfileData.get();
+    print(userProfile);
     final profileDocument = userProfile.docs.first;
 
     profile['name'] = profileDocument['name'];

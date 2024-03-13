@@ -10,13 +10,14 @@ import 'package:gorilla_grab/constants/text_styles.dart';
 import 'package:gorilla_grab/constants/variables.dart';
 import 'package:gorilla_grab/controllers/auth_controller.dart';
 import 'package:gorilla_grab/controllers/profile_controller.dart';
+import 'package:gorilla_grab/controllers/sign_up_controller.dart';
 import 'package:gorilla_grab/widgets/buttons.dart';
 
 class SignUpScreen extends StatelessWidget {
   SignUpScreen({Key? key}) : super(key: key);
-  final ProfileController profileController = Get.put(ProfileController());
+  //final ProfileController profileController = Get.put(ProfileController());
   final AuthController authController = Get.put(AuthController());
-
+  final SignUpController signUpController = Get.put(SignUpController());
   final TextEditingController emailController = TextEditingController();
   final TextEditingController pswdController = TextEditingController();
   final TextEditingController pswdConfirmController = TextEditingController();
@@ -34,6 +35,12 @@ class SignUpScreen extends StatelessWidget {
             password: pswdController.text,
           );
 
+          //Create the user and collections
+          signUpController.createCollection();
+
+          //SnackBar confirmation:
+
+          
           return credential.user;
         } catch (e) {
           print('Some error -->$e');
