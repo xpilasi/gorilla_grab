@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
+import 'package:gorilla_grab/widgets/snack_bars.dart';
 
 class SignUpController extends GetxController{
 
@@ -14,6 +15,8 @@ Future<void> createCollection() async {
     // Create all collections:
     
     CollectionReference collectionRef = userDocument.collection('profile');
+
+    //Create profile initial data:
     await collectionRef.add({
       'name': 'John',
       'lastName': 'Doe',
@@ -25,12 +28,13 @@ Future<void> createCollection() async {
       
     });
     userDocument.collection('trainings');
-    userDocument.collection('exercises');
+    CollectionReference collectionExercises = userDocument.collection('exercises');
+    //userDocument.collection('exercises');
     userDocument.collection('sessions');
     userDocument.collection('records');
     
-    //Create profile initial data:
-
+    
+    
     
    
 

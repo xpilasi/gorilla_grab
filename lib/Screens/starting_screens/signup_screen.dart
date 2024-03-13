@@ -12,6 +12,7 @@ import 'package:gorilla_grab/controllers/auth_controller.dart';
 import 'package:gorilla_grab/controllers/profile_controller.dart';
 import 'package:gorilla_grab/controllers/sign_up_controller.dart';
 import 'package:gorilla_grab/widgets/buttons.dart';
+import 'package:gorilla_grab/widgets/snack_bars.dart';
 
 class SignUpScreen extends StatelessWidget {
   SignUpScreen({Key? key}) : super(key: key);
@@ -38,8 +39,12 @@ class SignUpScreen extends StatelessWidget {
           //Create the user and collections
           signUpController.createCollection();
 
+          
           //SnackBar confirmation:
-
+          CustomSnackBarUserCreated()
+          .showSnackbarUserCreated(
+            title: 'Welcome to GorillaGrab!', 
+            subtitle: '');
           
           return credential.user;
         } catch (e) {
