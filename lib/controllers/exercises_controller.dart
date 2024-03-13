@@ -39,7 +39,6 @@ class ExercisesController extends GetxController {
   List<ExerciseModel> allExercises = [];
 
   // Reading data from Firebase:
-
   bool _dataLoaded = false;
 
   @override
@@ -205,7 +204,8 @@ class ExercisesController extends GetxController {
           };
 
         userExercisesData.add(data).then((documentSnapshot) =>
-        print("Added TIMER Data with ID: ${documentSnapshot.id}"));
+
+        print("DOC ID: ${userExercisesData.doc(documentSnapshot.id)}  -  TRAINING ID: ${trainingModel.trainingId}"));
 
     } else {
       String exerciseUniqueIdRep = UniqueKey().toString();
@@ -248,12 +248,64 @@ class ExercisesController extends GetxController {
   void removeExercise({
     required ExerciseModel exerciseModel,
     //required TrainingModel trainingModel,
-  }) {
+  }) async {
     int ejIndex = allExercises.indexWhere(
       (id) => id.exerciseId == exerciseModel.exerciseId,
     );
 
     allExercises.removeAt(ejIndex);
+
+    String idExerciseCollection = exerciseModel.exerciseId;
+
+    CollectionReference exercisesRef = FirebaseFirestore.instance
+    .collection('users')
+    .doc(userEmail)
+    .collection('exercises');
+
+    QuerySnapshot querySnapshot = await exercisesRef.get();
+
+   for (DocumentSnapshot docSnapshot in querySnapshot.docs) {
+    
+   }
+
+    DocumentSnapshot? docSnapshotInside = null;
+    for (DocumentSnapshot docSnapshot in querySnapshot.docs) {
+      String idExerciseUnique = docSnapshot.id; // Assuming the ID is within the document
+      docSnapshotInside = await FirebaseFirestore.instance
+                                .collection('users')
+                                .doc(userEmail)
+                                .collection('exercises')
+                                .doc(idExerciseUnique)
+                                .get();
+
+      final docSnapshotForDelete =  FirebaseFirestore.instance
+                                    .collection('users')
+                                    .doc(userEmail)
+                                    .collection('exercises')
+                                    .doc(idExerciseUnique);
+                                
+
+    // Check and access data only after fetching
+      if (docSnapshotInside!.exists) {
+        Object? data = docSnapshotInside.data();
+        String exerciseIdData = (data as Map<String, dynamic>)['exerciseId'];
+
+        
+        if (exerciseIdData == idExerciseCollection) {
+
+          //Delete document Firebase
+          try{
+            docSnapshotForDelete.delete();
+            print(' Exercise DELETED');
+          }
+          catch(e){print(e);}
+        }else{}
+      } else {
+        print('Document Exercise not found'); // Handle non-existent document
+      }
+    
+    }
+
 
     update();
   }
