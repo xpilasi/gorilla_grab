@@ -155,10 +155,7 @@ class ProfileLabel extends StatelessWidget {
         int.parse(profileController.profile['climbingSince'].toString());
     return Container(
       decoration: const BoxDecoration(
-          gradient: LinearGradient(
-              colors: [tColorBottomSheet, tColorBottomSheet],
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter),
+          gradient: gradient3,
           borderRadius: BorderRadius.only(
               topLeft: Radius.circular(30), topRight: Radius.circular(30))),
       child: Padding(

@@ -1,6 +1,7 @@
 //Colors
 
 import 'package:flutter/material.dart';
+import 'package:gorilla_grab/constants/variables.dart';
 
 const Color tColorBlack = Color.fromARGB(255, 30, 30, 30);
 const Color tColorBlacky = Color.fromARGB(255, 79, 78, 78);
@@ -65,3 +66,9 @@ const LinearGradient gradient2 = LinearGradient(
     begin: Alignment.topLeft,
     end: Alignment.bottomRight,
     colors: [tColorBottomSheetG1, tColorBottomSheetG2]);
+
+const LinearGradient gradient3 = LinearGradient(
+    begin: Alignment.topLeft,
+    end: Alignment.centerRight,
+    stops:[0.2,0.9],
+    colors: [allAppBackground, allAppBackground]);

@@ -167,15 +167,8 @@ class ExercisesScreen extends StatelessWidget {
                                                         BorderRadius.circular(
                                                             30),
                                                     gradient:
-                                                        const LinearGradient(
-                                                            stops: [
-                                                          0.01,
-                                                          0.7
-                                                        ],
-                                                            colors: [
-                                                          tColorBottomSheetG1,
-                                                          tColorBottomSheetG1,
-                                                        ])),
+                                                        gradient2,
+                                                        ),
                                                 child: TextButton(
                                                   onPressed: () {},
                                                   child: Row(
@@ -253,10 +246,7 @@ class ExercisesScreen extends StatelessWidget {
               child: Container(
                 height: 380,
                 decoration: const BoxDecoration(
-                    gradient: LinearGradient(
-                        colors: [tColorBottomSheetG, tColorBottomSheet],
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter),
+                    gradient: gradient2,
                     borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(30),
                         topRight: Radius.circular(30))),
