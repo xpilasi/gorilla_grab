@@ -7,14 +7,11 @@ const Color tColorBlack = Color.fromARGB(255, 30, 30, 30);
 const Color tColorBlacky = Color.fromARGB(255, 79, 78, 78);
 const Color tColorBlackyLight = Color.fromARGB(255, 126, 126, 126);
 const Color tColorBlue = Color(0xFF5F98EE);
-//const Color tColorPrimary = Color(0xFF6C6AB8);
-//const Color tColorPrimary_2 = Color.fromARGB(255, 147, 144, 225);
 const Color tColorPrimaryHeavy = Color.fromARGB(255, 35, 34, 59);
 const Color tColorPrimaryLighter = Color(0xFFE9E9F4);
 const Color tColorGreen = Color(0xFF0FC16C);
 const Color tColorGreeny = Color(0xFF4AD96D);
 const Color tColorPink = Color(0xFFEE5F8A);
-//const Color tColorPinky = Color(0xFFEE5F8A);
 const Color tColorPinky = Color(0xFFF7AFC5);
 const Color tColorShadow = Color.fromARGB(255, 203, 202, 202);
 const Color tColorShadowy = Color(0xFF808086);
@@ -51,7 +48,6 @@ const Color tColorBox_3 = Color(0xFFE1F7FB);
 
 const Color tColorBottomSheet = Color(0xFF282A36);
 const Color tColorBottomSheetG = Color.fromARGB(255, 60, 63, 84);
-//const Color tColorBottomSheetG1 = Color.fromARGB(255, 46, 50, 66);
 const Color tColorBottomSheetG1 = Color.fromARGB(255, 60, 63, 84);
 const Color tColorBottomSheetG2 = Color.fromARGB(255, 43, 46, 61);
 
