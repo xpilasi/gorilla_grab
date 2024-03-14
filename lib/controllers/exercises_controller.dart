@@ -75,7 +75,7 @@ class ExercisesController extends GetxController {
             user:user,
             trainingId: trainingId,
             exerciseId: exerciseId,
-            sessionId: sessionId,
+            
             name:name,
             timer: timer,
             color: color,
@@ -178,7 +178,7 @@ class ExercisesController extends GetxController {
         user: user,
         trainingId: trainingModel.trainingId,
         exerciseId: exerciseUniqueIdTimer,
-        sessionId: '-',
+        
         name: exerciseName,
         timer: isTimer,
         color: exerciseColor,
@@ -213,7 +213,7 @@ class ExercisesController extends GetxController {
         user: user,
         trainingId: trainingModel.trainingId,
         exerciseId: exerciseUniqueIdRep,
-        sessionId: '-',
+        
         name: exerciseName,
         timer: isTimer,
         color: exerciseColor,

@@ -60,3 +60,8 @@ const LinearGradient gradient1 = LinearGradient(
     begin: Alignment.topLeft,
     end: Alignment.bottomRight,
     colors: [tColorPrimary, tColorPrimary_4]);
+
+const LinearGradient gradient2 = LinearGradient(
+    begin: Alignment.topLeft,
+    end: Alignment.bottomRight,
+    colors: [tColorBottomSheetG1, tColorBottomSheetG2]);

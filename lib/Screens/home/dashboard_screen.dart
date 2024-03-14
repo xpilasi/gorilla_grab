@@ -20,8 +20,8 @@ class DashBoardScreen extends StatelessWidget {
   final SessionsController sessionsController = Get.put(SessionsController());
   final TrainingController trainingController = Get.put(TrainingController());
   final ProfileController profileController = Get.put(ProfileController());
-  final PerformanceController performanceController =
-      Get.put(PerformanceController());
+  final PerformanceController performanceController = Get.put(PerformanceController());
+      
 
   @override
   Widget build(BuildContext context) {
@@ -98,8 +98,7 @@ class DashBoardScreen extends StatelessWidget {
                           //Last trainings
                           DbLastTrainingsPanel(
                               sessionsController: sessionsController,
-                              heighLastTrainingContainer:
-                                  heighLastTrainingContainer,
+                              heighLastTrainingContainer:heighLastTrainingContainer,                           
                               filter: filter,
                               performanceController: performanceController,
                               trainingController: trainingController),
@@ -434,7 +433,7 @@ class DbLastTrainingsPanel extends StatelessWidget {
                               height: 70,
                               width: 170,
                               decoration: BoxDecoration(
-                                  color: tColorBottomSheetG1,
+                                  gradient: gradient2,
                                   borderRadius:
                                       BorderRadius.circular(allBoxRadius)),
                               child: Stack(
@@ -445,7 +444,7 @@ class DbLastTrainingsPanel extends StatelessWidget {
                                     right: 15,
                                     child: Text(
                                       trainingFullDate,
-                                      style: tStyleDashBoardDate,
+                                      style: tStyleDashBoardTraining,
                                     ),
                                   ),
 

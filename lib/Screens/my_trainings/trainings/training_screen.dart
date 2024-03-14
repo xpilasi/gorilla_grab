@@ -77,6 +77,8 @@ class TrainingsScreen extends StatelessWidget {
                 )
               : Stack(
                   children: [
+
+                    //"My trainings title"
                     Positioned(
                       top: 0,
                       right: 0,
@@ -86,6 +88,8 @@ class TrainingsScreen extends StatelessWidget {
                           height: 100,
                           child: const HeaderForMenu(title: 'My trainings')),
                     ),
+                    
+                    //Training List
                     Positioned(
                       top: 80,
                       right: 0,
@@ -106,19 +110,14 @@ class TrainingsScreen extends StatelessWidget {
                               height: 100,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(20),
-                                gradient: const LinearGradient(
-                                    colors: [
-                                      tColorBottomSheetG1,
-                                      tColorBottomSheetG1,
+                              
+                                // gradient:  RadialGradient(
+                                //     colors: [tColorShadowy.withOpacity(1),tColorBottomSheetG1,],
+                                //     stops:  [0.0001,0.4,],
+                                //     center: Alignment(-0.9, -0.7),
+                                //     radius: 0.6),
 
-                                      //tColorBottomSheet
-                                    ],
-                                    stops: [
-                                      0.001,
-                                      0.5,
-                                    ],
-                                    begin: Alignment.centerLeft,
-                                    end: Alignment.centerRight),
+                                gradient: gradient2
                               ),
                               child: Stack(
                                 children: [

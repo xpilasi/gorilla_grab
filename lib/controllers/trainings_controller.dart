@@ -86,9 +86,11 @@ class TrainingController extends GetxController {
       required int trainingColor,
       required String user})  {
 
+    String trainingkey = UniqueKey().toString();
+
     TrainingModel newTraining = TrainingModel(
         user: user,
-        trainingId: UniqueKey().toString(),
+        trainingId: trainingkey,
         name: trainingName,
         creationDate: DateTime.now(),
         color: trainingColor);
@@ -98,7 +100,7 @@ class TrainingController extends GetxController {
     //add training doc Firestore:
     final data = {
       "user": user, 
-      "trainingId": UniqueKey().toString(),
+      "trainingId": trainingkey,
       "name": trainingName,
       "creationDate": DateTime.now(),
       "color": trainingColor,

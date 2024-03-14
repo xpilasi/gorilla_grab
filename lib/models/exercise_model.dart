@@ -2,7 +2,7 @@ class ExerciseModel {
   final String user;
   final String trainingId;
   final String exerciseId;
-  late final String sessionId;
+  String sessionId = '-';
   final String name;
   final bool timer;
   final int color;
@@ -13,7 +13,7 @@ class ExerciseModel {
     required this.user,
     required this.trainingId,
     required this.exerciseId,
-    required this.sessionId,
+    //required this.sessionId,
     required this.name,
     required this.timer,
     required this.closed,
