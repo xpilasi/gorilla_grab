@@ -330,6 +330,7 @@ const TextStyle tStyleBottomSheetSmaller = TextStyle(
     letterSpacing: 0);
 const TextStyle tStyleBottomSheetHighlighted = TextStyle(
     color: tColorPinky,
+    height: 1,
     fontSize: 16,
     fontFamily: fontButtons,
     fontWeight: FontWeight.w400,

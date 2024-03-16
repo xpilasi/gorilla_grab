@@ -682,122 +682,30 @@ class ExercisesController extends GetxController {
         context: context,
         builder: (BuildContext context) {
           return SingleChildScrollView(
-            child: Container(
-              //color: tColorBlue,
-              padding: EdgeInsets.only(
-                  bottom: MediaQuery.of(context).viewInsets.bottom),
-              //width: 300,
-              child: Container(
-                padding: EdgeInsets.symmetric(horizontal: 30),
-                child: Padding(
-                  padding: const EdgeInsets.only(bottom: 50.0),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      //Main text
-                      SizedBox(
-                        height: 70,
-                        width: double.infinity,
-                        child: Column(
-                          children: [
-                            const Text(
-                              tTextCloseConfirmationSession,
-                              softWrap: true,
-                              style: tStyleBottomSheetSmaller,
-                            ),
-                            Container(
-                              color: tColorBlue,
-                              height: 50,
-                              child: Row(
-                                children: [
-                                  Icon(
-                                    Icons.warning_amber_rounded,
-                                    color: tColorPinky,
-                                  ),
-                                  Text(
-                                    softWrap: true,
-                                    overflow: TextOverflow.visible,
-                                    tTextCloseConfirmationSessionAd,
-                                    style: tStyleBottomSheetHighlighted,
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
+            child: BottomSheetSaveSession(
+              onPressed: () {
 
-                      const SizedBox(
-                        height: 10,
-                      ),
+                  String comment = commentController.text;
 
-                      //Session Comment
-                      Container(
-                        height: 90,
-                        decoration: BoxDecoration(
-                            color: tColorBottomSheetG,
-                            borderRadius: BorderRadius.circular(20)),
-                        child: TextField(
-                          textCapitalization: TextCapitalization.sentences,
-                          style: tStyleBottomSheetComment,
-                          controller: commentController,
-                          decoration: const InputDecoration(
-                            contentPadding: EdgeInsets.all(16),
-                            // filled: true,
-                            // fillColor: tColorBottomSheetG1,
-                            hintText: 'Add any final comment here.',
-                            hintStyle: tStyleBottomSheetCommentHint,
+                  comment.isEmpty
+                      ? comment = ' - '
+                      : comment = comment;
 
-                            border: InputBorder.none,
-                          ),
-                        ),
-                      ),
-                      const SizedBox(height: 20),
+                  saveTrainingSession(
+                      trainingModel: trainingModel,
+                      exercisesSession:
+                          provisionalExercisesSession,
+                      comment: comment);
 
-                      //Buttons
-                      SizedBox(
-                        width: double.infinity,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            CustomButtonBottomCancel(
-                                heigh: 50,
-                                width: 160,
-                                text: tTextCancel,
-                                onPressed: () {
-                                  Get.back();
-                                }),
-                            CustomButtonBottomSheet(
-                                heigh: 50,
-                                width: 160,
-                                text: tButtonSaveSession,
-                                onPressed: () {
-                                  String comment = commentController.text;
-
-                                  comment.isEmpty
-                                      ? comment = ' - '
-                                      : comment = comment;
-                                  saveTrainingSession(
-                                      trainingModel: trainingModel,
-                                      exercisesSession:
-                                          provisionalExercisesSession,
-                                      comment: comment);
-                                  removeExercisesSessionProvisional(
-                                      trainingModel: trainingModel,
-                                      exercisesSession:
-                                          provisionalExercisesSession);
-                                  Get.to(() => ExercisesScreen(
-                                        trainingModel: trainingModel,
-                                      ));
-                                })
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-              ),
-            ),
+                  removeExercisesSessionProvisional(
+                      trainingModel: trainingModel,
+                      exercisesSession:
+                          provisionalExercisesSession);
+                          
+                  Get.to(() => ExercisesScreen(trainingModel: trainingModel));
+              },
+            )
+            
           );
         });
   }
