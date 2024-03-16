@@ -18,6 +18,7 @@ import 'package:gorilla_grab/constants/variables.dart';
 import 'package:gorilla_grab/controllers/performance_controller.dart';
 import 'package:gorilla_grab/controllers/records_controller.dart';
 import 'package:gorilla_grab/controllers/sessions_controller.dart';
+import 'package:gorilla_grab/widgets/bottom_sheets.dart';
 import 'package:gorilla_grab/widgets/buttons.dart';
 
 class ExercisesController extends GetxController {
@@ -465,60 +466,19 @@ class ExercisesController extends GetxController {
     showModalBottomSheet(
         backgroundColor: tColorBottomSheet,
         showDragHandle: true,
-        //barrierColor: tColorWhite,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
         context: context,
         builder: (BuildContext context) {
-          return SizedBox(
-            width: 340,
-            child: Padding(
-              padding: const EdgeInsets.only(bottom: 50.0),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  const SizedBox(
-                    height: 40,
-                    width: double.infinity,
-                    child: Text(
-                      tTextRemoveConfirmation,
-                      style: tStyleBottomSheet,
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  SizedBox(
-                    width: double.infinity,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        CustomButtonBottomCancel(
-                            heigh: 50,
-                            width: 160,
-                            text:
-                                //tTextCancel,
-                                'TEEST',
-                            onPressed: () {
-                              Get.back();
-                            }),
-                        CustomButtonBottomSheet(
-                            heigh: 50,
-                            width: 160,
-                            text: tTextRemove,
-                            onPressed: () {
-                              removeExercise(
-                                exerciseModel: exerciseModel,
-                              );
-                              Get.back();
-                            })
-                      ],
-                    ),
-                  )
-                ],
-              ),
-            ),
-          );
-        });
+
+            return BottomSheetContentDelete(
+              object: 'exercise',
+              onPressedCancel: ()=>Get.back(),
+              onPressedOk: (){
+                removeExercise(exerciseModel: exerciseModel);
+                Get.back();} ,
+              );
+        }
+    );            
   }
 
 //To deploy bottomSheet: session finished remove
