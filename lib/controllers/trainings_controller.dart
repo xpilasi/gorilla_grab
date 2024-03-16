@@ -8,6 +8,7 @@ import 'package:gorilla_grab/Screens/my_trainings/trainings/edit_training_screen
 import 'package:gorilla_grab/constants/colors.dart';
 import 'package:gorilla_grab/constants/text_styles.dart';
 import 'package:gorilla_grab/controllers/exercises_controller.dart';
+import 'package:gorilla_grab/widgets/bottom_sheets.dart';
 import '../models/training_model.dart';
 import '../widgets/buttons.dart';
 
@@ -273,53 +274,19 @@ class TrainingController extends GetxController {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
         context: context,
         builder: (BuildContext context) {
-          return SizedBox(
-            //width: 340,
-            child: Padding(
-              padding: const EdgeInsets.only(bottom: 50.0, right:30,left:30),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  const SizedBox(
-                    height: 40,
-                    width: double.infinity,
-                    child: Text(
-                      "Do you want to remove this training?",
-                      style: tStyleInputButton,
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  SizedBox(
-                    width: double.infinity,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        CustomButtonBottomCancel(
-                            heigh: 40,
-                            width: 160,
-                            text: "CANCEL",
-                            onPressed: () {
-                              Get.back();
-                            }),
-                        CustomButtonBottomSheet(
-                            heigh: 40,
-                            width: 160,
-                            text: "DELETE",
-                            onPressed: () {
+
+          return BottomSheetContentDelete(
+            object: 'training' ,
+            onPressedCancel: ()=>Get.back() ,
+            onPressedOk: () {
                               removeTraining(trainingModel: trainingModel);
                               Get.to(() => DashBoardHomeScreen());
                               update();
-                            })
-                      ],
-                    ),
-                  )
-                ],
-              ),
-            ),
+        
+            }
           );
-        });
+        }
+    );
   }
 
 //to get timerExercises:
