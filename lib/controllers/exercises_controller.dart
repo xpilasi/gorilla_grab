@@ -472,11 +472,11 @@ class ExercisesController extends GetxController {
 
             return BottomSheetContentDelete(
               object: 'exercise',
-              onPressedCancel: ()=>Get.back(),
               onPressedOk: (){
                 removeExercise(exerciseModel: exerciseModel);
-                Get.back();} ,
-              );
+                Get.back();
+              } ,
+            );
         }
     );            
   }
@@ -484,66 +484,24 @@ class ExercisesController extends GetxController {
 //To deploy bottomSheet: session finished remove
   void confirmRemoveMenuSessionFinished(
       {required BuildContext context,
-      //required ProvisionalExercisesSession exercisesSession,
       required TrainingModel trainingModel,
       required SessionFinished sessionFinished}) {
     showModalBottomSheet(
         backgroundColor: tColorBottomSheet,
         showDragHandle: true,
-        //barrierColor: tColorWhite,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
         context: context,
         builder: (BuildContext context) {
-          return SizedBox(
-            //width: 340,
-            child: Padding(
-              padding: const EdgeInsets.only(bottom: 50.0, right: 30, left: 30),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  const SizedBox(
-                    height: 40,
-                    width: double.infinity,
-                    child: Text(
-                      tTextRemoveConfirmationSession,
-                      style: tStyleBottomSheet,
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  SizedBox(
-                    width: double.infinity,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        CustomButtonBottomCancel(
-                            heigh: 50,
-                            width: 160,
-                            text: tTextCancel,
-                            onPressed: () {
-                              Get.back();
-                            }),
-                        CustomButtonBottomSheet(
-                            heigh: 50,
-                            width: 160,
-                            text: tTextDelete,
-                            onPressed: () {
-                              removeExercisesSessionFinished(
-                                sessionFinished: sessionFinished,
-                              );
-                              Get.to(() => ExercisesScreen(
-                                    trainingModel: trainingModel,
-                                  ));
-                            })
-                      ],
-                    ),
-                  )
-                ],
-              ),
-            ),
-          );
-        });
+
+            return BottomSheetContentDelete(
+              object: 'session',
+              onPressedOk:() {
+                  removeExercisesSessionFinished(sessionFinished: sessionFinished);
+                  Get.to(() => ExercisesScreen(trainingModel: trainingModel)); 
+              } ,
+            );
+        }
+    );
   }
 
 //To deploy bottomSheet: session provisional remove
@@ -555,61 +513,22 @@ class ExercisesController extends GetxController {
     showModalBottomSheet(
         backgroundColor: tColorBottomSheet,
         showDragHandle: true,
-        
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
         context: context,
         builder: (BuildContext context) {
-          return SizedBox(
-            
-            child: Padding(
-              padding: const EdgeInsets.only(bottom: 50.0, right: 30, left: 30),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  const SizedBox(
-                    height: 40,
-                    width: double.infinity,
-                    child: Text(
-                      tTextRemoveConfirmationSession,
-                      style: tStyleBottomSheet,
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  SizedBox(
-                    width: double.infinity,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        CustomButtonBottomCancel(
-                            heigh: 50,
-                            width: 160,
-                            text: tTextCancel,
-                            onPressed: () {
-                              Get.back();
-                            }),
-                        CustomButtonBottomSheet(
-                            heigh: 50,
-                            width: 160,
-                            text: tTextDelete,
-                            onPressed: () {
-                              removeExercisesSessionProvisional(
-                                trainingModel: trainingModel,
-                                exercisesSession: exercisesSession,
-                              );
-                              Get.to(() => ExercisesScreen(
-                                    trainingModel: trainingModel,
-                                  ));
-                            })
-                      ],
-                    ),
-                  )
-                ],
-              ),
-            ),
+
+          return BottomSheetContentDelete(
+            object: 'session',
+            onPressedOk:() {
+                removeExercisesSessionProvisional(
+                  trainingModel: trainingModel,
+                  exercisesSession: exercisesSession,
+                );
+                Get.to(() => ExercisesScreen(trainingModel: trainingModel,));
+            } ,
           );
-        });
+        }
+    );
   }
 
 //To save the session

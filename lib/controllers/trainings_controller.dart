@@ -276,11 +276,10 @@ class TrainingController extends GetxController {
 
           return BottomSheetContentDelete(
             object: 'training' ,
-            onPressedCancel: ()=>Get.back() ,
             onPressedOk: () {
-                              removeTraining(trainingModel: trainingModel);                            
-                              Get.to(() => DashBoardHomeScreen());
-                              update();
+                removeTraining(trainingModel: trainingModel);                            
+                Get.to(() => DashBoardHomeScreen());
+                update();
             });});
   }
 

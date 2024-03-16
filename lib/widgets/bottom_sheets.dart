@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:gorilla_grab/constants/text_styles.dart';
 import 'package:gorilla_grab/constants/texts.dart';
 import 'package:gorilla_grab/widgets/buttons.dart';
@@ -7,11 +8,10 @@ class BottomSheetContentDelete
  extends StatelessWidget {
 
   final String object;
-  final void Function()? onPressedCancel;
   final void Function()? onPressedOk;
    // ignore: prefer_const_constructors_in_immutables
    BottomSheetContentDelete
-  ({super.key, required this.object,this.onPressedCancel, this.onPressedOk});
+  ({super.key, required this.object, this.onPressedOk});
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +43,7 @@ class BottomSheetContentDelete
                             heigh: 50,
                             width: 160,
                             text: tTextCancel,
-                            onPressed: onPressedCancel),
+                            onPressed: ()=>Get.back()),
                             
                         CustomButtonBottomSheet(
                             heigh: 50,
