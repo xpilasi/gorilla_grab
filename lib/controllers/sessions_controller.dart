@@ -1,14 +1,125 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
+import 'package:gorilla_grab/models/exercise_model.dart';
 import 'package:gorilla_grab/models/session_provisional_model.dart';
 import 'package:gorilla_grab/models/session_finished_model.dart';
 import 'package:gorilla_grab/models/training_model.dart';
 
 class SessionsController extends GetxController {
+
+//Firebase data:  
+  late final db = FirebaseFirestore.instance;
+  late final usersMap = db.collection('users');
+  final userEmail = FirebaseAuth.instance.currentUser!.email;
+
+  late final userprovisionalSessionsData = FirebaseFirestore.instance
+      .collection('users')
+      .doc(userEmail)
+      .collection('provisionalSessions');
+
+  late final userfinalSessionsData = FirebaseFirestore.instance
+      .collection('users')
+      .doc(userEmail)
+      .collection('finalSessions');
+
 //Sessions Backlog:
 
   List<SessionFinished> allSessions = [];
 
   List<ProvisionalExercisesSession> provisionalSessions = [];
+
+// Reading data from Firebase:
+
+  bool _dataLoaded = false;
+
+  @override
+  void onInit() {
+    super.onInit();
+
+    _loadProvisionalSessions();
+  }
+
+  void _loadProvisionalSessions() async {
+    if (_dataLoaded) {
+      return;
+    }
+
+    final userProvisionalSessions = await userprovisionalSessionsData.get();
+
+    if (userProvisionalSessions.docs.isNotEmpty) {
+      for (var doc in userProvisionalSessions.docs) {
+        // Extraer los datos del documento
+
+          String trainingId = doc['trainingId'];
+          String exerciseSessionId =  doc['exercisesSessionId'];
+          DateTime exercisesSessionDate = doc['exercisesSessionDate'].toDate();
+
+          //The exercises list is empty gor the moment:
+          List<ExerciseModel> exercisesProvisionalSessionList =  [];
+
+          //Extract the collection
+          late final exercisesSessionData = 
+                            FirebaseFirestore.instance
+                            .collection('users')
+                            .doc(userEmail)
+                            .collection('provisionalSessions')
+                            .doc(exerciseSessionId)
+                            .collection('provisionalSession1');
+          
+          //Get data:
+          final exercisesSessionDataCollection = await exercisesSessionData.get();
+
+          if(exercisesSessionDataCollection.docs.isNotEmpty){
+            for(var doc in exercisesSessionDataCollection.docs){
+
+                String user = doc['user'];
+                String trainingId = doc['trainingId'];
+                String exerciseId = doc['exerciseId'];
+                String sessionId = doc['sessionId'];
+                String name = doc['name'];
+                bool timer = doc['timer'];
+                int color = doc['color'];
+                bool closed = doc['closed'];
+                DateTime creationDate = doc['creationDate'].toDate();
+         
+                // Crear un modelo ExerciseModel
+                ExerciseModel exerciseModel = ExerciseModel(
+                  user:user,
+                  trainingId: trainingId,
+                  exerciseId: exerciseId,
+                  name:name,
+                  timer: timer,
+                  color: color,
+                  closed: closed,
+                  creationDate: creationDate
+                  );
+
+              exercisesProvisionalSessionList.add(exerciseModel);
+            }
+          }
+
+          // Crear un modelo TrainingModel
+          ProvisionalExercisesSession provisionalExercisesSession = ProvisionalExercisesSession(
+            trainingId: trainingId,
+            exercisesSessionId: exerciseSessionId,
+            exercisesSessionDate:exercisesSessionDate,
+            exercisesSessionExercises: exercisesProvisionalSessionList,
+            
+          );
+
+          // Agregar el modelo a la lista
+          provisionalSessions.add(provisionalExercisesSession);
+        
+        _dataLoaded = true;
+
+      }   
+      update();
+    }
+  }
+  // End readind data from Firebase
+
+
 
 //Get the provisional session
   ProvisionalExercisesSession getProvisionalSession(

@@ -45,19 +45,18 @@ class ExercisesController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-
-    _loadTrainings();
+    _loadExercises();
   }
 
-  void _loadTrainings() async {
+  void _loadExercises() async {
     if (_dataLoaded) {
       return;
     }
 
-    final userTrainings = await userExercisesData.get();
+    final userExercises = await userExercisesData.get();
 
-    if (userTrainings.docs.isNotEmpty) {
-      for (var doc in userTrainings.docs) {
+    if (userExercises.docs.isNotEmpty) {
+      for (var doc in userExercises.docs) {
         // Extraer los datos del documento
 
           String user = doc['user'];
@@ -76,7 +75,6 @@ class ExercisesController extends GetxController {
             user:user,
             trainingId: trainingId,
             exerciseId: exerciseId,
-            
             name:name,
             timer: timer,
             color: color,
@@ -701,7 +699,7 @@ class ExercisesController extends GetxController {
                       trainingModel: trainingModel,
                       exercisesSession:
                           provisionalExercisesSession);
-                          
+
                   Get.to(() => ExercisesScreen(trainingModel: trainingModel));
               },
             )
