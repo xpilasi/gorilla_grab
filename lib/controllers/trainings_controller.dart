@@ -6,11 +6,10 @@ import 'package:gorilla_grab/Screens/home/dashboard_home_screen.dart';
 import 'package:gorilla_grab/models/exercise_model.dart';
 import 'package:gorilla_grab/Screens/my_trainings/trainings/edit_training_screen%20copy.dart';
 import 'package:gorilla_grab/constants/colors.dart';
-import 'package:gorilla_grab/constants/text_styles.dart';
 import 'package:gorilla_grab/controllers/exercises_controller.dart';
 import 'package:gorilla_grab/widgets/bottom_sheets.dart';
 import '../models/training_model.dart';
-import '../widgets/buttons.dart';
+
 
 class TrainingController extends GetxController {
   final ExercisesController exercisesController =
