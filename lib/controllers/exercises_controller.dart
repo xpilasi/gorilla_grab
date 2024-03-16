@@ -97,8 +97,6 @@ class ExercisesController extends GetxController {
   }
   // End readind data from Firebase
 
-
-
 //To show or not the clear icon
   bool isVisible = false;
   void showClearIcon({required String isFilled}) {
@@ -162,7 +160,7 @@ class ExercisesController extends GetxController {
     return textStyle;
   }
 
-//To create new exercise
+//To create new exercise: FB OK
   void addNewExercise(
       {required String exerciseName,
       required bool isTimer,
@@ -244,7 +242,7 @@ class ExercisesController extends GetxController {
     update();
   }
 
-//To remove exercise:
+//To remove exercise: FB OK
   void removeExercise({
     required ExerciseModel exerciseModel,
     //required TrainingModel trainingModel,
@@ -597,12 +595,12 @@ class ExercisesController extends GetxController {
     showModalBottomSheet(
         backgroundColor: tColorBottomSheet,
         showDragHandle: true,
-        //barrierColor: tColorWhite,
+        
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
         context: context,
         builder: (BuildContext context) {
           return SizedBox(
-            //width: 340,
+            
             child: Padding(
               padding: const EdgeInsets.only(bottom: 50.0, right: 30, left: 30),
               child: Column(

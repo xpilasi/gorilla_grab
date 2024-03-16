@@ -49,8 +49,6 @@ class TrainingController extends GetxController {
       for (var doc in userTrainings.docs) {
         // Extraer los datos del documento
 
-        
-
           String trainingId = doc['trainingId'];
           String name = doc['name'];
           String user = doc['user'];
@@ -69,18 +67,15 @@ class TrainingController extends GetxController {
           // Agregar el modelo a la lista
           myTrainingsList.add(trainingModel);
         
-
         _dataLoaded = true;
 
-      }
-
-       
+      }   
       update();
     }
   }
   // End readind data from Firebase
 
-  //To create new training:
+  //To create new training:FB OK
   addNewTraining(
       {required String trainingName,
       required int trainingColor,
@@ -113,7 +108,7 @@ class TrainingController extends GetxController {
     update();
   }
 
-  //To update the training:
+  //To update the training: FB OK
   updateTraining({
     required TrainingModel trainingModel,
     required String newName,
@@ -179,7 +174,7 @@ class TrainingController extends GetxController {
     update();
   }
 
-  //To remove the training:
+  //To remove the training: FB OK
   removeTraining({required TrainingModel trainingModel})async {
     int trainingIndex = myTrainingsList.indexWhere(
       (training) => training.trainingId == trainingModel.trainingId,
@@ -216,7 +211,6 @@ class TrainingController extends GetxController {
                                     .collection('trainings')
                                     .doc(idTrainingUnique);
                                 
-
     // Check and access data only after fetching
       if (docSnapshotInside!.exists) {
         Object? data = docSnapshotInside.data();
@@ -256,6 +250,7 @@ class TrainingController extends GetxController {
     }
   }
 
+//To deploy options menu
   void handleMenuOptionSelected(String option, int index, BuildContext context,
       TrainingModel trainingModel) {
     if (option == 'Edit') {
@@ -279,9 +274,9 @@ class TrainingController extends GetxController {
         context: context,
         builder: (BuildContext context) {
           return SizedBox(
-            width: 340,
+            //width: 340,
             child: Padding(
-              padding: const EdgeInsets.only(bottom: 50.0),
+              padding: const EdgeInsets.only(bottom: 50.0, right:30,left:30),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
