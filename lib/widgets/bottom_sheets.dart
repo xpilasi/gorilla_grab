@@ -43,13 +43,13 @@ class BottomSheetContentDelete
                             heigh: 50,
                             width: 160,
                             text: tTextCancel,
-                            onPressed: () {onPressedCancel; }),
+                            onPressed: onPressedCancel),
                             
                         CustomButtonBottomSheet(
                             heigh: 50,
                             width: 160,
                             text: tTextDelete,
-                            onPressed: () {onPressedOk; })
+                            onPressed: onPressedOk)
                       ],
                     ),
                   )
