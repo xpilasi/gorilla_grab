@@ -13,13 +13,12 @@ import 'package:gorilla_grab/Screens/my_trainings/exercises/exercises_screen.dar
 import 'package:gorilla_grab/Screens/my_trainings/session/training_session_provisional_screen.dart';
 import 'package:gorilla_grab/constants/colors.dart';
 import 'package:gorilla_grab/constants/text_styles.dart';
-import 'package:gorilla_grab/constants/texts.dart';
 import 'package:gorilla_grab/constants/variables.dart';
 import 'package:gorilla_grab/controllers/performance_controller.dart';
 import 'package:gorilla_grab/controllers/records_controller.dart';
 import 'package:gorilla_grab/controllers/sessions_controller.dart';
 import 'package:gorilla_grab/widgets/bottom_sheets.dart';
-import 'package:gorilla_grab/widgets/buttons.dart';
+                            
 
 class ExercisesController extends GetxController {
   final SessionsController sessionsController = Get.put(SessionsController());
