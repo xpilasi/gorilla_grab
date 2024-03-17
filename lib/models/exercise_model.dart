@@ -13,7 +13,6 @@ class ExerciseModel {
     required this.user,
     required this.trainingId,
     required this.exerciseId,
-    //required this.sessionId,
     required this.name,
     required this.timer,
     required this.closed,

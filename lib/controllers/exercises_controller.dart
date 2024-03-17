@@ -384,6 +384,8 @@ class ExercisesController extends GetxController {
             exercisesSessionExercises: exercisesList);
 
     sessionsController.provisionalSessions.add(newExercisesSession);
+
+    //Link to add within Firestore
     sessionsController.addFirestoreProvisionalSessionData(
       trainingId: trainingModel.trainingId,
       exerciseSessionId: sessionId, 
@@ -558,13 +560,17 @@ class ExercisesController extends GetxController {
     String endTime = time.toString().substring(11, 16);
 
     //Creates finished session with the provisional session info:
+    String sessionId = UniqueKey().toString();
+    DateTime createdAt = DateTime.now();
+    String sessionDuration = sessionsController.calculateSessionTime(
+                             startTime: startTime, endTime: endTime);
+
     SessionFinished newSessionFinished = SessionFinished(
-        sessionId: UniqueKey().toString(),
-        createdAt: DateTime.now(),
+        sessionId: sessionId,
+        createdAt: createdAt,
         startTime: startTime,
         endTime: endTime,
-        sessionDuration: sessionsController.calculateSessionTime(
-            startTime: startTime, endTime: endTime),
+        sessionDuration: sessionDuration,
         trainingId: trainingModel.trainingId,
         trainingName: trainingModel.name,
         exercisesListFinished: selectedSession.exercisesSessionExercises,
@@ -572,6 +578,18 @@ class ExercisesController extends GetxController {
 
     //Adds the finished session to the finished sessions list:
     sessionsController.allSessions.add(newSessionFinished);
+
+    //Link to add the final Session within Firestore:
+    sessionsController.addFirestoreFinalSessionData(
+      sessionId: sessionId, 
+      createdAt: createdAt, 
+      startTime: startTime, 
+      endTime: endTime, 
+      sessionDuration: sessionDuration, 
+      trainingId: trainingModel.trainingId, 
+      trainingName: trainingModel.name, 
+      exercisesSessionExercises: selectedSession.exercisesSessionExercises, 
+      sessionComment: comment);
 
 // -- Records data
 

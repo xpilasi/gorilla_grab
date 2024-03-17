@@ -15,12 +15,12 @@ class SessionsController extends GetxController {
   late final usersMap = db.collection('users');
   final userEmail = FirebaseAuth.instance.currentUser!.email;
 
-  late final userprovisionalSessionsData = FirebaseFirestore.instance
+  late final userProvisionalSessionsData = FirebaseFirestore.instance
       .collection('users')
       .doc(userEmail)
       .collection('provisionalSessions');
 
-  late final userfinalSessionsData = FirebaseFirestore.instance
+  late final userFinalSessionsData = FirebaseFirestore.instance
       .collection('users')
       .doc(userEmail)
       .collection('finalSessions');
@@ -47,7 +47,7 @@ class SessionsController extends GetxController {
       return;
     }
 
-    final userProvisionalSessions = await userprovisionalSessionsData.get();
+    final userProvisionalSessions = await userProvisionalSessionsData.get();
 
     if (userProvisionalSessions.docs.isNotEmpty) {
       for (var doc in userProvisionalSessions.docs) {
@@ -55,7 +55,7 @@ class SessionsController extends GetxController {
 
           String trainingId = doc['trainingId'];
           String exerciseSessionId =  doc['exerciseSessionId'];
-          DateTime exercisesSessionDate = doc['exercisesSessionDate'].toDate();
+          DateTime exercisesSessionDate = doc['exerciseSessionDate'].toDate();
 
           //The exercises list is empty gor the moment:
           List<ExerciseModel> exercisesProvisionalSessionList =  [];
@@ -120,18 +120,15 @@ class SessionsController extends GetxController {
       update();
     }
   }
-  // End readind data from Firebase
+  // End reading data from Firebase
 
-//Adding Firestore provisionalSession data:
-
+//Adding Firestore provisionalSession data: OK
 void addFirestoreProvisionalSessionData({
   required String trainingId,
   required String exerciseSessionId,
   required DateTime exercisesSessionDate,
   required List<ExerciseModel>  exercisesSessionExercises,
 }){
-
-
 
   final provisionalSessionData = {
     'trainingId' : trainingId,
@@ -141,38 +138,131 @@ void addFirestoreProvisionalSessionData({
 
   //Adding data to de document
   String docId = '-';
-  userprovisionalSessionsData.add(provisionalSessionData).then((documentSnapshot){
-  docId = documentSnapshot.id;
-  print('doc founded ${documentSnapshot.id} '); 
+  userProvisionalSessionsData.add(provisionalSessionData).then((documentSnapshot){
+    docId = documentSnapshot.id;
 
     //Adding data to the collection
-  final provisionalSessionsExercisesCollection = 
-              userprovisionalSessionsData
-              .doc(docId)
-              .collection(exerciseSessionId);
+    final provisionalSessionsExercisesCollection = 
+                userProvisionalSessionsData
+                .doc(docId)
+                .collection(exerciseSessionId);
 
-  for(var exercise in exercisesSessionExercises){
+    for(var exercise in exercisesSessionExercises){
 
-      final individualExerciseSessionData = {
-        'user': exercise.user,
-        'trainingId' :exercise.trainingId,
-        'exerciseId' : exercise.exerciseId,
-        'sessionId' : exercise.sessionId,
-        'name': exercise.name,
-        'timer': exercise.timer,
-        'color': exercise.color,
-        'closed': exercise.closed,
-        'creationDate': exercise.creationDate
-      };
+        final individualExerciseSessionData = {
+          'user': exercise.user,
+          'trainingId' :exercise.trainingId,
+          'exerciseId' : exercise.exerciseId,
+          'sessionId' : exercise.sessionId,
+          'name': exercise.name,
+          'timer': exercise.timer,
+          'color': exercise.color,
+          'closed': exercise.closed,
+          'creationDate': exercise.creationDate
+        };
 
-      provisionalSessionsExercisesCollection.add(individualExerciseSessionData);
-      print('Exercise "${exercise.name}" ADDED to Firestore');
+        provisionalSessionsExercisesCollection.add(individualExerciseSessionData);
 
-  }
+    }
   });
-  
-  
+}
 
+//Removing all the Firestore provisional Data deleting the document: OK
+Future<void> removeFirestoreProvisionalSessionData() async {
+
+ // Obtener el id doc de la colección:
+  QuerySnapshot querySnapForIterate = await userProvisionalSessionsData.get();
+  String docId = '';
+  String provisionalCollectionId = '';
+
+  for (var doc in querySnapForIterate.docs){
+    docId = doc.id; 
+  }
+
+  // Extract the provisionalSession Id
+  for (var doc in querySnapForIterate.docs) {
+    provisionalCollectionId =  doc['exerciseSessionId'];
+  }
+ 
+  final docRef = userProvisionalSessionsData.doc(docId);
+  DocumentSnapshot docSnap = await docRef.get();
+ 
+  // Enter inside the collection
+  QuerySnapshot queryForDelete = await userProvisionalSessionsData
+                                .doc(docId)
+                                .collection(provisionalCollectionId)
+                                .get();
+  
+  //Delete each data inside the collection
+  for(var doc in queryForDelete.docs){
+    doc.reference.delete();
+  }
+  //Delete the document itself
+  userProvisionalSessionsData.doc(docId).delete();
+}
+
+//Adding Firestore finalSession data: NOT READING FROM FIREBASE, JUST WRITING
+Future<void> addFirestoreFinalSessionData({
+  required String sessionId,
+  required DateTime createdAt,
+  required String startTime,
+  required String endTime,
+  required String sessionDuration,
+  required String trainingId,
+  required String trainingName,
+  required List<ExerciseModel>  exercisesSessionExercises,
+  required String sessionComment
+}) async {
+
+
+
+final finalSessionData = {
+    
+    'sessionId' : sessionId,
+    'createdAt' : createdAt ,
+    'startTime' : startTime,
+    'endTime' : endTime,
+    'sessionDuration' :sessionDuration ,
+    'trainingId' : trainingId,
+    'trainingName' : trainingName,
+    'sessionComment' : sessionComment,
+  };
+
+//Adding the data:
+
+String docId = '-';
+userFinalSessionsData.add(finalSessionData).then((documentSnapshot){
+
+  docId = documentSnapshot.id;
+
+    //Adding data to the collection
+    final finalSessionsExercisesCollection = 
+                userFinalSessionsData
+                .doc(docId)
+                .collection(sessionId);
+
+    for(var exercise in exercisesSessionExercises){
+
+        final individualExerciseSessionData = {
+          'user': exercise.user,
+          'trainingId' :exercise.trainingId,
+          'exerciseId' : exercise.exerciseId,
+          'sessionId' : exercise.sessionId,
+          'name': exercise.name,
+          'timer': exercise.timer,
+          'color': exercise.color,
+          'closed': exercise.closed,
+          'creationDate': exercise.creationDate
+        };
+
+        finalSessionsExercisesCollection.add(individualExerciseSessionData);
+
+    }
+
+}); 
+  //Finally we delete the provisionalSession:
+  removeFirestoreProvisionalSessionData();
+    
 
 }
 
