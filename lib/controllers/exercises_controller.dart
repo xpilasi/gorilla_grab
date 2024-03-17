@@ -200,9 +200,7 @@ class ExercisesController extends GetxController {
           
           };
 
-        userExercisesData.add(data).then((documentSnapshot) =>
-
-        print("DOC ID: ${userExercisesData.doc(documentSnapshot.id)}  -  TRAINING ID: ${trainingModel.trainingId}"));
+        userExercisesData.add(data);
 
     } else {
       String exerciseUniqueIdRep = UniqueKey().toString();
