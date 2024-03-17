@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
@@ -28,7 +26,6 @@ class SessionsController extends GetxController {
 //Sessions Backlog:
 
   List<SessionFinished> allSessions = [];
-
   List<ProvisionalExercisesSession> provisionalSessions = [];
 
 // Reading data from Firebase:
@@ -162,7 +159,6 @@ void addFirestoreProvisionalSessionData({
         };
 
         provisionalSessionsExercisesCollection.add(individualExerciseSessionData);
-
     }
   });
 }
@@ -214,8 +210,6 @@ Future<void> addFirestoreFinalSessionData({
   required String sessionComment
 }) async {
 
-
-
 final finalSessionData = {
     
     'sessionId' : sessionId,
@@ -229,7 +223,6 @@ final finalSessionData = {
   };
 
 //Adding the data:
-
 String docId = '-';
 userFinalSessionsData.add(finalSessionData).then((documentSnapshot){
 
@@ -262,8 +255,6 @@ userFinalSessionsData.add(finalSessionData).then((documentSnapshot){
 }); 
   //Finally we delete the provisionalSession:
   removeFirestoreProvisionalSessionData();
-    
-
 }
 
 //Get the provisional session

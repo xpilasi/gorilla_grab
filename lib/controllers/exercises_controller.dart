@@ -234,8 +234,7 @@ class ExercisesController extends GetxController {
           
           };
 
-        userExercisesData.add(data).then((documentSnapshot) =>
-        print("Added REP Data with ID: ${documentSnapshot.id}"));
+        userExercisesData.add(data);
     }
 
     update();
