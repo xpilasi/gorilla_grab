@@ -1,9 +1,9 @@
 import 'exercise_model.dart';
 
 class ProvisionalExercisesSession {
+  final String trainingId;
   final String exercisesSessionId;
   final DateTime exercisesSessionDate;
-  final String trainingId;
   bool isClosed = false;
   final List<ExerciseModel> exercisesSessionExercises;
 

@@ -384,6 +384,11 @@ class ExercisesController extends GetxController {
             exercisesSessionExercises: exercisesList);
 
     sessionsController.provisionalSessions.add(newExercisesSession);
+    sessionsController.addFirestoreProvisionalSessionData(
+      trainingId: trainingModel.trainingId,
+      exerciseSessionId: sessionId, 
+      exercisesSessionDate: DateTime.now(), 
+      exercisesSessionExercises: exercisesList);
 
     Get.to(TrainingSessionScreen(
       trainingModel: trainingModel,

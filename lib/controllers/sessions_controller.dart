@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
@@ -52,7 +54,7 @@ class SessionsController extends GetxController {
         // Extraer los datos del documento
 
           String trainingId = doc['trainingId'];
-          String exerciseSessionId =  doc['exercisesSessionId'];
+          String exerciseSessionId =  doc['exerciseSessionId'];
           DateTime exercisesSessionDate = doc['exercisesSessionDate'].toDate();
 
           //The exercises list is empty gor the moment:
@@ -110,6 +112,7 @@ class SessionsController extends GetxController {
 
           // Agregar el modelo a la lista
           provisionalSessions.add(provisionalExercisesSession);
+
         
         _dataLoaded = true;
 
@@ -119,7 +122,59 @@ class SessionsController extends GetxController {
   }
   // End readind data from Firebase
 
+//Adding Firestore provisionalSession data:
 
+void addFirestoreProvisionalSessionData({
+  required String trainingId,
+  required String exerciseSessionId,
+  required DateTime exercisesSessionDate,
+  required List<ExerciseModel>  exercisesSessionExercises,
+}){
+
+
+
+  final provisionalSessionData = {
+    'trainingId' : trainingId,
+    'exerciseSessionId' : exerciseSessionId,
+    'exerciseSessionDate' : exercisesSessionDate,
+  };
+
+  //Adding data to de document
+  String docId = '-';
+  userprovisionalSessionsData.add(provisionalSessionData).then((documentSnapshot){
+  docId = documentSnapshot.id;
+  print('doc founded ${documentSnapshot.id} '); 
+
+    //Adding data to the collection
+  final provisionalSessionsExercisesCollection = 
+              userprovisionalSessionsData
+              .doc(docId)
+              .collection(exerciseSessionId);
+
+  for(var exercise in exercisesSessionExercises){
+
+      final individualExerciseSessionData = {
+        'user': exercise.user,
+        'trainingId' :exercise.trainingId,
+        'exerciseId' : exercise.exerciseId,
+        'sessionId' : exercise.sessionId,
+        'name': exercise.name,
+        'timer': exercise.timer,
+        'color': exercise.color,
+        'closed': exercise.closed,
+        'creationDate': exercise.creationDate
+      };
+
+      provisionalSessionsExercisesCollection.add(individualExerciseSessionData);
+      print('Exercise "${exercise.name}" ADDED to Firestore');
+
+  }
+  });
+  
+  
+
+
+}
 
 //Get the provisional session
   ProvisionalExercisesSession getProvisionalSession(
