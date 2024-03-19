@@ -28,7 +28,7 @@ class SessionsController extends GetxController {
   List<SessionFinished> allSessions = [];
   List<ProvisionalExercisesSession> provisionalSessions = [];
 
-// Reading data from Firebase:
+// * Reading data from Firebase:
 
   bool _dataLoaded = false;
 
@@ -37,6 +37,7 @@ class SessionsController extends GetxController {
     super.onInit();
 
     _loadProvisionalSessions();
+    _loadFinalSessions();
   }
 
   void _loadProvisionalSessions() async {
@@ -117,7 +118,98 @@ class SessionsController extends GetxController {
       update();
     }
   }
-  // End reading data from Firebase
+  
+  void _loadFinalSessions() async {
+    if (_dataLoaded) {
+      return;
+    }
+
+    final userFinalSessions = await userFinalSessionsData.get();
+
+    if (userFinalSessions.docs.isNotEmpty) {
+      for (var doc in userFinalSessions.docs) {
+        // Extraer los datos del documento
+
+          String sessionId = doc['sessionId'];
+          DateTime createdAt = doc['createdAt'].toDate();
+          String startTime = doc['startTime'];
+          String endTime = doc['endTime'];
+          String sessionDuration = doc['sessionDuration'];
+          String trainingId = doc['trainingId'];
+          String trainingName = doc['trainingName'];
+          String sessionComment = doc['sessionComment'];
+
+          //The exercises list is empty gor the moment:
+          List<ExerciseModel> exercisesFinalSessionList =  [];
+
+          //Extract the collection
+          late final exercisesSessionData = 
+                            FirebaseFirestore.instance
+                            .collection('users')
+                            .doc(userEmail)
+                            .collection('finalSessions')
+                            .doc(doc.id)
+                            .collection(sessionId);
+
+          //Get data:
+          final exercisesSessionDataCollection = await exercisesSessionData.get();
+
+          if(exercisesSessionDataCollection.docs.isNotEmpty){
+            for(var doc in exercisesSessionDataCollection.docs){
+
+                bool closed = doc['closed'];
+                int color = doc['color'];
+                DateTime creationDate = doc['creationDate'].toDate();
+                String exerciseId = doc['exerciseId'];
+                String name = doc['name'];
+                String sessionId = doc['sessionId'];
+                bool timer = doc['timer'];
+                String trainingId = doc['trainingId'];
+                String user = doc['user'];
+         
+                // Crear un modelo ExerciseModel
+                ExerciseModel exerciseModel = ExerciseModel(
+                  user:user,
+                  trainingId: trainingId,
+                  exerciseId: exerciseId,
+                  name:name,
+                  timer: timer,
+                  color: color,
+                  closed: closed,
+                  creationDate: creationDate
+                  );
+
+              exercisesFinalSessionList.add(exerciseModel);
+            }
+          }
+
+          // Crear un modelo SessionFinished:
+          SessionFinished sessionFinished = SessionFinished(
+                sessionId : sessionId,
+                createdAt : createdAt,
+                startTime : startTime,
+                endTime : endTime,
+                sessionDuration : sessionDuration,
+                trainingId : trainingId,
+                trainingName : trainingName,
+                sessionComment : sessionComment,
+                exercisesListFinished: exercisesFinalSessionList
+          );
+
+          // Agregar el modelo a la lista
+          allSessions.add(sessionFinished);
+
+        
+        _dataLoaded = true;
+
+      }
+      //Sort by createdAt as Firebase redistribute by date   
+      allSessions.sort(((a, b) => a.createdAt.compareTo(b.createdAt)));
+      update();
+    }
+  }
+
+// * End reading data from Firebase
 
 //Adding Firestore provisionalSession data: OK
 void addFirestoreProvisionalSessionData({
