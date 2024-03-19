@@ -221,7 +221,7 @@ class TrainingController extends GetxController {
           //Delete document Firebase
           try{
             docSnapshotForDelete.delete();
-            print('Doc DELETED');
+            
           }
           catch(e){print(e);}
         }else{}
