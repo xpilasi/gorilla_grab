@@ -129,7 +129,7 @@ class TrainingController extends GetxController {
    for (DocumentSnapshot docSnapshot in querySnapshot.docs) {
     String id = docSnapshot.id;
     String path = docSnapshot.reference.path;
-    print('ID misterio: ${id.toString()}'); 
+    
    }
 
     DocumentSnapshot? docSnapshotInside = null;
@@ -153,7 +153,7 @@ class TrainingController extends GetxController {
       if (docSnapshotInside!.exists) {
         Object? data = docSnapshotInside.data();
         String trainingIdData = (data as Map<String, dynamic>)['trainingId'];
-        print('$trainingIdData - $idTrainingCollection');
+        
         if (trainingIdData == idTrainingCollection) {
 
           //Update de datos training
