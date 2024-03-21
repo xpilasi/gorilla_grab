@@ -602,7 +602,9 @@ class ExercisesController extends GetxController {
       );
 
       recordsController.finalTimerRecordsList.add(timerRecordsModel);
-
+       //adding data to Firebase:
+      recordsController.saveTimerRecordFirebase(finalTimerRecordsModel: timerRecordsModel);
+     
       //Adding the GapPerformanceModel
 
       String currentTimerRecord =
@@ -646,6 +648,9 @@ class ExercisesController extends GetxController {
         repRecord: el.repRecord,
       );
       recordsController.finalRepRecordsList.add(repRecordsModel);
+       //adding data to Firebase:
+      recordsController.saveRepRecordFirebase(finalRepRecordsModel: repRecordsModel);
+
       //Adding the GapPerformanceModel
 
       String currentRepRecord = repRecordsModel.repRecord.toString();

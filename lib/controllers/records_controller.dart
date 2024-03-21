@@ -191,6 +191,7 @@ class RecordsController extends GetxController {
           DateTime recordDay = doc['recordDay'].toDate();
           //The exercises list is empty gor the moment:
           List<String> timerFinalRecordsList = [];
+          print('timer id: $timerRecordsId');
 
           //Extract the collection
           late final recordsTimerData = 
@@ -198,21 +199,23 @@ class RecordsController extends GetxController {
                             .collection('users')
                             .doc(userEmail)
                             .collection('finalTimerRecords')
-                            .doc(timerRecordsId)
-                            .collection('finalTimerRecords');
+                            .doc(doc.id)
+                            .collection(sessionId);
           
           //Get data:
           final recordsTimerDataCollection = await recordsTimerData.get();
 
+          //AQUÍ ESTA EL PROBLEMA:
           if(recordsTimerDataCollection.docs.isNotEmpty){
             for(var doc in recordsTimerDataCollection.docs){
 
-                String timerRecord = doc['timerRecord'];
+                String timerRecord = doc['timerList'];
+                print(timerRecord);
                 
 
               timerFinalRecordsList.add(timerRecord);
             }
-          }
+          }else{print('EMPTY');}
 
           // Crear un modelo TimerRecordsModel
           TimerRecordsModel timerRecordsModel = TimerRecordsModel(
@@ -897,4 +900,57 @@ class RecordsController extends GetxController {
     );
     return row;
   }
+
+
+saveRepRecordFirebase({required RepRecordsModel finalRepRecordsModel}){
+
+  final finalRepRecordData = {
+    'repRecordsId' : finalRepRecordsModel.repRecordsId,
+    'sessionId' : finalRepRecordsModel.sessionId,
+    'trainingId' : finalRepRecordsModel.trainingId,
+    'exerciseId' : finalRepRecordsModel.exerciseId,
+    'recordDay' : finalRepRecordsModel.recordDay,
+    'repRecord' : finalRepRecordsModel.repRecord
+  };
+
+  //Add data to Firebase
+  userFinalRepRecordsData.add(finalRepRecordData);
+}
+saveTimerRecordFirebase({required TimerRecordsModel finalTimerRecordsModel}){
+
+  final finalTimerRecordData = {
+    'timerRecordsId' : finalTimerRecordsModel.timerRecordsId,
+    'sessionId' : finalTimerRecordsModel.sessionId,
+    'trainingId' : finalTimerRecordsModel.trainingId,
+    'exerciseId' : finalTimerRecordsModel.exerciseId,
+    'recordDay' : finalTimerRecordsModel.recordDay,
+    
+  };
+
+  //Adding the data:
+String docId = '-';
+userFinalTimerRecordsData.add(finalTimerRecordData).then((documentSnapshot){
+
+  docId = documentSnapshot.id;
+
+    //Adding data to the collection
+    final finalTimerRecordsCollection = 
+                userFinalTimerRecordsData
+                .doc(docId)
+                .collection(finalTimerRecordsModel.sessionId);
+
+    for(var timerList in finalTimerRecordsModel.timerRecordsList){
+
+      final individualTimerList = {
+          'timerList' : timerList
+      };
+      print(timerList);  
+      finalTimerRecordsCollection.add(individualTimerList);
+
+    }
+
+}); 
+}
+
+
 }
