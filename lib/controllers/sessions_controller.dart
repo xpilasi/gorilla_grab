@@ -255,7 +255,44 @@ void addFirestoreProvisionalSessionData({
   });
 }
 
-//Removing all the Firestore provisional Data deleting the document: OK
+//Removing all the Firestore FINAL Data deleting the document: OK
+Future<void> removeFirestoreFinalSessionData({
+  required String finalSessionId
+}) async {
+
+ // Obtener el id doc de la colección:
+  QuerySnapshot querySnapForIterate = await userFinalSessionsData.get();
+  String docId = '';
+  String finalCollectionId = '';
+
+  for (var doc in querySnapForIterate.docs){
+    if(doc['sessionId'] == finalSessionId){
+
+        docId = doc.id; 
+        final docRef = userFinalSessionsData.doc(docId);
+        DocumentSnapshot docSnap = await docRef.get();
+        
+        // Enter inside the collection
+        QuerySnapshot queryForDelete = await userFinalSessionsData
+                                        .doc(docId)
+                                        .collection(finalSessionId)
+                                        .get();
+          
+          //Delete each data inside the collection
+          for(var doc in queryForDelete.docs){
+            doc.reference.delete();
+          }
+          //Delete the document itself
+          userFinalSessionsData.doc(docId).delete();
+    }
+    
+  }
+
+ 
+ 
+  
+}
+//Removing all the Firestore provisional Data deleting the document:
 Future<void> removeFirestoreProvisionalSessionData() async {
 
  // Obtener el id doc de la colección:

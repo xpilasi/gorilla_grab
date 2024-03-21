@@ -498,6 +498,7 @@ class ExercisesController extends GetxController {
               object: 'session',
               onPressedOk:() {
                   removeExercisesSessionFinished(sessionFinished: sessionFinished);
+                  sessionsController.removeFirestoreFinalSessionData(finalSessionId: sessionFinished.sessionId);
                   Get.to(() => ExercisesScreen(trainingModel: trainingModel)); 
               } ,
             );
