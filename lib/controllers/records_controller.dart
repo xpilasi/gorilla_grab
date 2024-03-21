@@ -1,6 +1,8 @@
 // ignore_for_file: avoid_init_to_null, empty_catches, unused_local_variable
 
 import 'dart:async';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:gorilla_grab/constants/colors.dart';
@@ -15,16 +17,268 @@ import 'package:gorilla_grab/controllers/sessions_controller.dart';
 
 class RecordsController extends GetxController {
   final SessionsController sessionsController = Get.put(SessionsController());
-  final PerformanceController performanceController =
-      Get.put(PerformanceController());
+  final PerformanceController performanceController = Get.put(PerformanceController());
+      
+  //Firebase data:  
+  late final db = FirebaseFirestore.instance;
+  late final usersMap = db.collection('users');
+  final userEmail = FirebaseAuth.instance.currentUser!.email;
+
+  late final userProvisionalTimerRecordsData = FirebaseFirestore.instance
+      .collection('users')
+      .doc(userEmail)
+      .collection('provisionalTimerRecords');
+
+  late final userProvisionalRepRecordsData = FirebaseFirestore.instance
+      .collection('users')
+      .doc(userEmail)
+      .collection('provisionalRepRecords');
+
+  late final userFinalTimerRecordsData = FirebaseFirestore.instance
+      .collection('users')
+      .doc(userEmail)
+      .collection('finalTimerRecords');
+  
+  late final userFinalRepRecordsData = FirebaseFirestore.instance
+      .collection('users')
+      .doc(userEmail)
+      .collection('finalRepRecords');
+
+//Sessions Backlog:
 
   //Here we add all the timerRecords:
-  List<TimerRecordsModel> finalTimerRecordsList = [];
   List<ProvisionalTimerRecordsModel> provisionalTimerRecordsList = [];
-
+  List<TimerRecordsModel> finalTimerRecordsList = [];
+  
   //Here we add all the repRecords:
-  List<RepRecordsModel> finalRepRecordsList = [];
   List<ProvisionalRepRecordsModel> provisionalRepRecordsList = [];
+  List<RepRecordsModel> finalRepRecordsList = [];
+  
+
+// * Reading data from Firebase:
+
+  bool _dataLoaded = false;
+
+  @override
+  void onInit() {
+    super.onInit();
+
+    _loadProvisionalTimerRecords();
+    _loadFinalTimerRecords();
+    _loadProvisionalRepRecords();
+    _loadFinalRepRecords();
+  }
+
+  void _loadProvisionalTimerRecords() async {
+    if (_dataLoaded) {
+      return;
+    }
+
+    final userProvisionalTimerRecords = await userProvisionalTimerRecordsData.get();
+
+    if (userProvisionalTimerRecords.docs.isNotEmpty) {
+      for (var doc in userProvisionalTimerRecords.docs) {
+        // Extraer los datos del documento
+
+          String timerRecordsId = doc['timerRecordsId'];
+          String sessionId = doc['sessionId'];
+          String trainingId = doc['trainingId'];
+          String exerciseId = doc['exerciseId'];
+          DateTime recordDay = doc['recordDay'].toDate();
+          //The exercises list is empty gor the moment:
+          List<String> timerProvisionalRecordsList = [];
+
+          //Extract the collection
+          late final recordsTimerData = 
+                            FirebaseFirestore.instance
+                            .collection('users')
+                            .doc(userEmail)
+                            .collection('provisionalTimerRecords')
+                            .doc(timerRecordsId)
+                            .collection('provisionalTimerRecords');
+          
+          //Get data:
+          final recordsTimerDataCollection = await recordsTimerData.get();
+
+          if(recordsTimerDataCollection.docs.isNotEmpty){
+            for(var doc in recordsTimerDataCollection.docs){
+
+                String timerRecord = doc['timerRecord'];
+                
+
+              timerProvisionalRecordsList.add(timerRecord);
+            }
+          }
+
+          // Crear un modelo ProvisionalTimerRecordsModel
+          ProvisionalTimerRecordsModel provisionalTimerRecordsModel = ProvisionalTimerRecordsModel(
+            
+            timerRecordsId: timerRecordsId,
+            sessionId: sessionId,
+            trainingId: trainingId ,
+            exerciseId: exerciseId,
+            recordDay: recordDay ,
+            timerRecordsList: timerProvisionalRecordsList
+          );
+
+          // Agregar el modelo a la lista
+          provisionalTimerRecordsList.add(provisionalTimerRecordsModel);
+
+        
+        _dataLoaded = true;
+
+      }   
+      update();
+    }
+  }
+  
+  void _loadProvisionalRepRecords() async {
+    if (_dataLoaded) {
+      return;
+    }
+
+    final userProvisionalRepRecords = await userProvisionalRepRecordsData.get();
+
+    if (userProvisionalRepRecords.docs.isNotEmpty) {
+      for (var doc in userProvisionalRepRecords.docs) {
+        // Extraer los datos del documento
+
+          String repRecordsId = doc['repRecordsId'];
+          String sessionId = doc['sessionId'];
+          String trainingId = doc['trainingId'];
+          String exerciseId = doc['exerciseId'];
+          DateTime recordDay = doc['recordDay'].toDate();
+          int repRecord = doc['repRecord'];
+          
+
+          // Crear un modelo ProvisionalRepRecordsModel
+          ProvisionalRepRecordsModel provisionalRepRecordsModel = ProvisionalRepRecordsModel(
+            
+            repRecordsId: repRecordsId,
+            sessionId: sessionId,
+            trainingId: trainingId ,
+            exerciseId: exerciseId,
+            recordDay: recordDay ,
+            repRecord: repRecord
+          );
+
+          // Agregar el modelo a la lista
+          provisionalRepRecordsList.add(provisionalRepRecordsModel);
+
+        
+        _dataLoaded = true;
+
+      }   
+      update();
+    }
+  }
+  
+  void _loadFinalTimerRecords() async {
+    if (_dataLoaded) {
+      return;
+    }
+
+    final userFinalTimerRecords = await userFinalTimerRecordsData.get();
+
+    if (userFinalTimerRecords.docs.isNotEmpty) {
+      for (var doc in userFinalTimerRecords.docs) {
+        // Extraer los datos del documento
+
+          String timerRecordsId = doc['timerRecordsId'];
+          String sessionId = doc['sessionId'];
+          String trainingId = doc['trainingId'];
+          String exerciseId = doc['exerciseId'];
+          DateTime recordDay = doc['recordDay'].toDate();
+          //The exercises list is empty gor the moment:
+          List<String> timerFinalRecordsList = [];
+
+          //Extract the collection
+          late final recordsTimerData = 
+                            FirebaseFirestore.instance
+                            .collection('users')
+                            .doc(userEmail)
+                            .collection('finalTimerRecords')
+                            .doc(timerRecordsId)
+                            .collection('finalTimerRecords');
+          
+          //Get data:
+          final recordsTimerDataCollection = await recordsTimerData.get();
+
+          if(recordsTimerDataCollection.docs.isNotEmpty){
+            for(var doc in recordsTimerDataCollection.docs){
+
+                String timerRecord = doc['timerRecord'];
+                
+
+              timerFinalRecordsList.add(timerRecord);
+            }
+          }
+
+          // Crear un modelo TimerRecordsModel
+          TimerRecordsModel timerRecordsModel = TimerRecordsModel(
+            
+            timerRecordsId: timerRecordsId,
+            sessionId: sessionId,
+            trainingId: trainingId ,
+            exerciseId: exerciseId,
+            recordDay: recordDay ,
+            timerRecordsList: timerFinalRecordsList
+          );
+
+          // Agregar el modelo a la lista
+          finalTimerRecordsList.add(timerRecordsModel);
+
+        
+        _dataLoaded = true;
+
+      }   
+      update();
+    }
+  }
+  
+  void _loadFinalRepRecords() async {
+    if (_dataLoaded) {
+      return;
+    }
+
+    final userFinalRepRecords = await userFinalRepRecordsData.get();
+
+    if (userFinalRepRecords.docs.isNotEmpty) {
+      for (var doc in userFinalRepRecords.docs) {
+        // Extraer los datos del documento
+
+          String repRecordsId = doc['repRecordsId'];
+          String sessionId = doc['sessionId'];
+          String trainingId = doc['trainingId'];
+          String exerciseId = doc['exerciseId'];
+          DateTime recordDay = doc['recordDay'].toDate();
+          int repRecord = doc['repRecord'];
+          
+
+          // Crear un modelo RepRecordsModel
+          RepRecordsModel repRecordsModel = RepRecordsModel(
+            
+            repRecordsId: repRecordsId,
+            sessionId: sessionId,
+            trainingId: trainingId ,
+            exerciseId: exerciseId,
+            recordDay: recordDay ,
+            repRecord: repRecord
+          );
+
+          // Agregar el modelo a la lista
+          finalRepRecordsList.add(repRecordsModel);
+
+        
+        _dataLoaded = true;
+
+      }   
+      update();
+    }
+  }
+
+// * End reading data from Firebase
+ 
 
   //To get the provisional TimerRecord corresponding to the session and exercise
   //If the prov Timer is not founded it creates one for the session and exercise
