@@ -353,7 +353,7 @@ const TextStyle tStyleBottomSheetComment = TextStyle(
 
 //RECORDS:
 const TextStyle tStyleListCountdown = TextStyle(
-    color: tColorPinky,
+    color: tColorPrimary_4,
     fontSize: 200,
     fontFamily: fontSubTitles,
     fontWeight: FontWeight.w600,
