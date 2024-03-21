@@ -134,13 +134,7 @@ class TrainingSessionFinishedScreen extends StatelessWidget {
                                       topLeft: Radius.circular(20),
                                       bottomRight: Radius.circular(20),
                                       topRight: Radius.circular(20)),
-                                  gradient: LinearGradient(colors: [
-                                    tColorBottomSheetG1,
-                                    tColorBottomSheetG1
-                                  ], stops: [
-                                    0.1,
-                                    1
-                                  ]),
+                                  gradient: gradient2
                                 ),
                                 child: ListTile(
                                   //tileColor: tColorBlack,

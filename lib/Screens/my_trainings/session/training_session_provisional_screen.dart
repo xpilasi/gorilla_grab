@@ -119,13 +119,7 @@ class TrainingSessionScreen extends StatelessWidget {
                           width: double.infinity,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(allBoxRadius),
-                            gradient: const LinearGradient(colors: [
-                              tColorBottomSheetG1,
-                              tColorBottomSheetG1,
-                            ], stops: [
-                              0.1,
-                              1
-                            ]),
+                            gradient: gradient2
                           ),
                           child: ListTile(
                             //tileColor: tColorBlack,
