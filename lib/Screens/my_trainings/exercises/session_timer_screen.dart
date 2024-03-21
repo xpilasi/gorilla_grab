@@ -73,7 +73,7 @@ class SessionTimerScreen extends StatelessWidget {
                           child: Container(
                               height: 50,
                               decoration: const BoxDecoration(
-                                  color: tColorBottomSheetG1,
+                                  gradient: gradient2,
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(30))),
                               child: Padding(
@@ -146,7 +146,7 @@ class SessionTimerScreen extends StatelessWidget {
                 child: Container(
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(30),
-                      color: tColorBottomSheetG1),
+                      gradient: gradient1),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -338,7 +338,7 @@ class FullStopwatch extends StatelessWidget {
       height: 140,
       //width: 180,
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(30), color: tColorBottomSheetG1),
+          borderRadius: BorderRadius.circular(30), gradient: gradient2),
       child: Stack(children: [
         Positioned(
             top: 5,
