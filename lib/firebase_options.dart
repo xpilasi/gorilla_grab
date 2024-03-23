@@ -17,7 +17,10 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      return web;
+      throw UnsupportedError(
+        'DefaultFirebaseOptions have not been configured for web - '
+        'you can reconfigure this by running the FlutterFire CLI again.',
+      );
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
@@ -25,7 +28,10 @@ class DefaultFirebaseOptions {
       case TargetPlatform.iOS:
         return ios;
       case TargetPlatform.macOS:
-        return macos;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for macos - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.windows:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for windows - '
@@ -43,16 +49,6 @@ class DefaultFirebaseOptions {
     }
   }
 
-  static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyBhnHrkBCdSur2npfJKmh9Z046kWttIOmg',
-    appId: '1:350856242261:web:17f6326a0c38b6fa0060dc',
-    messagingSenderId: '350856242261',
-    projectId: 'gorillagrab-731a2',
-    authDomain: 'gorillagrab-731a2.firebaseapp.com',
-    storageBucket: 'gorillagrab-731a2.appspot.com',
-    measurementId: 'G-5MRP0KPSSX',
-  );
-
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyDx1UD6CbFQs2cbfwHR9S9gmbK6CL2b1IA',
     appId: '1:350856242261:android:e71e0647104aea320060dc',
@@ -67,15 +63,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '350856242261',
     projectId: 'gorillagrab-731a2',
     storageBucket: 'gorillagrab-731a2.appspot.com',
+    androidClientId: '350856242261-atij03sj4i8looj9g31jur3ccg67ppn4.apps.googleusercontent.com',
+    iosClientId: '350856242261-ram325116qcfgdqifvmjm314sep35fs6.apps.googleusercontent.com',
     iosBundleId: 'com.example.gorillaGrab',
-  );
-
-  static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyDsLbefZoeqFzS4r5IAgInqfOlu6iC5VPU',
-    appId: '1:350856242261:ios:c9b93cc9727329210060dc',
-    messagingSenderId: '350856242261',
-    projectId: 'gorillagrab-731a2',
-    storageBucket: 'gorillagrab-731a2.appspot.com',
-    iosBundleId: 'com.example.gorillaGrab.RunnerTests',
   );
 }

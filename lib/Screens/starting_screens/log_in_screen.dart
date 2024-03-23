@@ -10,14 +10,18 @@ import 'package:gorilla_grab/constants/sizes.dart';
 import 'package:gorilla_grab/constants/text_styles.dart';
 import 'package:gorilla_grab/constants/variables.dart';
 import 'package:gorilla_grab/controllers/auth_controller.dart';
+import 'package:gorilla_grab/controllers/google_sign_in_controller.dart';
+import 'package:gorilla_grab/controllers/sign_up_controller.dart';
 import 'package:gorilla_grab/widgets/buttons.dart';
 
 class LogInScreen extends StatelessWidget {
   LogInScreen({Key? key}) : super(key: key);
   final AuthController authController = Get.put(AuthController());
+  final GoogleSignInController googleSignInController = Get.put(GoogleSignInController());
 
   final TextEditingController emailController = TextEditingController();
   final TextEditingController pswdController = TextEditingController();
+  final SignUpController signUpController = SignUpController();
 
   @override
   Widget build(BuildContext context) {
@@ -89,7 +93,14 @@ class LogInScreen extends StatelessWidget {
                 //LogIn with Google
                 ButtonGoogle(
                   buttonText: 'Log In with Google',
-                  onPressed: () => (Get.to(() => DashBoardHomeScreen())),
+                  onPressed: () {
+                    googleSignInController.signInWithGoogle()
+                      .then((_) => Get.to(() => DashBoardHomeScreen()))
+                      .catchError((error) {
+                        // Handle error, e.g., display an error message
+                        print('Error creating collection: $error');
+                      });
+                  }
                 ),
 
                 //New at Gorilla Grab

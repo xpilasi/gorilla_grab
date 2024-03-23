@@ -12,7 +12,20 @@
           "package_name": "com.example.gorilla_grab"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "350856242261-atij03sj4i8looj9g31jur3ccg67ppn4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.gorilla_grab",
+            "certificate_hash": "c71abdf2847c7091655a991f2dbadd338f8930f7"
+          }
+        },
+        {
+          "client_id": "350856242261-h70nm7rm1v7549s795stvjhlkohg8qp5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyDx1UD6CbFQs2cbfwHR9S9gmbK6CL2b1IA"
@@ -20,7 +33,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "350856242261-h70nm7rm1v7549s795stvjhlkohg8qp5.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "350856242261-oimaeua2jqobm5d9u2158932ug4veknm.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.gorillaGrab.RunnerTests"
+              }
+            }
+          ]
         }
       }
     }
