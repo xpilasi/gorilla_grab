@@ -1,16 +1,43 @@
-# gorilla_grab
+# Gorilla Grab 🦍🪨  
+**A Climbing Training Tracker**  
 
-A new Flutter project.
+Gorilla Grab is a mobile app specifically designed for climbers who want to track and improve their training performance. This app was created to address common issues climbers face with other apps, prioritizing simplicity and usability.  
 
-## Getting Started
+## 🧗‍♂️ Project Overview  
+As a climber, I wanted a tool to monitor my progress and climbing performance. Gorilla Grab is designed to be simple yet highly effective and valuable, solving the challenges I encountered with existing solutions.  
 
-This project is a starting point for a Flutter application.
+**Current Status:**  
+The app is in test mode using Firebase as the backend.  
 
-A few resources to get you started if this is your first Flutter project:
+---
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## ✨ Key Features (MVP)  
+- Personalized training tracking.  
+- Performance analysis for climbing progress.  
+- Intuitive interface tailored for climbers.  
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+---
+
+## 🛠️ Technologies Used  
+
+### **Frontend:**  
+- **Framework:** Flutter  
+- **Language:** Dart  
+
+### **Backend:**  
+- **Database & Authentication:** Firebase (test mode)  
+
+---
+
+## 🚀 Getting Started  
+
+### **Prerequisites:**  
+1. Install [Flutter](https://flutter.dev/docs/get-started/install).  
+2. Configure Firebase in test mode: see [Firebase Setup](https://firebase.google.com/docs/flutter/setup).  
+
+### **Installation Instructions:**  
+1. Clone this repository:  
+   ```bash
+   git clone https://github.com/xpilasi/gorilla_grab.git
+   cd gorilla_grab
+
