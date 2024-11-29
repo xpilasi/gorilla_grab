@@ -49,13 +49,19 @@ The app is in test mode using Firebase as the backend.
    ```bash
    flutter run
 
-🌐 Firebase Configuration
+---
+
+## 🌐 Firebase Configuration
 The app uses Firebase in test mode for user authentication and data storage. Make sure your Firebase project is correctly set up to avoid connection issues.
 
-📅 Development Year
+---
+
+## 📅 Development Year
 2023
 
-📂 Project Structure
+---
+
+## 📂 Project Structure
 ```bash
 gorilla_grab/
 ├── lib/
@@ -69,8 +75,12 @@ gorilla_grab/
 └── pubspec.yaml           # Project configuration and dependencies
 ```
 
-🌟 Contributions
+---
+
+## 🌟 Contributions
 Contributions are welcome! If you have ideas for new features or improvements, feel free to create an Issue or submit a Pull Request.
+
+---
 
 📧 Contact
 For any questions or feedback, reach out via GitHub
